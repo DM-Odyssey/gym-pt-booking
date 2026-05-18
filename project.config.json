@@ -40,11 +40,15 @@
 		"useCompilerPlugins": false,
 		"ignoreUploadUnusedFiles": true,
 		"useStaticServer": true,
-		"condition": false
+		"condition": false,
+		"compileWorklet": false,
+		"localPlugins": false,
+		"swc": false,
+		"disableSWC": true
 	},
-	"appid": "wxb100b44af794708e",
+	"appid": "wxbab0647af56f7ab8",
 	"projectname": "Multi多功能平台",
-	"libVersion": "2.17.0",
+	"libVersion": "3.8.9",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate/",

@@ -165,7 +165,27 @@ class AdminMgrService extends BaseProjectAdminService {
 		phone,
 		password
 	}) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 1. 检查是否已存在同名账号
+		let where = {
+			ADMIN_NAME: name,
+		}
+		let exists = await AdminModel.getOne(where, 'ADMIN_ID');
+		if (exists)
+			this.AppError('该账号已存在');
+
+		// 2. 准备数据（密码用 MD5 加密，参照 adminLogin 的写法）
+		let data = {
+			ADMIN_NAME: name,
+			ADMIN_DESC: desc,
+			ADMIN_PHONE: phone,
+			ADMIN_PASSWORD: md5Lib.md5(password),
+		}
+
+		// 3. 插入数据库（ADMIN_ID、ADD_TIME、ADD_IP 等由 Model 层自动生成）
+		let admin = await AdminModel.insert(data);
+
+		// 4. 写操作日志
+		this.insertLog('添加了管理员', admin, LogModel.TYPE.SYS);
 
 	}
 
