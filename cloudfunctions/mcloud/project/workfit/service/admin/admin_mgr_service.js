@@ -155,7 +155,17 @@ class AdminMgrService extends BaseProjectAdminService {
 
 	/** 删除管理员 */
 	async delMgr(id, myAdminId) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 1. 查一下要删的管理员是否存在
+		let where = { _id: id };
+		let admin = await AdminModel.getOne(where, 'ADMIN_NAME,ADMIN_DESC');
+		if (!admin)
+			this.AppError('管理员不存在');
+
+		// 2. 执行删除
+		await AdminModel.del(where);
+
+		// 3. 记录操作日志
+		this.insertLog('删除了管理员【' + admin.ADMIN_NAME + '】', admin, LogModel.TYPE.SYS);
 	}
 
 	/** 添加新的管理员 */
@@ -191,7 +201,18 @@ class AdminMgrService extends BaseProjectAdminService {
 
 	/** 修改状态 */
 	async statusMgr(id, status, myAdminId) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 1. 查是否存在
+		let where = { _id: id };
+		let admin = await AdminModel.getOne(where, 'ADMIN_NAME,ADMIN_DESC');
+		if (!admin)
+			this.AppError('管理员不存在');
+
+		// 2. 更新状态字段
+		await AdminModel.edit(where, { ADMIN_STATUS: status });
+
+		// 3. 记日志
+		let statusDesc = status == 1 ? '启用' : '禁用';
+		this.insertLog(statusDesc + '了管理员【' + admin.ADMIN_NAME + '】', admin, LogModel.TYPE.SYS);
 	} 
  
 
