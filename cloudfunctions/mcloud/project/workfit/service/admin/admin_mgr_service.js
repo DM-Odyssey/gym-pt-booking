@@ -236,14 +236,54 @@ class AdminMgrService extends BaseProjectAdminService {
 		phone,
 		password
 	}) {
+		// 1. 查是否存在
+		let where = { _id: id };
+		let admin = await AdminModel.getOne(where, 'ADMIN_NAME');
+		if (!admin)
+			this.AppError('管理员不存在');
 
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 2. 检查新名字是否和别人冲突（排除自己）
+		let existWhere = {
+			ADMIN_NAME: name,
+			_id: ['<>', id]
+		};
+		let exist = await AdminModel.getOne(existWhere, 'ADMIN_ID');
+		if (exist)
+			this.AppError('该账号名已被其他管理员使用');
+
+		// 3. 组装要更新的数据
+		let data = {
+			ADMIN_NAME: name,
+			ADMIN_DESC: desc,
+			ADMIN_PHONE: phone,
+		};
+		if (password)
+			data.ADMIN_PASSWORD = md5Lib.md5(password);
+
+		// 4. 更新
+		await AdminModel.edit(where, data);
+
+		// 5. 记日志
+		this.insertLog('修改了管理员【' + admin.ADMIN_NAME + '】', admin, LogModel.TYPE.SYS);
 	}
 
 	/** 修改自身密码 */
 	async pwdtMgr(adminId, oldPassword, password) {
+		// 1. 查是否存在
+		let where = { _id: adminId };
+		let admin = await AdminModel.getOne(where, 'ADMIN_NAME,ADMIN_PASSWORD');
+		if (!admin)
+			this.AppError('管理员不存在');
 
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 2. 验证旧密码
+		if (admin.ADMIN_PASSWORD !== md5Lib.md5(oldPassword))
+			this.AppError('旧密码不正确');
+
+		// 3. 更新为新密码
+		await AdminModel.edit(where, { ADMIN_PASSWORD: md5Lib.md5(password) });
+
+		// 4. 记日志
+		this.insertLog('修改了登录密码', admin, LogModel.TYPE.SYS);
 	}
 }
 
