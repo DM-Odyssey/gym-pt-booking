@@ -12,6 +12,7 @@ const timeUtil = require('../../../../framework/utils/time_util.js');
 const dataUtil = require('../../../../framework/utils/data_util.js');
 const UserModel = require('../../model/user_model.js');
 const AdminHomeService = require('./admin_home_service.js');
+const LogModel = require('../../../../framework/platform/model/log_model.js');
 
 // 导出用户数据KEY
 const EXPORT_USER_DATA_KEY = 'EXPORT_USER_DATA';
@@ -87,13 +88,36 @@ class AdminUserService extends BaseProjectAdminService {
 	}
 
 	async statusUser(id, status, reason) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 1. 查是否存在（id 是 USER_MINI_OPENID）
+		let where = { USER_MINI_OPENID: id };
+		let user = await UserModel.getOne(where, 'USER_NAME');
+		if (!user)
+			this.AppError('用户不存在');
+
+		// 2. 更新状态
+		let data = { USER_STATUS: status };
+		if (reason)
+			data.USER_CHECK_REASON = reason;
+		await UserModel.edit(where, data);
+
+		// 3. 记日志
+		let statusDesc = UserModel.getDesc('STATUS', status);
+		this.insertLog(statusDesc + '了用户【' + user.USER_NAME + '】', user, LogModel.TYPE.USER);
 	}
 
 	/**删除用户 */
 	async delUser(id) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 1. 查是否存在（id 是 USER_MINI_OPENID）
+		let where = { USER_MINI_OPENID: id };
+		let user = await UserModel.getOne(where, 'USER_NAME');
+		if (!user)
+			this.AppError('用户不存在');
 
+		// 2. 删除
+		await UserModel.del(where);
+
+		// 3. 记日志
+		this.insertLog('删除了用户【' + user.USER_NAME + '】', user, LogModel.TYPE.USER);
 	}
 
 	// #####################导出用户数据
@@ -110,9 +134,40 @@ class AdminUserService extends BaseProjectAdminService {
 
 	/**导出用户数据 */
 	async exportUserDataExcel(condition, fields) {
+		// 1. 解析查询条件
+		let where = {};
+		if (condition) {
+			where = JSON.parse(decodeURIComponent(condition));
+		}
 
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// 2. 查所有匹配用户
+		let orderBy = { USER_ADD_TIME: 'desc' };
+		let list = await UserModel.getAllBig(where, '*', orderBy, 10000);
 
+		// 3. 组装 Excel 数据（第一行是表头）
+		let title = '用户数据';
+		let dataArr = [];
+
+		// 表头
+		let header = ['姓名', '手机', '状态', '注册时间'];
+		if (fields && fields.length > 0) {
+			header = [...fields];
+		}
+		dataArr.push(header);
+
+		// 数据行
+		for (let user of list) {
+			let statusDesc = UserModel.getDesc('STATUS', user.USER_STATUS);
+			dataArr.push([
+				user.USER_NAME || '',
+				user.USER_MOBILE || '',
+				statusDesc,
+				timeUtil.timestamp2Time(user.USER_ADD_TIME)
+			]);
+		}
+
+		// 4. 导出为 Excel 文件到云存储
+		return await exportUtil.exportDataExcel(EXPORT_USER_DATA_KEY, title, list.length, dataArr);
 	}
 
 }
