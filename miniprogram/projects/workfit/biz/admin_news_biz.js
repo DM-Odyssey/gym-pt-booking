@@ -58,7 +58,7 @@ AdminNewsBiz.CHECK_FORM = {
 	cateId: 'formCateId|must|id|name=分类',
 	order: 'formOrder|must|int|min:0|max:9999|name=排序号',
 	desc: 'formDesc|string|min:10|max:200|name=简介',
-	forms: 'formForms|array',
+	// forms 手动处理，不从 CHECK_FORM 校验
 };
 
 

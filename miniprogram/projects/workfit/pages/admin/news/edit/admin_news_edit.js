@@ -89,7 +89,7 @@ Page({
 				isLoad: null
 			})
 			return;
-		};
+		}
 
 		this.setData({
 			isLoad: true,
@@ -105,7 +105,7 @@ Page({
 
 			formDesc: news.NEWS_DESC,
 
-			formForms: news.NEWS_FORMS,
+			formForms: Array.isArray(news.NEWS_FORMS) ? news.NEWS_FORMS : [],
 
 		}, () => {
 			this._setContentDesc();
@@ -128,12 +128,12 @@ Page({
 		if (this.data.formContent.length == 0) {
 			return pageHelper.showModal('详细内容不能为空');
 		}
-		data = validate.check(data, AdminNewsBiz.CHECK_FORM, this); 
+		data = validate.check(data, AdminNewsBiz.CHECK_FORM, this);
 		if (!data) return;
 
 		let forms = this.selectComponent("#cmpt-form").getForms(true);
 		if (!forms) return;
-		data.forms = forms; 
+		data.forms = forms;
 
 		data.cateName = AdminNewsBiz.getCateName(data.cateId);
 
