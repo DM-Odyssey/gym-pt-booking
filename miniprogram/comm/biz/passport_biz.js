@@ -249,7 +249,7 @@ class PassportBiz extends BaseBiz {
 PassportBiz.CHECK_FORM = {
 	name: 'formName|must|string|min:1|max:30|name=昵称',
 	mobile: 'formMobile|must|len:11|name=手机',
-	forms: 'formForms|array'
+	forms: 'formForms|array|default=[]'
 };
 
 

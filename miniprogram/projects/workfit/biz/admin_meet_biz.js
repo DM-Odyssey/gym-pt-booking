@@ -113,11 +113,11 @@ AdminMeetBiz.CHECK_FORM = {
 	cateId: 'formCateId|must|id|name=分类',
 	order: 'formOrder|must|int|min:0|max:9999|name=排序号',
 	cancelSet: 'formCancelSet|must|int|name=取消设置',
-	daysSet: 'formDaysSet|must|array|name=预约时间设置',
+	daysSet: 'formDaysSet|must|array|default=[]|name=预约时间设置',
 	phone: 'formPhone|string|len:11|name=教练登陆手机',
 	password: 'formPassword|string|min:6|max:30|name=教练登陆密码',
-	forms: 'formForms|array',
-	joinForms: 'formJoinForms|must|array|name=用户填写项目',
+	// forms 手动处理，不从 CHECK_FORM 校验
+	joinForms: 'formJoinForms|must|array|default=[]|name=用户填写项目',
 };
 
 

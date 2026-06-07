@@ -242,7 +242,7 @@ class AdminMeetController extends BaseProjectAdminController {
 		return result;
 
 	}
-
+  
 	/** 发布 */
 	async insertMeet() {
 		await this.isAdmin();
@@ -283,7 +283,7 @@ class AdminMeetController extends BaseProjectAdminController {
 
 		let rules = {
 			id: 'must|id',
-			daysSet: 'must|array|name=预约时间设置',
+			daysSet: 'must|array|name=预约时间设置',  
 		};
 
 		// 取得数据

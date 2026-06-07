@@ -67,7 +67,7 @@ Page({
 
 			formPhone: meet.MEET_PHONE,
 
-			formForms: meet.MEET_FORMS,
+			formForms: Array.isArray(meet.MEET_FORMS) ? meet.MEET_FORMS : [],
 
 			formDaysSet: meet.MEET_DAYS_SET,
 
