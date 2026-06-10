@@ -15,12 +15,6 @@ module.exports = {
 	'passport/register': 'passport_controller@register',
 	'passport/edit_base': 'passport_controller@editBase',
 
-	// 收藏
-	'fav/update': 'fav_controller@updateFav',
-	'fav/del': 'fav_controller@delFav',
-	'fav/is_fav': 'fav_controller@isFav',
-	'fav/my_list': 'fav_controller@getMyFavList',
-
 	// 服务者
 	'work/home': 'work/work_home_controller@workHome',
 	'work/login': 'work/work_home_controller@workLogin',

@@ -60,10 +60,6 @@
 	border-right: unset;
 }
 
-.cmpt-biz-detail-mode1 .btn-inner .fav {
-	background: inherit;
-}
-
 .cmpt-biz-detail-mode1 .btn-inner .share {
 	background: inherit;
 }
@@ -107,8 +103,7 @@
 	padding: 0 20rpx;
 }
 
-.cmpt-biz-detail-mode2 .share,
-.cmpt-biz-detail-mode2 .fav {
+.cmpt-biz-detail-mode2 .share {
 	font-size: 35rpx;
 	display: flex;
 	flex-direction: column;
@@ -118,8 +113,7 @@
 	width: 120rpx;
 }
 
-.cmpt-biz-detail-mode2 .share .text-s,
-.cmpt-biz-detail-mode2 .fav .text-s {
+.cmpt-biz-detail-mode2 .share .text-s {
 	margin-top: 0rpx;
 	font-size: 24rpx;
 }

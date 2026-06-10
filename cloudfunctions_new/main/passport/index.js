@@ -38,8 +38,8 @@ async function login(userId) {
             status: user.USER_STATUS
         }
         // 更新登录时间和次数
-        db.edit('user', where, { USER_LOGIN_TIME: time() })
-        db.inc('user', where, 'USER_LOGIN_CNT', 1)
+        const cnt = (user.USER_LOGIN_CNT || 0) + 1
+        db.edit('user', where, { USER_LOGIN_TIME: time(), USER_LOGIN_CNT: cnt })
     }
 
     return success({ token })

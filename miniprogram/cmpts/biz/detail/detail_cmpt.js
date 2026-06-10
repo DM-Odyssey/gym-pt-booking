@@ -1,6 +1,5 @@
 const pageHelper = require('../../../helper/page_helper');
 const posterCmptHelper = require('../../public/poster/poster_cmpt_helper.js');
-const FavBiz = require('../../../comm/biz/fav_biz.js');
 const FootBiz = require('../../../comm/biz/foot_biz.js');
 
 Component({
@@ -52,10 +51,6 @@ Component({
 			type: String, //小角标
 			value: ''
 		},
-		doFav: {
-			type: Boolean,
-			value: true
-		},
 		doFoot: {
 			type: Boolean,
 			value: true
@@ -102,7 +97,6 @@ Component({
 	 * 组件的初始数据
 	 */
 	data: {
-		isFav: -1,
 		showPoster: false,
 		posterConfig: null,
 	},
@@ -116,10 +110,6 @@ Component({
 		},
 		ready: async function () {
 			if (!this.data.oid || !this.data.title) return;
-
-			if (this.data.doFav) {
-				FavBiz.isFav(this, this.data.oid);
-			}
 
 			if (this.data.doFoot) {
 				FootBiz.addFoot(this.data.cate, this.data.title);
@@ -157,11 +147,6 @@ Component({
 				showPoster: true
 			});
 		},
-		bindFavTap: async function () {
-			if (this.data.isFav == -1) return;
-			
-			await FavBiz.updateFav(this, this.data.oid, this.data.isFav, this.data.cate, this.data.title);
-		},
 		url: function (e) {
 			pageHelper.url(e, this);
 		},
@@ -171,10 +156,10 @@ Component({
 				url = pageHelper.fmtURLByPID('/pages/default/index/default_index');
 
 			wx.reLaunch({ url });
-		}, 
+		},
 		top: function (e) {
 			// 回页首事件
 			pageHelper.top();
-		} 
+		}
 	}
 })
