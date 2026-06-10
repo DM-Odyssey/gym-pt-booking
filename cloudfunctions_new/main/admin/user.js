@@ -1,5 +1,7 @@
 /**
- * admin/user — 用户管理
+ * 用户管理 + 用户数据 Excel 导出
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const db = require('../common/db')
 const { validate } = require('../common/validate')
@@ -13,9 +15,9 @@ async function getUserList(admin, params) {
 
     if (search) {
         where.or = [
-            { USER_NAME: db.cmd().regex({ regexp: search, options: 'i' }) },
-            { USER_MOBILE: db.cmd().regex({ regexp: search, options: 'i' }) },
-            { USER_MEMO: db.cmd().regex({ regexp: search, options: 'i' }) }
+            { USER_NAME: db.regexp(search) },
+            { USER_MOBILE: db.regexp(search) },
+            { USER_MEMO: db.regexp(search) }
         ]
     }
     if (sortType === 'status' && sortVal !== undefined) where.USER_STATUS = Number(sortVal)
@@ -23,6 +25,12 @@ async function getUserList(admin, params) {
     const result = await db.getList('user', where, {
         orderBy: { USER_ADD_TIME: 'desc' }, page, size
     })
+    if (result.list) {
+        result.list = result.list.map(u => ({
+            ...u,
+            USER_ADD_TIME: u.USER_ADD_TIME ? timestamp2Time(u.USER_ADD_TIME) : ''
+        }))
+    }
     return success(result)
 }
 
@@ -31,6 +39,10 @@ async function getUserDetail(admin, params) {
     if (vResult.err) return vResult.err
 
     const user = await db.getOne('user', { USER_MINI_OPENID: vResult.data.id })
+    if (user) {
+        user.USER_ADD_TIME = user.USER_ADD_TIME ? timestamp2Time(user.USER_ADD_TIME) : '尚未注册'
+        user.USER_LOGIN_TIME = user.USER_LOGIN_TIME ? timestamp2Time(user.USER_LOGIN_TIME) : '尚未登录'
+    }
     return success(user || null)
 }
 

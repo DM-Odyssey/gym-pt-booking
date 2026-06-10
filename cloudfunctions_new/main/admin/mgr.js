@@ -1,5 +1,7 @@
 /**
- * admin/mgr — 登录 + 仪表盘 + 管理员 CRUD
+ * 管理员登录 + 仪表盘 + 管理员 CRUD
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const bcrypt = require('bcryptjs')
 const db = require('../common/db')
@@ -96,9 +98,9 @@ async function getMgrList(admin, params) {
 
     if (search) {
         where.or = [
-            { ADMIN_NAME: db.cmd().regex({ regexp: search, options: 'i' }) },
-            { ADMIN_PHONE: db.cmd().regex({ regexp: search, options: 'i' }) },
-            { ADMIN_DESC: db.cmd().regex({ regexp: search, options: 'i' }) }
+            { ADMIN_NAME: db.regexp(search) },
+            { ADMIN_PHONE: db.regexp(search) },
+            { ADMIN_DESC: db.regexp(search) }
         ]
     }
     if (sortType === 'status' && sortVal !== undefined) where.ADMIN_STATUS = Number(sortVal)
@@ -173,7 +175,7 @@ async function editMgr(admin, params) {
     const mgr = await db.getOne('admin', where)
     if (!mgr) return fail(CODE.DATA, '管理员不存在')
 
-    const exist = await db.getOne('admin', { ADMIN_NAME: name, _id: db.cmd().neq(id) })
+    const exist = await db.getOne('admin', { ADMIN_NAME: name, _id: db.neq(id) })
     if (exist) return fail(CODE.DATA, '该账号名已被其他管理员使用')
 
     const data = { ADMIN_NAME: name, ADMIN_DESC: desc, ADMIN_PHONE: phone }

@@ -1,5 +1,7 @@
 /**
- * admin/log — 操作日志
+ * 操作日志查询与清除
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const db = require('../common/db')
 const { success } = require('../common/response')
@@ -11,9 +13,9 @@ async function getLogList(admin, params) {
 
     if (search) {
         where.or = [
-            { LOG_CONTENT: db.cmd().regex({ regexp: search, options: 'i' }) },
-            { LOG_ADMIN_DESC: db.cmd().regex({ regexp: search, options: 'i' }) },
-            { LOG_ADMIN_NAME: db.cmd().regex({ regexp: search, options: 'i' }) }
+            { LOG_CONTENT: db.regexp(search) },
+            { LOG_ADMIN_DESC: db.regexp(search) },
+            { LOG_ADMIN_NAME: db.regexp(search) }
         ]
     }
     if (sortType === 'type' && sortVal !== undefined) where.LOG_TYPE = Number(sortVal)

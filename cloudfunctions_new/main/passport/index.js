@@ -1,5 +1,7 @@
 /**
- * passport 模块 — 通行证（登录/注册/资料）
+ * 通行证模块 — 微信登录/注册/手机号/用户资料
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const cloud = require('wx-server-sdk')
 const db = require('../common/db')

@@ -1,5 +1,7 @@
 /**
- * 工具函数
+ * 工具函数 — 时间/ID/bcrypt 密码
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 
 const crypto = require('crypto')

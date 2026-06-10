@@ -1,5 +1,7 @@
 /**
- * admin/news — 资讯管理
+ * 资讯公告管理（CRUD + 推荐 + 排序 + 富文本/图片更新）
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const db = require('../common/db')
 const { validate } = require('../common/validate')
@@ -10,7 +12,7 @@ async function getAdminNewsList(admin, params) {
     const { search, sortType, sortVal, page = 1, size = 20 } = params
     const where = {}
 
-    if (search) where.NEWS_TITLE = db.cmd().regex({ regexp: search, options: 'i' })
+    if (search) where.NEWS_TITLE = db.regexp(search)
     if (sortType === 'cateId' && sortVal !== undefined) where.NEWS_CATE_ID = String(sortVal)
     if (sortType === 'status' && sortVal !== undefined) where.NEWS_STATUS = Number(sortVal)
     if (sortType === 'vouch') where.NEWS_VOUCH = 1

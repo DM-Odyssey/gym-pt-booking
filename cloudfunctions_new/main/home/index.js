@@ -1,6 +1,7 @@
 /**
- * home 模块 — 首页 & 系统设置
- * 路由: home/list, home/setup_get
+ * 首页模块 — 推荐列表 + 系统设置查询
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const cloud = require('wx-server-sdk')
 const db = require('../common/db')

@@ -1,5 +1,7 @@
 /**
- * 数据库操作封装
+ * 数据库操作封装 — CRUD + 自动时间戳/IP + 查询辅助
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 
 const cloud = require('wx-server-sdk')
@@ -30,7 +32,7 @@ async function getOne(collection, where, fields = null) {
 
 async function getAll(collection, where, options = {}) {
     const { fields, orderBy, limit = 100 } = options
-    let query = coll(collection).where(where)
+    let query = coll(collection).where(buildWhere(where))
     if (fields) query = query.field(parseFields(fields))
     if (orderBy) query = query.orderBy(orderBy.field, orderBy.direction || 'desc')
     return (await query.limit(limit).get()).data
@@ -38,7 +40,7 @@ async function getAll(collection, where, options = {}) {
 
 async function getList(collection, where, options = {}) {
     const { fields, orderBy, page = 1, size = 20 } = options
-    let query = coll(collection).where(where)
+    let query = coll(collection).where(buildWhere(where))
     if (fields) query = query.field(parseFields(fields))
     if (orderBy) {
         for (const [field, dir] of Object.entries(orderBy)) {
@@ -87,6 +89,31 @@ async function inc(collection, where, field, val = 1) {
 
 // ===== 辅助 =====
 
+// 处理 where 中的 or/and 键，转为 db.command 调用
+function buildWhere(raw) {
+    if (!raw) return {}
+    const clean = {}
+    for (const [k, v] of Object.entries(raw)) {
+        if (k === 'or' && Array.isArray(v)) {
+            return db.command.or(v.map(buildWhere))
+        }
+        if (k === 'and' && Array.isArray(v)) {
+            return db.command.and(v.map(buildWhere))
+        }
+        clean[k] = v
+    }
+    return clean
+}
+
+function regexp(pattern) {
+    if (!db) return null
+    return db.RegExp({ regexp: pattern, options: 'i' })
+}
+
+function neq(val) {
+    return db ? db.command.neq(val) : null
+}
+
 function parseFields(fields) {
     if (!fields || fields === '*') return {}
     if (typeof fields === 'object') return fields
@@ -101,7 +128,7 @@ function withPID(where = {}, pid = 'workfit') {
 }
 
 module.exports = {
-    init, coll,
+    init, coll, cmd,
     getOne, getAll, getList, insert, edit, del, count, inc,
-    withPID
+    withPID, regexp, neq
 }

@@ -1,12 +1,11 @@
 /**
- * 数据校验工具
- * 每个云函数自己定义校验规则，调用 validate() 统一校验
+ * 参数校验工具 — 声明式规则校验
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  *
- * 规则格式：
- *   fieldName: 'required|type|min:5|max:30|desc:管理员名'
- *
- * 支持的类型：string, int, array, object, bool
- * 支持的校验：required, min, max, len, in:a,b,c
+ * 规则格式：fieldName: 'fieldName|required|type|min:5|max:30|desc:描述'
+ * 支持类型：string, int, array, object, bool
+ * 支持校验：required, min, max, len, in:a,b,c, default:值
  */
 
 const { fail, CODE } = require('./response')

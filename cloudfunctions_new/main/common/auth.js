@@ -1,5 +1,8 @@
 /**
- * 身份认证模块
+ * 身份认证模块 — 管理员/教练 Token 验证
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
+ *
  * 依赖：调用前需先执行 db.init(env)
  */
 

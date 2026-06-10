@@ -1,6 +1,7 @@
 /**
- * admin/meet — 课程预约管理
- * 路由: admin/meet_*, admin/join_*, admin/self_checkin_qr
+ * 课程预约管理 — 课程CRUD + 排期 + 预约管理 + 核销 + 时段模板 + Excel导出
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const bcrypt = require('bcryptjs')
 const db = require('../common/db')
@@ -17,7 +18,7 @@ async function getAdminMeetList(admin, params) {
     const { search, sortType, sortVal, page = 1, size = 20 } = params
     const where = {}
 
-    if (search) where.MEET_TITLE = db.cmd().regex({ regexp: search, options: 'i' })
+    if (search) where.MEET_TITLE = db.regexp(search)
     if (sortType === 'status' && sortVal !== undefined) where.MEET_STATUS = Number(sortVal)
     if (sortType === 'cateId' && sortVal !== undefined) where.MEET_CATE_ID = sortVal
 

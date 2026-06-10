@@ -1,6 +1,7 @@
 /**
- * admin 模块 — 路由分发
- * 格式: 'route': [handler, needAuth]  needAuth 默认 true
+ * admin 模块 — 路由分发（映射表 + 鉴权）
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const { checkAdmin } = require('../common/auth')
 const { fail, CODE } = require('../common/response')

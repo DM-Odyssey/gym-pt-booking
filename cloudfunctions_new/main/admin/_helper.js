@@ -1,5 +1,7 @@
 /**
- * admin 模块公共辅助
+ * admin 公共辅助 — 操作日志写入
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const db = require('../common/db')
 

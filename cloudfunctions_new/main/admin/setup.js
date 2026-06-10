@@ -1,5 +1,7 @@
 /**
- * admin/setup — 系统设置 + 小程序码
+ * 系统设置管理 + 小程序码生成
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 const cloud = require('wx-server-sdk')
 const db = require('../common/db')

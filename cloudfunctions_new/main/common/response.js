@@ -1,5 +1,7 @@
 /**
- * 统一响应格式
+ * 统一响应格式 {code, msg, data}
+ * Author: bjzm-mrzdp
+ * Date: 2026-06-10
  */
 
 const CODE = {
