@@ -157,11 +157,17 @@ class AdminMeetService extends BaseProjectAdminService {
 			MEET_CATE_NAME: cateName,
 			MEET_DAYS: daysSet || [],
 			MEET_PHONE: phone || '',
-			MEET_PASSWORD: password || '',
+			MEET_PASSWORD: password ? md5Lib.md5(password) : '',
 			MEET_FORMS: forms || [],
 			MEET_JOIN_FORMS: joinForms || [],
 		};
-		return await MeetModel.insert(data);
+		let id = await MeetModel.insert(data);
+
+		// 写入 Day 排期记录
+		let nowDay = timeUtil.time('Y-M-D');
+		await this._editDays(id, nowDay, daysSet || []);
+
+		return { id };
 	}
 
 
@@ -169,8 +175,12 @@ class AdminMeetService extends BaseProjectAdminService {
 	async setDays(id, {
 		daysSet,
 	}) {
-		// 更新课程的 days 字段
+		// 1. 更新课程的 days 字段
 		await MeetModel.edit({ _id: id }, { MEET_DAYS: daysSet || [] });
+
+		// 2. 将排期数据写入 Day 集合（用户端预约从这里查）
+		let nowDay = timeUtil.time('Y-M-D');
+		await this._editDays(id, nowDay, daysSet || []);
 	}
 
 
@@ -249,8 +259,12 @@ class AdminMeetService extends BaseProjectAdminService {
 		if (phone)
 			data.MEET_PHONE = phone;
 		if (password)
-			data.MEET_PASSWORD = password;
+			data.MEET_PASSWORD = md5Lib.md5(password);
 		await MeetModel.edit(where, data);
+
+		// 同步更新 Day 排期记录
+		let nowDay = timeUtil.time('Y-M-D');
+		await this._editDays(id, nowDay, daysSet || []);
 	}
 
 	/**预约名单分页列表 */

@@ -108,7 +108,7 @@ function callCloud(route, params = {}, options) {
 		let PID = pageHelper.getPID();
 
 		wx.cloud.callFunction({
-			name: 'mcloud',
+			name: 'main',
 			data: {
 				route: route,
 				token,

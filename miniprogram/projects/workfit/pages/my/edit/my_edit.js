@@ -45,7 +45,7 @@ Page({
 
 			formName: user.USER_NAME,
 			formMobile: user.USER_MOBILE,
-			formForms: user.USER_FORMS
+			formForms: Array.isArray(user.USER_FORMS) ? user.USER_FORMS : []
 		})
 	},
 

@@ -40,11 +40,11 @@ class WorkMeetController extends BaseProjectWorkController {
 			cateName: 'must|string|name=分类',
 			order: 'must|int|min:0|max:9999|name=排序号',
 			cancelSet: 'must|int|name=取消设置',
-			daysSet: 'must|array|name=预约时间设置',
+			daysSet: 'array|default=[]|name=预约时间设置',
 			phone: 'must|string|len:11|name=登陆手机',
 			password: 'string|min:6|max:30|name=登陆密码',
-			forms: 'array|name=表单',
-			joinForms: 'must|array|name=用户资料设置',
+			forms: 'array|default=[]|name=表单',
+			joinForms: 'array|default=[]|name=用户资料设置',
 		};
 
 		// 取得数据
@@ -67,7 +67,7 @@ class WorkMeetController extends BaseProjectWorkController {
 		// 数据校验
 		let rules = {
 			id: 'must|id',
-			hasImageForms: 'array'
+			hasImageForms: 'array|default=[]'
 		};
 
 		// 取得数据

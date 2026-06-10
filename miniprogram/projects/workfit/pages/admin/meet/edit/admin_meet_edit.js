@@ -4,8 +4,9 @@ const PublicBiz = require('../../../../../../comm/biz/public_biz.js');
 const cloudHelper = require('../../../../../../helper/cloud_helper.js');
 const timeHelper = require('../../../../../../helper/time_helper.js');
 const validate = require('../../../../../../helper/validate.js');
-const AdminMeetBiz = require('../../../../biz/admin_meet_biz.js');
+const formSetHelper = require('../../../../../../cmpts/public/form/form_set_helper.js');
 const projectSetting = require('../../../../public/project_setting.js');
+const AdminMeetBiz = require('../../../../biz/admin_meet_biz.js');
 
 Page({
 
@@ -71,7 +72,9 @@ Page({
 
 			formDaysSet: meet.MEET_DAYS_SET,
 
-			formJoinForms: meet.MEET_JOIN_FORMS,
+			formJoinForms: (Array.isArray(meet.MEET_JOIN_FORMS) && meet.MEET_JOIN_FORMS.length > 0)
+			? meet.MEET_JOIN_FORMS
+			: formSetHelper.initFields(projectSetting.MEET_JOIN_FIELDS),
 		});
 	},
 
@@ -135,7 +138,9 @@ Page({
 
 		data = validate.check(data, AdminMeetBiz.CHECK_FORM, this);
 		if (!data) return; 
- 
+		// 从页面数据补充手动处理的字段
+		data.daysSet = this.data.formDaysSet;
+		data.joinForms = this.data.formJoinForms;
 
 		let forms = this.selectComponent("#cmpt-form").getForms(true);
 		if (!forms) return;

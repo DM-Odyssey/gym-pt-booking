@@ -88,6 +88,10 @@ Page({
 
 		data = validate.check(data, AdminMeetBiz.CHECK_FORM, this);
 		if (!data) return;
+		// 从页面数据补充手动处理的字段
+		data.daysSet = this.data.formDaysSet;
+		data.joinForms = this.data.formJoinForms;
+		data.forms = this.data.formForms;
 
 
 		if (data.cateId == 1 && data.phone && data.password.length == 0) {

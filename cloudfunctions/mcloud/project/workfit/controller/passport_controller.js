@@ -39,7 +39,7 @@ class PassportController extends BaseProjectController {
 		let rules = {
 			name: 'must|string|min:1|max:30|name=昵称',
 			mobile: 'must|mobile|name=手机',
-			forms: 'array|name=表单',
+			forms: 'array|default=[]|name=表单',
 			status: 'int|default=1'
 		};
 
@@ -59,7 +59,7 @@ class PassportController extends BaseProjectController {
 		let rules = {
 			name: 'must|string|min:1|max:30|name=昵称',
 			mobile: 'must|mobile|name=手机',
-			forms: 'array|name=表单',
+			forms: 'array|default=[]|name=表单',
 		};
 
 		// 取得数据

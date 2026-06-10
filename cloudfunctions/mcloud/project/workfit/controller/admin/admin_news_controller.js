@@ -111,7 +111,7 @@ class AdminNewsController extends BaseProjectAdminController {
 		// 数据校验
 		let rules = {
 			id: 'must|id',
-			content: 'array'
+			content: 'array|default=[]'
 		};
 
 		// 取得数据
@@ -136,7 +136,7 @@ class AdminNewsController extends BaseProjectAdminController {
 			cateName: 'must|string|name=分类名',
 			order: 'must|int|min:0|max:9999|name=排序号',
 			desc: 'must|string|min:10|max:200|name=简介',
-			forms: 'array|name=表单',
+			forms: 'array|default=[]|name=表单',
 		};
 
 
@@ -187,7 +187,7 @@ class AdminNewsController extends BaseProjectAdminController {
 			cateName: 'must|string|name=分类',
 			order: 'must|int|min:0|max:9999|name=排序号',
 			desc: 'string|min:10|max:200|name=简介',
-			forms: 'array|name=表单',
+			forms: 'array|default=[]|name=表单',
 		};
 
 		// 取得数据
@@ -236,7 +236,7 @@ class AdminNewsController extends BaseProjectAdminController {
 		// 数据校验
 		let rules = {
 			id: 'must|id',
-			imgList: 'array'
+			imgList: 'array|default=[]'
 		};
 
 		// 取得数据
@@ -253,7 +253,7 @@ class AdminNewsController extends BaseProjectAdminController {
 		// 数据校验
 		let rules = {
 			id: 'must|id',
-			hasImageForms: 'array'
+			hasImageForms: 'array|default=[]'
 		};
 
 		// 取得数据
