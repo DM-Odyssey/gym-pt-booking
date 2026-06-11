@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "cmpt-detail": "/cmpts/biz/detail/detail_cmpt"
+  },
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "预约确认"
 }
