@@ -1,5 +1,6 @@
 const router = require('../../../utils/router.js');
 const work = require('../../../biz/work.js');
+
 Component({ data: { phone: '', pwd: '' },
   methods: {
     onLoad() { work.clearWorkToken(); },
