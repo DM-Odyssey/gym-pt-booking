@@ -4,13 +4,13 @@
  * Date: 2026-06-11
  */
 
-const cloud = require('../../utils/cloud.js');
-const router = require('../../utils/router.js');
-const pageInit = require('../../utils/page_init.js');
-const toast = require('../../utils/toast.js');
-const timeHelper = require('../../utils/time.js');
-const qrcodeLib = require('../../lib/tools/qrcode_lib.js');
-const auth = require('../../biz/auth.js');
+const cloud = require('../../../utils/cloud.js');
+const router = require('../../../utils/router.js');
+const pageInit = require('../../../utils/page_init.js');
+const toast = require('../../../utils/toast.js');
+const timeHelper = require('../../../utils/time.js');
+const qrcodeLib = require('../../../lib/tools/qrcode_lib.js');
+const auth = require('../../../biz/auth.js');
 
 Component({
   data: {

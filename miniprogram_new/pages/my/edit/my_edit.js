@@ -4,10 +4,10 @@
  * Date: 2026-06-11
  */
 
-const cloud = require('../../utils/cloud.js');
-const toast = require('../../utils/toast.js');
-const validate = require('../../utils/validate.js');
-const auth = require('../../biz/auth.js');
+const cloud = require('../../../utils/cloud.js');
+const toast = require('../../../utils/toast.js');
+const validate = require('../../../utils/validate.js');
+const auth = require('../../../biz/auth.js');
 
 Component({
   data: {

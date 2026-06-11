@@ -4,9 +4,9 @@
  * Date: 2026-06-11
  */
 
-const cloud = require('../../utils/cloud.js');
-const router = require('../../utils/router.js');
-const timeHelper = require('../../utils/time.js');
+const cloud = require('../../../utils/cloud.js');
+const router = require('../../../utils/router.js');
+const timeHelper = require('../../../utils/time.js');
 
 Component({
   data: {

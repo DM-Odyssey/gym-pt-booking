@@ -4,11 +4,11 @@
  * Date: 2026-06-11
  */
 
-const cloud = require('../../utils/cloud.js');
-const router = require('../../utils/router.js');
-const list = require('../../utils/list.js');
-const toast = require('../../utils/toast.js');
-const auth = require('../../biz/auth.js');
+const cloud = require('../../../utils/cloud.js');
+const router = require('../../../utils/router.js');
+const list = require('../../../utils/list.js');
+const toast = require('../../../utils/toast.js');
+const auth = require('../../../biz/auth.js');
 
 Component({
   data: {

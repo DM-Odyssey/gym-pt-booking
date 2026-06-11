@@ -4,10 +4,10 @@
  * Date: 2026-06-11
  */
 
-const router = require('../../utils/router.js');
-const cloud = require('../../utils/cloud.js');
-const common = require('../../biz/common.js');
-const news = require('../../biz/news.js');
+const router = require('../../../utils/router.js');
+const cloud = require('../../../utils/cloud.js');
+const common = require('../../../biz/common.js');
+const news = require('../../../biz/news.js');
 const { setCateTitle } = common;
 
 Component({
@@ -60,7 +60,7 @@ Component({
     },
 
     bindCommListCmpt(e) {
-      const list = require('../../utils/list.js');
+      const list = require('../../../utils/list.js');
       list.commListListener(this, e);
     },
 

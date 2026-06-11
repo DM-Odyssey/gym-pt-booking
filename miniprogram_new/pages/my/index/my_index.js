@@ -4,10 +4,10 @@
  * Date: 2026-06-11
  */
 
-const cache = require('../../utils/cache.js');
-const router = require('../../utils/router.js');
-const cloud = require('../../utils/cloud.js');
-const auth = require('../../biz/auth.js');
+const cache = require('../../../utils/cache.js');
+const router = require('../../../utils/router.js');
+const cloud = require('../../../utils/cloud.js');
+const auth = require('../../../biz/auth.js');
 
 Component({
   data: {

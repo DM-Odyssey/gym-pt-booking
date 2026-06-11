@@ -4,8 +4,8 @@
  * Date: 2026-06-11
  */
 
-const router = require('../../utils/router.js');
-const list = require('../../utils/list.js');
+const router = require('../../../utils/router.js');
+const list = require('../../../utils/list.js');
 
 Component({
   data: {

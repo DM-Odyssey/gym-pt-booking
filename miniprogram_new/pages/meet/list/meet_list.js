@@ -4,8 +4,8 @@
  * Date: 2026-06-11
  */
 
-const router = require('../../utils/router.js');
-const list = require('../../utils/list.js');
+const router = require('../../../utils/router.js');
+const list = require('../../../utils/list.js');
 
 Component({
   data: {
@@ -31,8 +31,8 @@ Component({
     },
 
     _getSearchMenu() {
-      const meet = require('../../biz/meet.js');
-      const common = require('../../biz/common.js');
+      const meet = require('../../../biz/meet.js');
+      const common = require('../../../biz/common.js');
       const cateList = common.getCateList(meet.MEET_CATE);
 
       let sortItem1 = [{ label: '全部', type: 'cateId', value: '' }];
