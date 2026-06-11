@@ -153,7 +153,7 @@ Component({
 		bindHomeTap: function (e) {
 			let url = this.data.homeUrl;
 			if (!url)
-				url = pageHelper.fmtURLByPID('/pages/default/index/default_index');
+				url = '/pages/index/index';
 
 			wx.reLaunch({ url });
 		},
