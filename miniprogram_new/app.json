@@ -2,8 +2,20 @@
   "pages": [
     "pages/index/index",
     "pages/news/list/news_list",
+    "pages/news/detail/news_detail",
     "pages/meet/calendar/meet_calendar",
-    "pages/my/index/my_index"
+    "pages/meet/list/meet_list",
+    "pages/meet/detail/meet_detail",
+    "pages/meet/join/meet_join",
+    "pages/meet/my-joins/meet_my_joins",
+    "pages/meet/my-join-detail/meet_my_join_detail",
+    "pages/my/index/my_index",
+    "pages/my/reg/my_reg",
+    "pages/my/edit/my_edit",
+    "pages/my/foot/my_foot",
+    "pages/about/list/about_list",
+    "pages/about/detail/about_detail",
+    "pages/search/search"
   ],
   "window": {
     "backgroundColor": "#f1f1f1",

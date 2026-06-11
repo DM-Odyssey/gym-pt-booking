@@ -1,0 +1,22 @@
+<cmpt-comm-list _params="{{_params}}" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="meet/my_join_list" topBottom="120" isTotalMenu="{{true}}" placeholder="搜索" bind:list="bindCommListCmpt">
+  <view class="main padding-project">
+    <view class="k-list">
+      <view class="item card-project shadow-project" wx:for="{{dataList.list}}" wx:key="k">
+        <view class="info">
+          <view class="title text-cut">{{item.JOIN_MEET_TITLE}}</view>
+          <view class="time">{{item.JOIN_MEET_DAY}} {{item.JOIN_MEET_TIME_START}}~{{item.JOIN_MEET_TIME_END}}</view>
+          <view class="code">预约码: {{item.JOIN_CODE}}</view>
+        </view>
+        <view class="actions">
+          <text wx:if="{{item.JOIN_STATUS==1}}" class="status bg-green">可使用</text>
+          <text wx:elif="{{item.JOIN_STATUS==8}}" class="status bg-grey">已核销</text>
+          <text wx:elif="{{item.JOIN_STATUS==9}}" class="status bg-orange">已过期</text>
+          <text wx:elif="{{item.JOIN_STATUS==0}}" class="status bg-red">已取消</text>
+          <view wx:if="{{item.JOIN_STATUS==1}}" bindtap="bindCancelTap" data-id="{{item._id}}" class="cancel-btn">取消</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <import src="/tpls/public/list_load_tpl.wxml" />
+  <template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+</cmpt-comm-list>

@@ -1,0 +1,21 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+  <view class="main">
+    <view class="article-box">
+      <view class="article" wx:if="{{meet.MEET_OBJ.content && meet.MEET_OBJ.content.length>0}}">
+        <block wx:for="{{meet.MEET_OBJ.content}}" wx:key="key">
+          <view class="content" wx:if="{{item.type=='text'}}">
+            <text user-select="{{true}}">{{item.val}}</text>
+          </view>
+          <view class="pics" wx:if="{{item.type=='img'}}">
+            <image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <cmpt-detail topBtnShow="{{topBtnShow}}" oid="{{id}}" cate="{{meet.MEET_CATE_NAME}}" title="{{meet.MEET_TITLE}}" cover="{{meet.MEET_OBJ.cover[0]}}" desc="预约" bg="#FED202"></cmpt-detail>
+</block>

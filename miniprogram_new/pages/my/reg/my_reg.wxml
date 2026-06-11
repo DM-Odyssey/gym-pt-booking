@@ -1,0 +1,8 @@
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+<block wx:if="{{isLoad}}">
+  <view class="main padding-project">
+    <view class="form-box">
+      <view class="title">注册新用户</view>
+    </view>
+  </view>
+</block>
