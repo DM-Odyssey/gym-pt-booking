@@ -128,9 +128,10 @@ Component({
 				forms: newForms,
 				fields,
 				isLoad: true
-			this._initializing = false;
-				this._initializing = false;
+			
+				
 			});
+			this._initializing = false;
 			//this.triggerEvent('forms', newForms);
 		},
 
