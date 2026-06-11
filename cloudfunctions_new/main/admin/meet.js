@@ -41,7 +41,7 @@ async function insertMeet(admin, params) {
         cateName: 'cateName|required|string|desc:分类名',
         daysSet: 'daysSet|array|default:[]',
         phone: 'phone|string|default:""',
-        password: 'password|string|min:6|max:30',
+        password: 'password|string',
         forms: 'forms|array|default:[]',
         joinForms: 'joinForms|array|default:[]'
     })
@@ -54,6 +54,7 @@ async function insertMeet(admin, params) {
         MEET_TITLE: title, MEET_ORDER: order, MEET_CANCEL_SET: cancelSet,
         MEET_CATE_ID: cateId, MEET_CATE_NAME: cateName,
         MEET_DAYS: daysSet, MEET_FORMS: forms, MEET_JOIN_FORMS: joinForms,
+        MEET_OBJ: forms2Obj(forms),
         MEET_PHONE: phone,
         MEET_PASSWORD: password ? await bcrypt.hash(password, 10) : '',
         MEET_STATUS: 1, MEET_VOUCH: 0
@@ -94,7 +95,7 @@ async function editMeet(admin, params) {
         cancelSet: 'cancelSet|int|default:1',
         daysSet: 'daysSet|array|default:[]',
         phone: 'phone|string|default:""',
-        password: 'password|string|min:6|max:30',
+        password: 'password|string',
         forms: 'forms|array|default:[]',
         joinForms: 'joinForms|array|default:[]'
     })
@@ -105,7 +106,8 @@ async function editMeet(admin, params) {
     const data = {
         MEET_TITLE: title, MEET_CATE_ID: cateId, MEET_CATE_NAME: cateName,
         MEET_ORDER: order, MEET_CANCEL_SET: cancelSet,
-        MEET_DAYS: daysSet, MEET_FORMS: forms, MEET_JOIN_FORMS: joinForms
+        MEET_DAYS: daysSet, MEET_FORMS: forms, MEET_JOIN_FORMS: joinForms,
+        MEET_OBJ: forms2Obj(forms)
     }
     if (phone) data.MEET_PHONE = phone
     if (password) data.MEET_PASSWORD = await bcrypt.hash(password, 10)
@@ -166,7 +168,28 @@ async function updateMeetForms(admin, params) {
     })
     if (vResult.err) return vResult.err
 
-    await db.edit('meet', { _id: vResult.data.id }, { MEET_FORMS: vResult.data.hasImageForms, MEET_OBJ: {} })
+    const { id, hasImageForms } = vResult.data
+    if (!hasImageForms || hasImageForms.length === 0) return success()
+
+    // 1. 读取当前 MEET_FORMS
+    const meet = await db.getOne('meet', { _id: id }, 'MEET_FORMS')
+    const currentForms = (meet && meet.MEET_FORMS) ? meet.MEET_FORMS : []
+
+    // 2. 合并：用 hasImageForms 中的图片 URL 更新对应字段
+    for (const updated of hasImageForms) {
+        const idx = currentForms.findIndex(f => f.mark === updated.mark)
+        if (idx >= 0) {
+            currentForms[idx] = updated
+        } else {
+            currentForms.push(updated)
+        }
+    }
+
+    // 3. 计算 MEET_OBJ
+    await db.edit('meet', { _id: id }, {
+        MEET_FORMS: currentForms,
+        MEET_OBJ: forms2Obj(currentForms)
+    })
     return success()
 }
 
@@ -382,7 +405,7 @@ async function insertMeetTemp(admin, params) {
     const vResult = validate(params, {
         name: 'name|required|string|desc:模板名',
         times: 'times|array|default:[]',
-        meetId: 'meetId|string|default:admin'
+        meetId: 'meetId|string|default:"admin"'
     })
     if (vResult.err) return vResult.err
 
@@ -404,7 +427,7 @@ async function editMeetTemp(admin, params) {
         id: 'id|required|string|desc:模板ID',
         limit: 'limit|int|default:0',
         isLimit: 'isLimit|int|default:0',
-        meetId: 'meetId|string|default:admin'
+        meetId: 'meetId|string|default:"admin"'
     })
     if (vResult.err) return vResult.err
 
@@ -503,6 +526,15 @@ async function deleteJoinData(admin, params) {
 
     await db.del('setup', { SETUP_KEY: EXPORT_JOIN_KEY })
     return success()
+}
+
+// forms 转 obj：{mark: val} → {level: 3, spec: "...", cover: [...], desc: "...", content: [...]}
+function forms2Obj(forms) {
+    const obj = {}
+    for (const f of (forms || [])) {
+        if (f.mark) obj[f.mark] = f.val
+    }
+    return obj
 }
 
 // 辅助：upsert setup

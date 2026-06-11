@@ -34,7 +34,7 @@ async function setContentSetup(admin, params) {
 async function genMiniQr(admin, params) {
     const vResult = validate(params, {
         path: 'path|required|string',
-        sc: 'sc|string|default:qr'
+        sc: 'sc|string|default:"qr"'
     })
     if (vResult.err) return vResult.err
 

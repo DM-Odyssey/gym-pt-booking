@@ -165,7 +165,7 @@ async function editMgr(admin, params) {
         name: 'name|required|string|desc:账号',
         desc: 'desc|string|default:""',
         phone: 'phone|string|default:""',
-        password: 'password|string|min:6|max:30'
+        password: 'password|string'
     })
     if (vResult.err) return vResult.err
 

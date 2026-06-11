@@ -75,7 +75,29 @@ async function updateNewsForms(admin, params) {
     })
     if (vResult.err) return vResult.err
 
-    await db.edit('news', { _id: vResult.data.id }, { NEWS_FORMS: vResult.data.hasImageForms, NEWS_OBJ: {} })
+    const { id, hasImageForms } = vResult.data
+    if (!hasImageForms || hasImageForms.length === 0) return success()
+
+    // 1. 读取当前 NEWS_FORMS
+    const newsItem = await db.getOne('news', { _id: id }, 'NEWS_FORMS')
+    const currentForms = (newsItem && newsItem.NEWS_FORMS) ? newsItem.NEWS_FORMS : []
+
+    // 2. 合并图片 URL
+    for (const updated of hasImageForms) {
+        const idx = currentForms.findIndex(f => f.mark === updated.mark)
+        if (idx >= 0) {
+            currentForms[idx] = updated
+        } else {
+            currentForms.push(updated)
+        }
+    }
+
+    // 3. 计算 NEWS_OBJ 并保存
+    const obj = {}
+    for (const f of currentForms) {
+        if (f.mark) obj[f.mark] = f.val
+    }
+    await db.edit('news', { _id: id }, { NEWS_FORMS: currentForms, NEWS_OBJ: obj })
     return success()
 }
 

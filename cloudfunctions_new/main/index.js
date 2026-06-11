@@ -12,6 +12,9 @@ const MODULES = [
     ['passport/', require('./passport/index.js')],
     ['home/',     require('./home/index.js')],
     ['admin/',    require('./admin/index.js')],
+    ['news/',     require('./news/index.js')],
+    ['meet/',     require('./meet/index.js')],
+    ['work/',     require('./work/index.js')],
 ]
 
 exports.main = async (event, context) => {

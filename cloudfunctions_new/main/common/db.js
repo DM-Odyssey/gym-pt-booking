@@ -39,7 +39,7 @@ async function getAll(collection, where, options = {}) {
 }
 
 async function getList(collection, where, options = {}) {
-    const { fields, orderBy, page = 1, size = 20 } = options
+    const { fields, orderBy, page = 1, size = 20, showTotal = true } = options
     let query = coll(collection).where(buildWhere(where))
     if (fields) query = query.field(parseFields(fields))
     if (orderBy) {
@@ -47,8 +47,10 @@ async function getList(collection, where, options = {}) {
             query = query.orderBy(field, dir)
         }
     }
-    const countResult = await query.count()
-    const total = countResult.total
+    let total = 0
+    if (showTotal) {
+        try { total = (await query.count()).total } catch (_) {}
+    }
     const skip = (page - 1) * size
     const dataResult = await query.skip(skip).limit(size).get()
     return { list: dataResult.data, total, page, size, count: Math.ceil(total / size) }
