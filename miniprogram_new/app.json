@@ -45,7 +45,8 @@
     "pages/work/join/work_meet_join",
     "pages/work/scan/work_meet_scan",
     "pages/work/time/work_meet_time",
-    "pages/work/temp/work_meet_temp"
+    "pages/work/temp/work_meet_temp",
+    "cmpts/public/form/form_show/content/form_show_content"
   ],
   "window": {
     "backgroundColor": "#f1f1f1",

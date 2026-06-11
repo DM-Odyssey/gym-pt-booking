@@ -29,6 +29,9 @@ Component({
 		fields: { // 表单字段属性{mark,val,type,must,selectOptions,desc,title}
 			type: Array,
 			value: [],
+			observer: function(newVal) {
+				if (newVal && newVal.length > 0) this._init();
+			},
 		},
 		forms: { // 表单值
 			type: Array,
