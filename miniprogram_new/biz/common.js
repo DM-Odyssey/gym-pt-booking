@@ -7,6 +7,10 @@
 const { fmtText } = require('../utils/data.js');
 const cache = require('../utils/cache.js');
 const setting = require('../config/setting.js');
+const timeHelper = require('../utils/time.js');
+const router = require('../utils/router.js');
+
+const CACHE_FOOT = 'CACHE_FOOT';
 
 /** 根据分类 ID 获取分类名称 */
 const getCateName = (cateId, cateList) => {
@@ -68,6 +72,36 @@ const setCacheList = (key, time = setting.CACHE_LIST_TIME) => {
   if (setting.CACHE_IS_LIST) cache.set(key.toUpperCase() + '_LIST', 'TRUE', time);
 };
 
+/** 获取浏览历史 */
+const getFootList = () => {
+  let foot = cache.get(CACHE_FOOT);
+  if (foot) {
+    for (let i = 0; i < foot.length; i++) {
+      foot[i].time = timeHelper.timestamp2Time(foot[i].time);
+    }
+  }
+  return foot;
+};
+
+/** 添加浏览足迹 */
+const addFoot = (type, title, size = 60, expire = 86400 * 365 * 3) => {
+  const path = router.getCurrentPageUrlWithArgs();
+  if (!path || !title || !type) return [];
+
+  let foot = cache.get(CACHE_FOOT, []);
+
+  // 去重
+  for (let k = 0; k < foot.length; k++) {
+    if (path === foot[k].path) foot.splice(k, 1);
+  }
+
+  foot.unshift({ path, type, title, time: timeHelper.time() });
+  if (foot.length > size) foot.splice(foot.length - 1, 1);
+
+  cache.set(CACHE_FOOT, foot, expire);
+  return foot;
+};
+
 module.exports = {
   getCateName,
   getCateList,
@@ -76,4 +110,6 @@ module.exports = {
   isCacheList,
   removeCacheList,
   setCacheList,
+  getFootList,
+  addFoot,
 };
