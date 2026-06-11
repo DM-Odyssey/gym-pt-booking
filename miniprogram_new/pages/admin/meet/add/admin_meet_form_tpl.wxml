@@ -29,7 +29,7 @@
 </view>
 
 <view id="formDaysSet" class="form-box shadow" style="background-color: #fef2ce;">
-	<view bindtap="url" data-url="../time/{{isAdmin?'admin':'work'}}_meet_time" class="form-group arrow">
+	<view bindtap="url" data-url="{{isAdmin?'/pages/admin/meet/time/admin_meet_time':'/pages/work/time/work_meet_time'}}" class="form-group arrow">
 		<view class="title must ">预约时段排期设置</view>
 		<view wx:if="{{formDaysSet.length}}" class="form-text text-red text-bold">{{formDaysSet.length}}天可约</view>
 		<view wx:else class="form-text text-orange">请配置可预约时段</view>
