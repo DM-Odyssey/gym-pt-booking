@@ -1,0 +1,10 @@
+.page-stub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.page-stub-text {
+  color: #999;
+  font-size: 16px;
+}

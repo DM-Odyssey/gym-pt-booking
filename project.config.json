@@ -1,5 +1,5 @@
 {
-	"miniprogramRoot": "miniprogram/",
+	"miniprogramRoot": "miniprogram_new/",
 	"cloudfunctionRoot": "cloudfunctions_new/",
 	"setting": {
 		"urlCheck": false,
@@ -53,7 +53,7 @@
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
 	"compileType": "miniprogram",
-	"srcMiniprogramRoot": "miniprogram/",
+	"srcMiniprogramRoot": "miniprogram_new/",
 	"packOptions": {
 		"ignore": [],
 		"include": []
