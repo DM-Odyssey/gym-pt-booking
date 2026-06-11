@@ -65,7 +65,7 @@ const initFormData = function() {
     formDaysSet: [],
     formPhone: '',
     formPassword: '',
-    formJoinForms: []
+    formJoinForms: data.deepClone(MEET_JOIN_FIELDS)
   };
 };
 
