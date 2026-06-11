@@ -5,6 +5,7 @@
  */
 
 const helper = require('./helper.js');
+const deepClone = helper.deepClone;
 
 /** 生成 [min, max] 范围内的随机整数 */
 const genRandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -148,6 +149,7 @@ const getSelectOptions = (str) => {
 };
 
 module.exports = {
+  deepClone,
   genRandomNum,
   genRandomString,
   genRandomAlpha,
