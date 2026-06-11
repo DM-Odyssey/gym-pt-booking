@@ -3,6 +3,9 @@ const contentCheckHelper = require('../../../utils/pic.js');
 const setting = require('../../../config/setting.js');
 
 Component({
+	options: {
+		styleIsolation: 'shared'
+	},
 	/**
 	 * 组件的属性列表
 	 */

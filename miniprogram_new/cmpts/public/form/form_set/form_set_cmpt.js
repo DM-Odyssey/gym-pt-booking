@@ -3,7 +3,8 @@ const dataHelper = require('../../../../utils/data.js');
 
 Component({
 	options: {
-		addGlobalClass: true
+		addGlobalClass: true,
+		styleIsolation: 'shared',
 	},
 
 	/**

@@ -5,7 +5,7 @@
  */
 
 const meet = require('./meet.js');
-const data = require('../utils/data.js');
+const helper = require('../utils/helper.js');
 const timeHelper = require('../utils/time.js');
 
 // Constants (from old project_setting.js)
@@ -44,7 +44,7 @@ const genRandomAlpha = function(len) {
 };
 
 const getNewTimeNode = function(day, timeTemp) {
-  var node = data.deepClone(timeTemp || MEET_NEW_NODE);
+  var node = helper.deepClone(timeTemp || MEET_NEW_NODE);
   day = day.replace(/-/g, '');
   node.mark = 'T' + day + 'AAA' + genRandomAlpha(10).toUpperCase();
   return node;
@@ -65,7 +65,7 @@ const initFormData = function() {
     formDaysSet: [],
     formPhone: '',
     formPassword: '',
-    formJoinForms: data.deepClone(MEET_JOIN_FIELDS)
+    formJoinForms: helper.deepClone(MEET_JOIN_FIELDS)
   };
 };
 
