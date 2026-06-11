@@ -5,7 +5,7 @@ Component({ data: { isLoad: false, isEdit: true, formTitle: '', formContent: [] 
   methods: {
     onLoad(options) { if (!admin.isAdmin(this)) return; if (options && options.id) this.setData({ id: options.id }); this.setData({ isLoad: true }); },
     url(e) { router.url(e, this); },
-    bindSubmitTap() {
+    bindFormSubmit() {
       const data = this.data;
       const params = { title: data.formTitle };
       if (data.id) params.id = data.id;
