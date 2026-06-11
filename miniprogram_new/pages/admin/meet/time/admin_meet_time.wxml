@@ -1,1 +1,4 @@
-<view wx:if="{{isLoad}}" class="main padding-project"><text>time - 构建中</text></view>
+<wxs src="/tpls/wxs/tools.wxs" module="tools" />
+<block wx:if="{{isAdmin}}">
+  <include src="admin_meet_time_form_tpl.wxml" />
+</block>

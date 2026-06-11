@@ -1,6 +1,10 @@
-<view wx:if="{{isLoad}}" class="main padding-project">
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-admin"></view>
+<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
   <view class="form-box card-project shadow-project">
-    <view class="form-group"><view class="title must">标题</view><input model:value="{{formTitle}}" placeholder="填写标题" maxlength="50"/></view>
+    <view class="form-group"><view class="title must">账号</view><input model:value="{{formName}}" placeholder="填写账号" maxlength="30"/></view>
+    <view class="form-group"><view class="title must">姓名</view><input model:value="{{formDesc}}" placeholder="填写姓名" maxlength="30"/></view>
+    <view class="form-group"><view class="title">手机</view><input model:value="{{formPhone}}" placeholder="填写手机" maxlength="11"/></view>
+    <view class="form-group"><view class="title must">密码</view><input model:value="{{formPassword}}" type="password" placeholder="填写密码" maxlength="30"/></view>
   </view>
-  <button bindtap="bindSubmitTap" class="btn-base bg-blue shadow">提交</button>
+  <button bindtap="bindSubmitTap" class="btn-admin margin-top">提交</button>
 </view>

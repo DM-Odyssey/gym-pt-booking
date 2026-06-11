@@ -1,1 +1,7 @@
-<view wx:if="{{isLoad}}" class="main padding-project"><text>about - 构建中</text></view>
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-admin"></view>
+<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
+  <view class="form-box card-project shadow-project margin-top">
+    <cmpt-form-show id="cmpt-form" mark="cmpt-form" isCacheMatch="{{false}}" fields="{{fields}}" forms="{{formForms}}"></cmpt-form-show>
+  </view>
+  <button bindtap="bindSubmitTap" class="btn-admin margin-top">保存</button>
+</view>

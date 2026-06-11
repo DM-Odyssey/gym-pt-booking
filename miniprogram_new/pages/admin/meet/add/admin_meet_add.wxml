@@ -1,6 +1,4 @@
-<view wx:if="{{isLoad}}" class="main padding-project">
-  <view class="form-box card-project shadow-project">
-    <view class="form-group"><view class="title must">标题</view><input model:value="{{formTitle}}" placeholder="填写标题" maxlength="50"/></view>
-  </view>
-  <button bindtap="bindSubmitTap" class="btn-base bg-blue shadow">提交</button>
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-admin"></view>
+<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
+  <include src="admin_meet_form_tpl.wxml" />
 </view>
