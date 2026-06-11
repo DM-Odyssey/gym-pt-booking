@@ -14,6 +14,7 @@ const calendarLib = require('../calendar_lib.js');
 Component({
 	options: {
 		addGlobalClass: true
+		styleIsolation: 'shared',
 	},
 	properties: {
 		isLunar: { //是否开启农历
