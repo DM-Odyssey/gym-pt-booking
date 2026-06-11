@@ -1,8 +1,22 @@
-<view class="main padding-project">
-  <view class="form-box card-project shadow-project">
-    <view class="form-group"><view class="title must">账号</view><input model:value="{{name}}" placeholder="填写账号" maxlength="30"/></view>
-    <view class="form-group"><view class="title must">密码</view><input model:value="{{pwd}}" type="password" placeholder="填写密码" maxlength="30"/></view>
+<view class="main-admin bg-admin">
+
+  <view class="login shadow">
+    <view class="pic"><text class="icon-settingsfill text-orange"></text></view>
+    <view class="hint">后台管理系统</view>
+
+    <view class="form-group margin-top">
+      <view class="title">账号：</view>
+      <input placeholder="请输入管理员账号" maxlength="30" placeholder-class="phc" model:value="{{name}}"></input>
+    </view>
+
+    <view class="form-group">
+      <view class="title">密码：</view>
+      <input placeholder="请输入管理员密码" maxlength="30" type="password" placeholder-class="phc" model:value="{{pwd}}"></input>
+    </view>
+
+    <button class="btn bg-admin margin-bottom" bindtap="bindLoginTap">点击登录</button>
+    <view class="return text-grey">本系统仅限于系统管理员登录</view>
+    <view bindtap="bindBackTap" class="return text-grey"><text class="icon-back"></text>返回用户端</view>
   </view>
-  <button bindtap="bindLoginTap" class="btn-base bg-blue shadow">登录</button>
-  <view class="margin-top text-center"><button bindtap="bindBackTap" class="btn-mid bg-gray">返回首页</button></view>
+
 </view>

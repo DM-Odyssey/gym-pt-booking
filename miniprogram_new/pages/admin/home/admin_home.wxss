@@ -1,5 +1,72 @@
-@import "/style/public/detail.wxss";
-.admin-header { display:flex; justify-content:space-between; padding:20rpx; background:#2499f2; color:#fff; }
-.exit-btn { padding:10rpx 30rpx; background:rgba(255,255,255,0.2); border-radius:20rpx; }
-.menu-grid { display:flex; flex-wrap:wrap; padding:20rpx; }
-.menu-item { width:28%; margin:2.5%; padding:30rpx 0; text-align:center; background:#fff; border-radius:10rpx; }
+@import "/style/public/admin.wxss";
+
+.main-admin {
+  padding: 0;
+}
+
+.admin-info {
+  height: 200rpx;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.admin-info .pic {
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+  margin-left: 20rpx;
+}
+
+.admin-info .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-info .right .name {
+  font-size: 32rpx;
+  line-height: 1.8;
+}
+
+.admin-info .right .desc {
+  font-size: 24rpx;
+  line-height: 1.3;
+}
+
+.admin-info .exit-admin {
+  position: absolute;
+  top: 12rpx;
+  right: 12rpx;
+  font-size: 45rpx;
+}
+
+.main-admin .comm-list,
+.main-admin .bar {
+  background-color: #fff;
+  width: 100%;
+}
+
+.main-admin .exit {
+  width: 100%;
+  padding: 0 20rpx;
+  margin-bottom: 50rpx;
+}
+
+.main-admin .exit button {
+  width: 100%;
+  color: #fff;
+  height: 70rpx;
+}
+
+.grid.col-3>view {
+  width: 33.33%;
+}
