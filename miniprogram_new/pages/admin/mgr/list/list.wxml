@@ -1,0 +1,3 @@
+<cmpt-comm-list _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/mgr_list" topBottom="120" isTotalMenu="{{true}}" placeholder="搜索" bind:list="bindCommListCmpt">
+  <view class="main"><import src="/tpls/public/list_load_tpl.wxml" /><template is="listLoadTpl" data="{{skin:'load-project',dataList}}" /></view>
+</cmpt-comm-list>

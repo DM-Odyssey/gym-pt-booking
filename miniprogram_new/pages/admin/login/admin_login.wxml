@@ -1,0 +1,8 @@
+<view class="main padding-project">
+  <view class="form-box card-project shadow-project">
+    <view class="form-group"><view class="title must">账号</view><input model:value="{{name}}" placeholder="填写账号" maxlength="30"/></view>
+    <view class="form-group"><view class="title must">密码</view><input model:value="{{pwd}}" type="password" placeholder="填写密码" maxlength="30"/></view>
+  </view>
+  <button bindtap="bindLoginTap" class="btn-base bg-blue shadow">登录</button>
+  <view class="margin-top text-center"><button bindtap="bindBackTap" class="btn-mid bg-gray">返回首页</button></view>
+</view>

@@ -1,0 +1,11 @@
+<view wx:if="{{isLoad}}" class="main padding-project">
+  <view class="admin-header"><text>管理员：{{admin.name}}</text><text bindtap="bindExitTap" class="exit-btn">退出登录</text></view>
+  <view class="menu-grid">
+    <view bindtap="url" data-url="/pages/admin/user/list/admin_user_list" class="menu-item"><text class="icon-friend"></text>用户管理</view>
+    <view bindtap="url" data-url="/pages/admin/mgr/list/admin_mgr_list" class="menu-item"><text class="icon-settings"></text>管理员</view>
+    <view bindtap="url" data-url="/pages/admin/news/list/admin_news_list" class="menu-item"><text class="icon-notice"></text>资讯管理</view>
+    <view bindtap="url" data-url="/pages/admin/meet/list/admin_meet_list" class="menu-item"><text class="icon-calendar"></text>课程管理</view>
+    <view bindtap="url" data-url="/pages/admin/setup/about/admin_setup_about" class="menu-item"><text class="icon-service"></text>系统设置</view>
+    <view bindtap="url" data-url="/pages/admin/mgr/log/admin_log_list" class="menu-item"><text class="icon-footprint"></text>操作日志</view>
+  </view>
+</view>

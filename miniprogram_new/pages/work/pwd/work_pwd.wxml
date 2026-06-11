@@ -1,0 +1,8 @@
+<view class="main padding-project">
+  <view class="form-box card-project shadow-project">
+    <view class="form-group"><view class="title must">旧密码</view><input model:value="{{formOldPassword}}" type="password" placeholder="填写旧密码" maxlength="30"/></view>
+    <view class="form-group"><view class="title must">新密码</view><input model:value="{{formPassword}}" type="password" placeholder="填写新密码" maxlength="30"/></view>
+    <view class="form-group"><view class="title must">再次填写</view><input model:value="{{formPassword2}}" type="password" placeholder="再次填写新密码" maxlength="30"/></view>
+  </view>
+  <button bindtap="bindSubmitTap" class="btn-base bg-blue shadow">修改密码</button>
+</view>

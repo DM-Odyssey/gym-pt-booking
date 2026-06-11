@@ -1,0 +1,11 @@
+<view wx:if="{{isLoad}}" class="main padding-project">
+  <view class="work-header"><text>教练：{{work.name}}</text><text bindtap="bindExitTap" class="exit-btn">退出</text></view>
+  <view class="menu-grid">
+    <view bindtap="url" data-url="/pages/work/edit/work_meet_edit" class="menu-item"><text class="icon-edit"></text>编辑资料</view>
+    <view bindtap="url" data-url="/pages/work/time/work_meet_time" class="menu-item"><text class="icon-calendar"></text>时段设置</view>
+    <view bindtap="url" data-url="/pages/work/temp/work_meet_temp" class="menu-item"><text class="icon-settings"></text>模板管理</view>
+    <view bindtap="url" data-url="/pages/work/join/work_meet_join" class="menu-item"><text class="icon-friend"></text>预约名单</view>
+    <view bindtap="url" data-url="/pages/work/scan/work_meet_scan" class="menu-item"><text class="icon-qrcode"></text>扫码核销</view>
+    <view bindtap="url" data-url="/pages/work/pwd/work_pwd" class="menu-item"><text class="icon-pwd"></text>修改密码</view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+@import "/style/public/detail.wxss";
+.work-header { display:flex; justify-content:space-between; padding:20rpx; background:#1C9399; color:#fff; }
+.exit-btn { padding:10rpx 30rpx; background:rgba(255,255,255,0.2); border-radius:20rpx; }
+.menu-grid { display:flex; flex-wrap:wrap; padding:20rpx; }
+.menu-item { width:28%; margin:2.5%; padding:30rpx 0; text-align:center; background:#fff; border-radius:10rpx; }

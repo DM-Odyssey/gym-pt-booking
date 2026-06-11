@@ -1,0 +1,1 @@
+<view wx:if="{{isLoad}}" class="main padding-project"><text>模板管理 - 构建中</text></view>
