@@ -13,7 +13,7 @@ const calendarLib = require('../calendar_lib.js');
 
 Component({
 	options: {
-		addGlobalClass: true
+		addGlobalClass: true,
 		styleIsolation: 'shared',
 	},
 	properties: {
