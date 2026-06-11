@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "cmpt-form-show": "/cmpts/public/form/form_show/form_show_cmpt"
+  },
   "navigationBarTitleText": "注册"
 }
