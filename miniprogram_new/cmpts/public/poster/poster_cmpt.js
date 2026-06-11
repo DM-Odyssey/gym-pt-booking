@@ -24,6 +24,7 @@ Component({
 
 	options: {
 		addGlobalClass: true,
+			styleIsolation: 'shared',
 		multipleSlots: true
 	},
 
