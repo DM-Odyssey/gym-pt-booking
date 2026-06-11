@@ -1,5 +1,5 @@
-const pageHelper = require('../../../../helper/page_helper.js');
-const dataHelper = require('../../../../helper/data_helper.js');
+const pageHelper = require('../../../../utils/index.js');
+const dataHelper = require('../../../../utils/data.js');
 
 Component({
 	options: {

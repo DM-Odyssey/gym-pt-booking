@@ -1,4 +1,4 @@
-const cloudHelper = require('../../../helper/cloud_helper.js');
+const cloudHelper = require('../../../utils/cloud.js');
 
 async function config1({
 	cover,

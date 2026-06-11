@@ -1,5 +1,5 @@
-const timeHelper = require('../../../../helper/time_helper.js');
-const pageHelper = require('../../../../helper/page_helper.js');
+const timeHelper = require('../../../../utils/time.js');
+const pageHelper = require('../../../../utils/index.js');
 const calendarLib = require('../calendar_lib.js');
 
 /*#### 父组件日历颜色定义*/

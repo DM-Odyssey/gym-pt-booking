@@ -1,4 +1,4 @@
-const pageHelper = require('../../../helper/page_helper.js');
+const pageHelper = require('../../../utils/index.js');
 Component({
 	options: {
 		addGlobalClass: true,

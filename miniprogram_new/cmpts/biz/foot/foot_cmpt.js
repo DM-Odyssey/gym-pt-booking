@@ -1,5 +1,5 @@
-const pageHelper = require('../../../helper/page_helper');
-const setting = require('../../../setting/setting.js');
+const pageHelper = require('../../../utils/index');
+const setting = require('../../../config/setting.js');
 
 Component({
 	options: {

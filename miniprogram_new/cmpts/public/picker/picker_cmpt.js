@@ -1,6 +1,6 @@
-const helper = require('../../../helper/helper.js');
-const dataHelper = require('../../../helper/data_helper.js');
-const pageHelper = require('../../../helper/page_helper.js');
+const helper = require('../../../utils/helper.js');
+const dataHelper = require('../../../utils/data.js');
+const pageHelper = require('../../../utils/index.js');
 
 Component({
 	externalClasses: ['outside-picker-class'],

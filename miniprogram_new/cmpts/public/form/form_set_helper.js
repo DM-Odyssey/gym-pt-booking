@@ -12,10 +12,10 @@
  * selectOptions:['',''] 
  * def
  */
-const dataHelper = require('../../../helper/data_helper.js');
-const pageHelper = require('../../../helper/page_helper.js');
-const helper = require('../../../helper/helper.js');
-const validate = require('../../../helper/validate.js');
+const dataHelper = require('../../../utils/data.js');
+const pageHelper = require('../../../utils/index.js');
+const helper = require('../../../utils/helper.js');
+const validate = require('../../../utils/validate.js');
 
 function initFieldOne(field) {
 	return initFields([field])[0];

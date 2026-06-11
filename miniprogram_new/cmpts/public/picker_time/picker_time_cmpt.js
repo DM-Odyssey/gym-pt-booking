@@ -1,4 +1,4 @@
-const timeHelper = require('../../../helper/time_helper.js');
+const timeHelper = require('../../../utils/time.js');
 const dateTimePicker = require('./datetime_picker.js');
 
 Component({

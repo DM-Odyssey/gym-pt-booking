@@ -9,7 +9,7 @@
 	val:'v2'
 }]
 */
-const dataHelper = require('../../../helper/data_helper.js');
+const dataHelper = require('../../../utils/data.js');
 
 function isExist(field) {
 	return field !== null && field !== undefined

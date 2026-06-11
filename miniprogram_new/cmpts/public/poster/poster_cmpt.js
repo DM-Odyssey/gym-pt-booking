@@ -15,9 +15,9 @@ onShareAppMessage: function (e) {
 }
 */
 import Poster from '../../../cmpts/public/poster/wxa-plugin-canvas/poster/poster.js'
-const pageHelper = require('../../../helper/page_helper.js');
-const picHelper = require('../../../helper/pic_helper.js');
-const helper = require('../../../helper/helper.js');
+const pageHelper = require('../../../utils/index.js');
+const picHelper = require('../../../utils/pic.js');
+const helper = require('../../../utils/helper.js');
 
 Component({
 	externalClasses: ['poster-class'],

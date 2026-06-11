@@ -5,6 +5,8 @@
  */
 
 const { fmtText } = require('../utils/data.js');
+const cache = require('../utils/cache.js');
+const setting = require('../config/setting.js');
 
 /** 根据分类 ID 获取分类名称 */
 const getCateName = (cateId, cateList) => {
@@ -50,9 +52,28 @@ const getRichEditorDesc = (desc, content) => {
   return desc;
 };
 
+/** 列表缓存是否存在 */
+const isCacheList = (key) => {
+  if (!setting.CACHE_IS_LIST) return false;
+  return cache.get(key.toUpperCase() + '_LIST');
+};
+
+/** 移除列表缓存 */
+const removeCacheList = (key) => {
+  if (setting.CACHE_IS_LIST) cache.remove(key.toUpperCase() + '_LIST');
+};
+
+/** 设置列表缓存 */
+const setCacheList = (key, time = setting.CACHE_LIST_TIME) => {
+  if (setting.CACHE_IS_LIST) cache.set(key.toUpperCase() + '_LIST', 'TRUE', time);
+};
+
 module.exports = {
   getCateName,
   getCateList,
   setCateTitle,
   getRichEditorDesc,
+  isCacheList,
+  removeCacheList,
+  setCacheList,
 };

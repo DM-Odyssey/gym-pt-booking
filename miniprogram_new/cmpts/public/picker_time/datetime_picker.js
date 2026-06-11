@@ -1,4 +1,4 @@
-const timeHelper = require('../../../helper/time_helper.js');
+const timeHelper = require('../../../utils/time.js');
 
 function withData(param, unit = '') {
 	if (unit) return param;

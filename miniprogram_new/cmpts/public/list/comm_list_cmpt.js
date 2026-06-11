@@ -1,7 +1,7 @@
-const cloudHelper = require('../../../helper/cloud_helper.js');
-const helper = require('../../../helper/helper.js');
-const PublicBiz = require('../../../comm/biz/public_biz.js');
-const pageHelper = require('../../../helper/page_helper.js');
+const cloudHelper = require('../../../utils/cloud.js');
+const helper = require('../../../utils/helper.js');
+const PublicBiz = require('../../../biz/common.js');
+const pageHelper = require('../../../utils/index.js');
 
 Component({
 	options: {

@@ -1,6 +1,6 @@
-const dataHelper = require('../../../../helper/data_helper.js');
-const pageHelper = require('../../../../helper/page_helper.js');
-const timeHelper = require('../../../../helper/time_helper.js');
+const dataHelper = require('../../../../utils/data.js');
+const pageHelper = require('../../../../utils/index.js');
+const timeHelper = require('../../../../utils/time.js');
 
 Component({
 	options: {

@@ -1,4 +1,4 @@
-const pageHelper = require('../../../helper/page_helper.js');
+const pageHelper = require('../../../utils/index.js');
 
 Component({
 	externalClasses: ['outside-picker-multi-class'],

@@ -1,8 +1,8 @@
-const pageHelper = require('../../../helper/page_helper.js');
-const dataHelper = require('../../../helper/data_helper.js');
-const cloudHelper = require('../../../helper/cloud_helper.js');
-const contentCheckHelper = require('../../../helper/content_check_helper.js');
-const projectSetting = require('../../../setting/setting.js');
+const pageHelper = require('../../../utils/index.js');
+const dataHelper = require('../../../utils/data.js');
+const cloudHelper = require('../../../utils/cloud.js');
+const contentCheckHelper = require('../../../utils/pic.js');
+const projectSetting = require('../../../config/setting.js');
 
 Component({
 	options: {

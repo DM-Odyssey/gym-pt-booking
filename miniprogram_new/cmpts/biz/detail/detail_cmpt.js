@@ -1,6 +1,6 @@
-const pageHelper = require('../../../helper/page_helper');
+const pageHelper = require('../../../utils/index');
 const posterCmptHelper = require('../../public/poster/poster_cmpt_helper.js');
-const FootBiz = require('../../../comm/biz/foot_biz.js');
+const FootBiz = require('../../../biz/common.js');
 
 Component({
 	options: {

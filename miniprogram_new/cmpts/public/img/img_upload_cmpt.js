@@ -1,6 +1,6 @@
-const pageHelper = require('../../../helper/page_helper.js');
-const contentCheckHelper = require('../../../helper/content_check_helper.js');
-const setting = require('../../../setting/setting.js');
+const pageHelper = require('../../../utils/index.js');
+const contentCheckHelper = require('../../../utils/pic.js');
+const setting = require('../../../config/setting.js');
 
 Component({
 	/**

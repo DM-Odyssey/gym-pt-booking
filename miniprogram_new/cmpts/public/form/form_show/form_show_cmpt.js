@@ -1,10 +1,10 @@
-﻿const pageHelper = require('../../../../helper/page_helper.js');
-const helper = require('../../../../helper/helper.js');
-const cloudHelper = require('../../../../helper/cloud_helper.js');
-const cacheHelper = require('../../../../helper/cache_helper.js');
+﻿const pageHelper = require('../../../../utils/index.js');
+const helper = require('../../../../utils/helper.js');
+const cloudHelper = require('../../../../utils/cloud.js');
+const cacheHelper = require('../../../../utils/cache.js');
 const formSetHelper = require('../form_set_helper.js');
-const validate = require('../../../../helper/validate.js');
-const setting = require('../../../../setting/setting.js');
+const validate = require('../../../../utils/validate.js');
+const setting = require('../../../../config/setting.js');
 
 const CACHE_FORM_SHOW_KEY = 'FORM_SHOW_CMPT';
 const CACHE_FORM_SHOW_TIME = 86400 * 365;
