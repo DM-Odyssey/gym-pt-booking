@@ -139,9 +139,18 @@ const padRight = (str, len, charStr = '0') => {
   return str.length >= len ? str : str + charStr.repeat(len - str.length);
 };
 
-/** 解析表单选项字符串 '0:未开始|1:进行中|2:已结束' → [{label, value}] */
+/** 解析表单选项字符串 → [{label, value}]
+ *  支持两种格式: '0:未开始|1:进行中' 或 '0=未开始,1=进行中' */
 const getSelectOptions = (str) => {
   if (!str) return [];
+  if (str.includes('=')) {
+    return str.split(',').map((item) => {
+      const parts = item.split('=');
+      const val = parts[0];
+      const label = (parts[1] || '').split('|')[0];
+      return { value: isNaN(val) ? val : parseInt(val), label };
+    });
+  }
   return str.split('|').map((item) => {
     const [value, label] = item.split(':');
     return { value: isNaN(value) ? value : parseInt(value), label };
