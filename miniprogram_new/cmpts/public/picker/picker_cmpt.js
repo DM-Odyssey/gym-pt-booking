@@ -213,10 +213,12 @@ Component({
 
 			if (this.data.steps == 1) {
 				val = this.data.labelKey ? this.data.options[idx].val : this.data.options[idx];
-				this.setData({
-					item: val,
-					index: idx
-				});
+				if (val !== null && val !== undefined) {
+					this.setData({
+						item: val,
+						index: idx
+					});
+				}
 			} else {
 				val = [];
 				let options = this.data.options;
