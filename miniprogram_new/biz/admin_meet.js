@@ -60,7 +60,7 @@ const initFormData = function() {
     formTitle: '',
     formCateId: (cateIdOptions.length === 1) ? cateIdOptions[0].val : '',
     formOrder: 9999,
-    formCancelSet: 1,
+    formCancelSet: '1',
     formForms: [],
     formDaysSet: [],
     formPhone: '',

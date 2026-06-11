@@ -148,12 +148,12 @@ const getSelectOptions = (str) => {
       const parts = item.split('=');
       const val = parts[0];
       const label = (parts[1] || '').split('|')[0];
-      return { value: isNaN(val) ? val : parseInt(val), label };
+      return { value: val, label };
     });
   }
   return str.split('|').map((item) => {
     const [value, label] = item.split(':');
-    return { value: isNaN(value) ? value : parseInt(value), label };
+    return { value: value, label };
   });
 };
 
