@@ -120,7 +120,16 @@ Component({
 	 * 生命周期方法
 	 */
 	lifetimes: {
-		attached: function () { },
+		attached: function () {
+				// 提前解析 sourceDataStr，确保 item observer 触发时 options 已就绪
+				if (this.data.sourceDataStr && (!this.data.sourceData || this.data.sourceData.length == 0)) {
+					var sourceData = dataHelper.getSelectOptions(this.data.sourceDataStr);
+					if (sourceData && sourceData.length > 0) {
+						var labelKey = sourceData[0].label ? 'label' : '';
+						this.setData({ sourceData: sourceData, options: sourceData, labelKey: labelKey });
+					}
+				}
+			},
 
 		ready: function () {
 			if (!this.data.options || this.data.options.length == 0) this._init();
