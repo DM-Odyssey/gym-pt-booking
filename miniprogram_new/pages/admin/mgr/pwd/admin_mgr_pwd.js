@@ -1,7 +1,7 @@
-const router = require('../../../utils/router.js');
-const cloud = require('../../../utils/cloud.js');
-const admin = require('../../../biz/admin.js');
-const validate = require('../../../utils/validate.js');
+const router = require('../../../../utils/router.js');
+const cloud = require('../../../../utils/cloud.js');
+const admin = require('../../../../biz/admin.js');
+const validate = require('../../../../utils/validate.js');
 Component({ data: { isLoad: true, formOldPassword: '', formPassword: '', formPassword2: '' },
   methods: {
     onLoad() { if (!admin.isAdmin(this)) return; },
