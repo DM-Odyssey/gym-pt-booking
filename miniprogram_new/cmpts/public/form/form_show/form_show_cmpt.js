@@ -30,6 +30,7 @@ Component({
 			type: Array,
 			value: [],
 			observer: function(newVal) {
+					if (this._initializing) return;
 				if (newVal && newVal.length > 0) this._init();
 			},
 		},
@@ -98,6 +99,8 @@ Component({
 			this._init();
 		},
 		_init: function () {
+			if (this._initializing) return;
+			this._initializing = true;
 			let fields = formSetHelper.initFields(this.data.fields);
 			let newForms = [];
 
@@ -125,6 +128,8 @@ Component({
 				forms: newForms,
 				fields,
 				isLoad: true
+			this._initializing = false;
+				this._initializing = false;
 			});
 			//this.triggerEvent('forms', newForms);
 		},
