@@ -9,7 +9,7 @@ const { success, CODE } = require('../common/response')
 
 const SETUP_HOME_VOUCH_KEY = 'SETUP_HOME_VOUCH_KEY'
 
-async function getHomeList() {
+async function getHomeList(openId, params) {
     const setupRes = await db.coll('setup').where({ SETUP_KEY: SETUP_HOME_VOUCH_KEY }).get()
     let list = null
     if (setupRes.data && setupRes.data.length > 0) {

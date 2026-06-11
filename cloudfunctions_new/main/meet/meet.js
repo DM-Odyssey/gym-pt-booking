@@ -11,7 +11,7 @@ const { time, timestamp2Time } = require('../common/util')
 
 // ===== 课程列表 =====
 
-async function getMeetList(params) {
+async function getMeetList(openId, params) {
     const { cateId, search, sortType, sortVal, page = 1, size = 20 } = params
     const where = {}
     if (cateId && cateId !== '0') where.MEET_CATE_ID = cateId
@@ -26,18 +26,19 @@ async function getMeetList(params) {
     })
     if (result.list) {
         result.list = result.list.map(item => ({
-            type: 'meet', id: item._id,
-            title: item.MEET_TITLE || '',
-            cateName: item.MEET_CATE_NAME || '',
-            cateId: item.MEET_CATE_ID || '',
-            obj: item.MEET_OBJ || {},
-            days: item.MEET_DAYS || []
+            ...item,
+            type: 'meet',
+            id: item._id,
+            MEET_OBJ: {
+                level: '', spec: '', cover: [], desc: '', content: [],
+                ...(item.MEET_OBJ || {})
+            }
         }))
     }
     return success(result)
 }
 
-async function getMeetListByDay(params) {
+async function getMeetListByDay(openId, params) {
     const { day } = params
     const list = await db.getAll('meet', { MEET_STATUS: 1 }, {
         fields: 'MEET_TITLE,MEET_OBJ,MEET_DAYS',
@@ -58,7 +59,7 @@ async function getMeetListByDay(params) {
     return success(retList)
 }
 
-async function getHasDaysFromDay(params) {
+async function getHasDaysFromDay(openId, params) {
     const { day } = params || {}
     const today = timestamp2Time(time(), 'Y-M-D')
     const startDay = day || today
@@ -87,7 +88,7 @@ async function getUsefulTimesByDay(meetId, day) {
 
 // ===== 课程详情 =====
 
-async function viewMeet(params) {
+async function viewMeet(openId, params) {
     const vResult = validate(params, { id: 'id|required|string|desc:课程ID' })
     if (vResult.err) return vResult.err
 

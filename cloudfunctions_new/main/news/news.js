@@ -7,7 +7,7 @@ const db = require('../common/db')
 const { validate } = require('../common/validate')
 const { success } = require('../common/response')
 
-async function getNewsList(params) {
+async function getNewsList(openId, params) {
     const { cateId, search, sortType, sortVal, page = 1, size = 20 } = params
     const where = { NEWS_STATUS: 1 }
 

@@ -9,7 +9,7 @@ const { success, fail, CODE } = require('../common/response')
 const { time, makeID } = require('../common/util')
 const { validate } = require('../common/validate')
 
-async function login(openId) {
+async function login(openId, params) {
     const where = { USER_MINI_OPENID: openId }
     const user = await db.getOne('user', where, 'USER_ID,USER_MINI_OPENID,USER_NAME,USER_STATUS')
 
@@ -68,7 +68,7 @@ async function getPhone(openId, params) {
     }
 }
 
-async function getMyDetail(openId) {
+async function getMyDetail(openId, params) {
     const user = await db.getOne('user',
         { USER_MINI_OPENID: openId },
         'USER_MOBILE,USER_NAME,USER_FORMS,USER_STATUS,USER_CHECK_REASON'

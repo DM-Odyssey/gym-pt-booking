@@ -1,20 +1,20 @@
 /**
- * 公告模块 — 路由分发（用户端）
+ * 公告模块（用户端）— 路由映射
  * Author: bjzm-mrzdp
  * Date: 2026-06-10
  */
 const { fail, CODE } = require('../common/response')
 const news = require('./news')
 
+const ROUTES = {
+    'news/list':  [news.getNewsList],
+    'news/view':  [news.viewNews],
+}
+
 async function handle(route, openId, params, token) {
-    switch (route) {
-        case 'news/list':
-            return await news.getNewsList(params)
-        case 'news/view':
-            return await news.viewNews(openId, params)
-        default:
-            return fail(CODE.LOGIC, 'news 路由未实现: ' + route)
-    }
+    const cfg = ROUTES[route]
+    if (!cfg) return fail(CODE.LOGIC, 'news 路由未实现: ' + route)
+    return await cfg[0](openId, params)
 }
 
 module.exports = { handle }

@@ -1,26 +1,23 @@
 /**
- * 通行证模块 — 路由分发
+ * 通行证模块 — 路由映射
  * Author: bjzm-mrzdp
  * Date: 2026-06-10
  */
 const { fail, CODE } = require('../common/response')
 const passport = require('./passport')
 
+const ROUTES = {
+    'passport/login':      [passport.login],
+    'passport/register':   [passport.register],
+    'passport/phone':      [passport.getPhone],
+    'passport/my_detail':  [passport.getMyDetail],
+    'passport/edit_base':  [passport.editBase],
+}
+
 async function handle(route, openId, params, token) {
-    switch (route) {
-        case 'passport/login':
-            return await passport.login(openId)
-        case 'passport/register':
-            return await passport.register(openId, params)
-        case 'passport/phone':
-            return await passport.getPhone(openId, params)
-        case 'passport/my_detail':
-            return await passport.getMyDetail(openId)
-        case 'passport/edit_base':
-            return await passport.editBase(openId, params)
-        default:
-            return fail(CODE.LOGIC, '未知路由: ' + route)
-    }
+    const cfg = ROUTES[route]
+    if (!cfg) return fail(CODE.LOGIC, 'passport 路由未实现: ' + route)
+    return await cfg[0](openId, params)
 }
 
 module.exports = { handle }
