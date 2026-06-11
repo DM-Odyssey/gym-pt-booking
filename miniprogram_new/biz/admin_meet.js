@@ -9,9 +9,20 @@ const data = require('../utils/data.js');
 const timeHelper = require('../utils/time.js');
 
 // Constants (from old project_setting.js)
-const MEET_FIELDS = [];
-const MEET_JOIN_FIELDS = [];
-const MEET_NEW_NODE = { start: '09:00', end: '10:00', stat: { succCnt: 0, day: '' }, isLimit: false, limit: 0, status: 1 };
+const MEET_FIELDS = [
+  { mark: 'level', title: '星级', type: 'select',
+    selectOptions: [{label:'1星',val:'1'},{label:'2星',val:'2'},{label:'3星',val:'3'},{label:'4星',val:'4'},{label:'5星',val:'5'},{label:'6星',val:'6'}],
+    def: '1', must: true },
+  { mark: 'spec', title: '特点标签', type: 'tag', must: true, max: 30 },
+  { mark: 'cover', title: '封面图片', type: 'image', min: 1, max: 1, must: true },
+  { mark: 'desc', title: '简介', type: 'textarea', max: 60, must: true },
+  { mark: 'content', title: '详情', type: 'content', must: true },
+];
+const MEET_JOIN_FIELDS = [
+  { mark: 'name', type: 'text', title: '姓名', must: true, min: 2, max: 30, edit: false },
+  { mark: 'phone', type: 'text', len: 11, title: '手机号', must: true, edit: false },
+];
+const MEET_NEW_NODE = { start: '10:00', end: '10:59', limit: 50, isLimit: true, status: 1, stat: {succCnt:0,cancelCnt:0,adminCancelCnt:0} };
 
 const getCateName = function(cateId) {
   for (var k = 0; k < meet.MEET_CATE.length; k++) {
