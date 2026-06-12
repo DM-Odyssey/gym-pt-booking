@@ -5,6 +5,6 @@
     "cmpt-picker-time": "/cmpts/public/picker_time/picker_time_cmpt",
     "cmpt-picker-multi": "/cmpts/public/picker_multi/picker_multi_cmpt"
   },
-  "navigationBarBackgroundColor": "#2499f2",
+  "navigationBarBackgroundColor": "#1C9399",
   "navigationBarTextStyle": "white"
 }
