@@ -75,9 +75,12 @@ Component({
 			observer: function (newVal, oldVal) {
 				//	console.log('one observer', this.data.mark);
 				if (newVal != oldVal) {
-					let options = this.data.options;
-					if (!options || options.length == 0) this._init();
-					if (options && options.length > 0) this.selected(newVal);
+				if (!this.data.options || this.data.options.length == 0) this._init();
+				if (this.data.options && this.data.options.length > 0) this.selected(newVal);
+					
+				
+					
+					
 				}
 			}
 		},
@@ -88,9 +91,11 @@ Component({
 			observer: function (newVal, oldVal) {
 				//	console.log('multi observer', this.data.mark);
 				if (JSON.stringify(newVal) != JSON.stringify(oldVal)) {
-					let options = this.data.options;
-					if (!options || options.length == 0) this._init();
-					if (options && options.length > 0) this.selected(newVal);
+				if (!this.data.options || this.data.options.length == 0) this._init();
+				if (this.data.options && this.data.options.length > 0) this.selected(newVal);
+					
+					
+					
 				}
 			}
 		},
@@ -189,7 +194,7 @@ Component({
 
 		_getMultiDesc: function () {
 			let idx = this.data.idx;
-			let options = this.data.options;
+			
 			if (idx.length != options.length) return;
 
 			let multiDesc = [];
@@ -230,7 +235,7 @@ Component({
 				}
 			} else {
 				val = [];
-				let options = this.data.options;
+				
 				if (this.data.labelKey) {
 					for (let k = 0; k < options.length; k++) {
 						val[k] = options[k][idx[k]].val;
@@ -256,7 +261,7 @@ Component({
 
 		// 选中值 
 		selected: function (val) {
-			let options = this.data.options;
+			
 			let labelKey = this.data.labelKey;
 			if (this.data.steps == 1) {
 				for (let k = 0; k < options.length; k++) {
