@@ -95,7 +95,7 @@ page {
 	justify-content: center;
 }
 
-.cal-title view {
+.cal-weekday {
 	width: 80rpx;
 	height: 80rpx;
 	display: flex;

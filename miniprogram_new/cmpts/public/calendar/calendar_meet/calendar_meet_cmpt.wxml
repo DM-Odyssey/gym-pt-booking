@@ -29,11 +29,11 @@
 		</view>
 
 		<view class="cal-title">
-			<view>一</view>
-			<view>二</view>
-			<view>三</view>
-			<view>四</view>
-			<view>五</view>
+			<view class="cal-weekday">一</view>
+			<view class="cal-weekday">二</view>
+			<view class="cal-weekday">三</view>
+			<view class="cal-weekday">四</view>
+			<view class="cal-weekday">五</view>
 			<view class="text-orange text-bold">六</view>
 			<view class="text-red text-bold">日</view>
 		</view>
