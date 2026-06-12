@@ -32,6 +32,7 @@ const getCateName = function(cateId) {
 };
 
 const getLeaveDay = function(days) {
+  if (!days || !Array.isArray(days)) return 0;
   var now = timeHelper.time('Y-M-D'), count = 0;
   for (var k = 0; k < days.length; k++) { if (days[k].day >= now) count++; }
   return count;
