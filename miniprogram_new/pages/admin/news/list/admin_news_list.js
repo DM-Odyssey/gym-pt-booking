@@ -51,7 +51,7 @@ Component({
             case 0: var id = dom.dataset(e, 'id'); wx.navigateTo({ url: '/pages/news/detail/news_detail?id=' + id }); break;
             case 1: var s = (order == 0) ? 9999 : 0; e.currentTarget.dataset['sort'] = s; await self._setSort(e); break;
             case 2: vouch = (vouch == 0) ? 1 : 0; e.currentTarget.dataset['vouch'] = vouch; await self._setVouch(e); break;
-            case 3: var title = encodeURIComponent(dom.dataset(e, 'title')); var qr = encodeURIComponent(dom.dataset(e, 'qr')); wx.navigateTo({ url: '/pages/admin/setup/qr/admin_setup_qr?title=' + title + '&qr=' + qr }); break;
+            case 3: var qrVal = dom.dataset(e, 'qr'); var title = encodeURIComponent(dom.dataset(e, 'title')); if (qrVal) { wx.navigateTo({ url: '/pages/admin/setup/qr/admin_setup_qr?title=' + title + '&qr=' + encodeURIComponent(qrVal) }); } else { wx.navigateTo({ url: '/pages/admin/setup/qr/admin_setup_qr?title=' + title }); } break;
           }
         }
       });

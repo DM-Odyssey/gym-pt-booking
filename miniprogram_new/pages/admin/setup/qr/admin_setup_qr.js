@@ -6,18 +6,19 @@ Component({ data: { isLoad: false, qr: '' },
   methods: {
     onLoad(options) {
       if (!admin.isAdmin(this)) return;
-      if (options && options.qr) { this.setData({ qr: decodeURIComponent(options.qr), isLoad: true }); return; }
+      var qr = (options && options.qr && options.qr !== 'undefined') ? decodeURIComponent(options.qr) : '';
+      if (qr) { this.setData({ qr: qr, isLoad: true }); return; }
       this._loadDetail();
     },
     async _loadDetail() {
       if (this.data.qr) return;
       try {
-        const res = await cloud.callCloudSubmit('admin/setup_qr', { path: '/pages/index/index' }, { title: 'bar' });
+        var res = await cloud.callCloudSubmit('admin/setup_qr', { path: '/pages/index/index' }, { title: 'bar' });
         this.setData({ qr: res.data, isLoad: true });
       } catch (err) { console.error(err); }
     },
     url(e) { router.url(e, this); },
-    bindGenTap() { this._loadDetail(); },
-    onPullDownRefresh() { this._loadDetail().then(() => wx.stopPullDownRefresh()); },
+    bindGenTap() { this.setData({ qr: '' }); this._loadDetail(); },
+    onPullDownRefresh() { this._loadDetail().then(function() { wx.stopPullDownRefresh(); }); },
   }
 });
