@@ -58,8 +58,6 @@ Component({
     },
 
     bindDayTap(e) {
-      const dayIdx = router.getPrevPage(1) || e.currentTarget.dataset.idx;
-      // Use dataset
       const idx = e.currentTarget.dataset.idx;
       this.setData({ dayIdx: idx, timeIdx: -1 });
     },
