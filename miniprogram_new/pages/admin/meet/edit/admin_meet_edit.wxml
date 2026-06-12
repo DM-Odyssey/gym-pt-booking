@@ -1,4 +1,8 @@
-<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-admin"></view>
-<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
-  <include src="../add/admin_meet_form_tpl.wxml" />
-</view>
+<view wx:if="{{id&&isLoad===null}}" class="margin-top load notexist text-l text-grey"></view>
+<view wx:if="{{id&&isLoad===false}}" class="margin-top load loading text-l text-grey"></view>
+<block wx:if="{{isAdmin&&isLoad}}">
+  <view class="main-admin">
+    <include src="../add/admin_meet_form_tpl.wxml" />
+    <button bindtap="bindFormEditSubmit" class="btn-admin margin-top-l">保存</button>
+  </view>
+</block>
