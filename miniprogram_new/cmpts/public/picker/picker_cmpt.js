@@ -151,6 +151,7 @@ Component({
 	 */
 	methods: {
 		_init: function () {
+			let options = this.data.options;
 			let sourceData = this.data.sourceData;
 			let labelKey = this.data.labelKey;
 			let idx = this.data.idx;
@@ -224,6 +225,7 @@ Component({
 
 		// 触发改变
 		bindChange: function (e) {
+			let options = this.data.options;
 			let idx = e.detail.value;
 			let val = null;
 
