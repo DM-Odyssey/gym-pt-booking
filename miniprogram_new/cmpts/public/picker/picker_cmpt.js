@@ -194,6 +194,8 @@ Component({
 
 		_getMultiDesc: function () {
 			let idx = this.data.idx;
+			let options = this.data.options;
+			if (!options) return;
 			
 			if (idx.length != options.length) return;
 
