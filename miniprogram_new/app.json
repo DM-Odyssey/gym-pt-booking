@@ -36,6 +36,7 @@
     "pages/admin/meet/scan/admin_meet_scan",
     "pages/admin/meet/time/admin_meet_time",
     "pages/admin/meet/temp/admin_meet_temp",
+    "pages/admin/meet/export/admin_join_export",
     "pages/admin/setup/about/admin_setup_about",
     "pages/admin/setup/qr/admin_setup_qr",
     "pages/work/login/work_login",

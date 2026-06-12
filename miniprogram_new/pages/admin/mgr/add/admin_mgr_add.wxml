@@ -1,10 +1,29 @@
-<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-admin"></view>
-<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
-  <view class="form-box card-project shadow-project">
-    <view class="form-group"><view class="title must">账号</view><input model:value="{{formName}}" placeholder="填写账号" maxlength="30"/></view>
-    <view class="form-group"><view class="title must">姓名</view><input model:value="{{formDesc}}" placeholder="填写姓名" maxlength="30"/></view>
-    <view class="form-group"><view class="title">手机</view><input model:value="{{formPhone}}" placeholder="填写手机" maxlength="11"/></view>
-    <view class="form-group"><view class="title must">密码</view><input model:value="{{formPassword}}" type="password" placeholder="填写密码" maxlength="30"/></view>
+<view class="main-admin" wx:if="{{isAdmin}}">
+  <view class="form-box shadow">
+    <view class="form-group">
+      <view class="title must">登录账号</view>
+      <input maxlength="30" placeholder="请填写登录账号" placeholder-class="phc" model:value="{{formName}}" focus="{{formNameFocus}}"></input>
+    </view>
+    <view wx:if="{{formNameFocus}}" class="hint-desc error">{{formNameFocus}}</view>
+
+    <view class="form-group">
+      <view class="title must">姓名</view>
+      <input maxlength="30" placeholder="请填写管理员姓名" model:value="{{formDesc}}" focus="{{formDescFocus}}"></input>
+    </view>
+    <view wx:if="{{formDescFocus}}" class="hint-desc error">{{formDescFocus}}</view>
+
+    <view class="form-group">
+      <view class="title">*手机</view>
+      <input maxlength="11" placeholder="请填写手机号码" model:value="{{formPhone}}" focus="{{formPhoneFocus}}"></input>
+    </view>
+    <view wx:if="{{formPhoneFocus}}" class="hint-desc error">{{formPhoneFocus}}</view>
+
+    <view class="form-group">
+      <view class="title must">密码</view>
+      <input maxlength="30" type="password" placeholder="请填写密码" model:value="{{formPassword}}" focus="{{formPasswordFocus}}"></input>
+    </view>
+    <view wx:if="{{formPasswordFocus}}" class="hint-desc error">{{formPasswordFocus}}</view>
   </view>
-  <button bindtap="bindSubmitTap" class="btn-admin margin-top">提交</button>
+
+  <button bindtap="bindSubmitTap" class="btn-admin margin-top">确定添加</button>
 </view>

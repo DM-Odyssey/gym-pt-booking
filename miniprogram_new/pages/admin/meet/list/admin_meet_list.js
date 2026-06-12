@@ -35,7 +35,7 @@ Component({
     bindRecordSelectTap(e) {
       var self = this; var meetId = dom.dataset(e, 'id'); var title = encodeURIComponent(dom.dataset(e, 'title'));
       wx.showActionSheet({ itemList: ['预约名单', '导出名单Excel文件', '管理员核销预约码'],
-        success: function(res) { switch(res.tapIndex) { case 0: wx.navigateTo({ url: '/pages/admin/meet/join/admin_meet_join?meetId=' + meetId + '&title=' + title }); break; case 2: self.bindScanTap(e); break; } }
+        success: function(res) { switch(res.tapIndex) { case 0: wx.navigateTo({ url: '/pages/admin/meet/join/admin_meet_join?meetId=' + meetId + '&title=' + title }); break; case 1: wx.navigateTo({ url: '/pages/admin/meet/export/admin_join_export?meetId=' + meetId + '&title=' + title }); break; case 2: wx.navigateTo({ url: '/pages/admin/meet/scan/admin_meet_scan?meetId=' + meetId + '&title=' + title }); break; } }
       });
     },
 

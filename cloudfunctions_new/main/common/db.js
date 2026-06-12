@@ -76,6 +76,10 @@ async function edit(collection, where, data) {
 }
 
 async function del(collection, where) {
+    // 空 where 会触发 -501007 错误，用 _id.exists(true) 兜底匹配所有文档
+    if (!where || Object.keys(where).length === 0) {
+        where = { _id: cmd().exists(true) }
+    }
     return (await coll(collection).where(where).remove()).stats.removed
 }
 

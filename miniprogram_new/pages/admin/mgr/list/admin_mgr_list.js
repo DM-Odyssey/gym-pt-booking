@@ -31,7 +31,7 @@ Component({
       if (!admin.isAdmin(this, true)) return;
       const id = dom.dataset(e, 'id');
       const status = Number(dom.dataset(e, 'status'));
-      if (!id || !status) return;
+      if (!id) return;
       try {
         await cloud.callCloudSubmit('admin/mgr_status', { id, status });
         list.modifyListNode(id, this.data.dataList.list, 'ADMIN_STATUS', status, '_id');

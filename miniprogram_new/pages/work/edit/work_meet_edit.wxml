@@ -3,7 +3,7 @@
 <block wx:if="{{isWork&& isLoad}}">
 	<view class="main-work">
 
-		<include src="../../../admin/me/pages/admin/meet/add/admin_meet_form_tpl.wxml" />
+		<include src="../../admin/meet/add/admin_meet_form_tpl.wxml" />
  
 		<button bindtap="bindFormEditSubmit" class="btn-work margin-top-l">保存</button>
 

@@ -103,6 +103,16 @@ Component({
         }
       });
     },
+    bindTimeSetTap(e) {
+      var s = this;
+      wx.showActionSheet({ itemList: ['复制到所有日期', '选用模板配置', '保存为模板'],
+        success: function(res) {
+          if (res.tapIndex == 0) { s._copyDaySetToAll(e); }
+          if (res.tapIndex == 1) { s._selectTemp(e); }
+          if (res.tapIndex == 2) { s._saveTempModal(e); }
+        }
+      });
+    },
     _selectTemp(e) { var curIdx = dom.dataset(e, 'idx'); if (this._checkHasJoinCnt(this.data.days[curIdx].times)) return toast.showModal('该日已有用户预约，不能选用模板'); this.setData({ curIdx: curIdx }); wx.navigateTo({ url: '/pages/admin/meet/temp/admin_meet_temp?source=time' }); },
     _saveTempModal(e) { var curIdx = dom.dataset(e, 'idx'), days = this.data.days; if (days[curIdx].times.length <= 0) return toast.showModal('该日期下没有设置时段'); this.setData({ saveTempModalShow: true, curIdx: curIdx }); },
     _copyDaySetToAll(e) {

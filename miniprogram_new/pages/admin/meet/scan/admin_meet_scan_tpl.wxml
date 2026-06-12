@@ -1,5 +1,5 @@
 <view class="form-box shadow">
-	<view class="form-group" wx:if="{{isAdmin}}">
+	<view class="form-group" wx:if="{{isAdmin||isWork}}">
 		<view class="title text-cut">{{title}}</view>
 	</view>
 
