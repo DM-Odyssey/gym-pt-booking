@@ -32,7 +32,7 @@ Component({
     },
     url(e) { router.url(e, this); },
     bindCateIdSelect(e) { this.setData({ formCateId: e.detail }); if (e.detail != 1) this.setData({ formPhone: '', formPassword: '' }); },
-    bindCancelSetTap(e) { this.setData({ formCancelSet: e.currentTarget.dataset.val }); },
+    bindCancelSetSelect(e) { this.setData({ formCancelSet: e.detail }); },
     bindJoinFormsCmpt(e) { this.setData({ formJoinForms: e.detail }); },
 
     bindFormEditSubmit: async function() {
