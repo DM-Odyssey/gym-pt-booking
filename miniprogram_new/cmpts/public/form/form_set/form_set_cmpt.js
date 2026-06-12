@@ -14,6 +14,9 @@ Component({
 		fields: {
 			type: Array,
 			value: [],
+			observer: function(newVal) {
+				if (newVal && newVal.length > 0) this.setData({ fields: newVal });
+			},
 		},
 	},
 
