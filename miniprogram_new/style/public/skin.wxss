@@ -7,11 +7,11 @@ page {
 
 	/*#### 父组件日历颜色定义*/
 	/* 整体颜色 */
-	--calendarPageColor: #fff;
+	--calendarPageColor: #F0F4FF;
 	/* 加重颜色*/
-	--calendarMainColor: #333 !important;
+	--calendarMainColor: #1F6ED4 !important;
 	/* 加重的亮颜色 用于选中日期的数据小圆点 */
-	--calendarLightColor: #333;
+	--calendarLightColor: #A2C7FF;
 }
 
 .bg-admin {
@@ -111,3 +111,4 @@ page {
 .comm-list-box {
 	padding: 20rpx 30rpx 30rpx 30rpx;
 }
+/*#### 日历组件颜色定义*/

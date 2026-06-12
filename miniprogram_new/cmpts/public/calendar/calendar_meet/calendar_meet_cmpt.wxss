@@ -1,13 +1,4 @@
-page {
-
-	/*#### 父组件日历颜色定义*/
-	/* 整体颜色 */
-	--calendarPageColor: #F0F4FF;
-	/* 加重颜色*/
-	--calendarMainColor: #1F6ED4;
-	/* 加重的亮颜色 用于选中日期的数据小圆点 */
-	--calendarLightColor: #A2C7FF;
-}
+/* 日历颜色变量已移至全局 skin.wxss */
 
 .calendar-text {
 	color: var(--calendarMainColor) !important
