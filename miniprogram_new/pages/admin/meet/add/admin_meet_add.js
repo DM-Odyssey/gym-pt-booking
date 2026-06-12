@@ -16,7 +16,6 @@ Component({
     },
     url(e) { router.url(e, this); },
     bindCateIdSelect(e) { this.setData({ formCateId: e.detail }); if (e.detail != 1) this.setData({ formPhone: '', formPassword: '' }); },
-    bindCancelChange(e) { this.setData({ formCancelSet: e.detail.value }); },
     bindJoinFormsCmpt(e) { this.setData({ formJoinForms: e.detail }); },
 
     bindFormAddSubmit: async function() {
