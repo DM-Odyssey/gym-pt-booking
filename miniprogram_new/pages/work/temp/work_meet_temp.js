@@ -1,10 +1,10 @@
-const router = require('../../../../utils/router.js');
-const cloud = require('../../../../utils/cloud.js');
-const toast = require('../../../../utils/toast.js');
-const wk = require('../../../../biz/work.js');
-const adminMeet = require('../../../../biz/admin_meet.js');
-const list = require('../../../../utils/list.js');
-const dom = require('../../../../utils/dom.js');
+const router = require('../../../utils/router.js');
+const cloud = require('../../../utils/cloud.js');
+const toast = require('../../../utils/toast.js');
+const wk = require('../../../biz/work.js');
+const adminMeet = require('../../../biz/admin_meet.js');
+const list = require('../../../utils/list.js');
+const dom = require('../../../utils/dom.js');
 
 Component({
   data: {
