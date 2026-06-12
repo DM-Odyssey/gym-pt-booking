@@ -3,7 +3,7 @@
 <view catchtouchmove="true" style="z-index: 9999999999;" class="main-poster modal bottom-modal {{show?'show':''}}">
 	<view class="dialog">
 		<view class="poster-img" wx:if="{{isCreate}}">
-			<image bindtap="url" data-type="img" data-url="{{img}}" show-menu-by-longpress="{{true}}" wx:if="{{isLoad}}" mode="widthFix" src="{{img}}" class="shadow loading"></image>
+			<image bindtap="url" data-type="img" data-url="{{img}}" show-menu-by-longpress="{{true}}" wx:if="{{isLoad}}" mode="widthFix" src="{{img}}" class="poster-pic shadow loading"></image>
 
 			<view wx:else class="load loading text-l"></view>
 
@@ -13,16 +13,16 @@
 		<view class="poster-share">
 			<button class="item item-share clearbtn" open-type="share" data-img="{{img}}">
 				<view class="pic">
-					<image src="images/wechat.png" />
+					<image class="pic-img" src="images/wechat.png" />
 				</view>
-				<text>转发给朋友</text>
+				<text class="share-text">转发给朋友</text>
 			</button>
 
 			<view wx:if="{{doPoster}}" class="item" bindtap="bindPosterTap" style="padding-top:12rpx">
 				<view class="pic">
 					<image class='friend' src="images/friend.png" />
 				</view>
-				<text>生成海报</text>
+				<text class="item-text">生成海报</text>
 			</view>
 		</view>
 

@@ -49,7 +49,7 @@
 	margin-right: 15rpx; 
 }
 
-.form-group .field-oprt>view{
+.form-group .field-oprt .field-btn{
 	width:70rpx;
 	height:55rpx;
 	display: flex;

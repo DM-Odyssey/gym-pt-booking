@@ -81,7 +81,17 @@ async function pwd(work, params) {
 
 async function meetDetail(work, params) {
     const meet = await db.getOne('meet', { _id: work._id })
-    return success(meet || null)
+    if (!meet) return success(null)
+
+    // 读取排期数据，对齐 admin meet_detail 返回 MEET_DAYS_SET
+    const today = timestamp2Time(time(), 'Y-M-D')
+    const dayList = await db.getAll('day', {
+        DAY_MEET_ID: work._id,
+        day: db.cmd().gte(today)
+    }, { orderBy: { field: 'day', direction: 'asc' }, limit: 365 })
+
+    meet.MEET_DAYS_SET = (dayList && dayList.length > 0) ? dayList : (meet.MEET_DAYS || [])
+    return success(meet)
 }
 
 async function meetEdit(work, params) {
