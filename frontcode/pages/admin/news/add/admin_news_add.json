@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "cmpt-img-upload": "/components/public/image/img_upload_cmpt",
+    "cmpt-form-show": "/components/public/form/form_show/form_show_cmpt"
+  },
+  "navigationBarBackgroundColor": "#2499f2",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
+}

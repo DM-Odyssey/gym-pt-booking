@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "cmpt-detail": "/cmpts/biz/detail/detail_cmpt",
-    "cmpt-form-show": "/cmpts/public/form/form_show/form_show_cmpt"
-  },
-  "enablePullDownRefresh": true,
-  "navigationBarTitleText": "预约确认"
-}

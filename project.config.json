@@ -1,6 +1,6 @@
 {
-	"miniprogramRoot": "miniprogram_new/",
-	"cloudfunctionRoot": "cloudfunctions_new/",
+	"miniprogramRoot": "frontcode/",
+	"cloudfunctionRoot": "backcode/",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -53,7 +53,7 @@
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
 	"compileType": "miniprogram",
-	"srcMiniprogramRoot": "miniprogram_new/",
+	"srcMiniprogramRoot": "frontcode/",
 	"packOptions": {
 		"ignore": [],
 		"include": []

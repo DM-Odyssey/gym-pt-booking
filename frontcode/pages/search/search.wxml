@@ -1,0 +1,2 @@
+<import src="/templates/project/search_tpl.wxml" />
+<template is="searchTpl" data="{{search,hisKeys}}" />

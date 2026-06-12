@@ -1,0 +1,4 @@
+<wxs src="/templates/wxs/tools.wxs" module="tools" />
+<block wx:if="{{isAdmin}}">
+  <include src="admin_meet_time_form_tpl.wxml" />
+</block>
