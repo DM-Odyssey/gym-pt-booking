@@ -148,13 +148,19 @@ const getSelectOptions = (str) => {
       const parts = item.split('=');
       const val = parts[0];
       const label = (parts[1] || '').split('|')[0];
-      return { value: val, label };
+      return { val, label };
     });
   }
   return str.split('|').map((item) => {
     const [value, label] = item.split(':');
-    return { value: value, label };
+    return { val: value, label };
   });
+};
+
+/** 数组元素交换位置 */
+const arraySwap = (arr, index1, index2) => {
+  arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+  return arr;
 };
 
 module.exports = {
@@ -179,5 +185,6 @@ module.exports = {
   arrAddDel,
   padLeft,
   padRight,
+  arraySwap,
   getSelectOptions,
 };

@@ -15,6 +15,7 @@ Component({
 			type: Array,
 			value: [],
 			observer: function(newVal) {
+				// 运行时父组件更新 fields 时同步到 data
 				if (newVal && newVal.length > 0) this.setData({ fields: newVal });
 			},
 		},
@@ -32,7 +33,15 @@ Component({
 	 */
 	lifetimes: {
 		attached: function () {
-
+			// 防御：组件初次创建时 observer 可能在 created 阶段触发，
+			// 彼时 setData 不可用导致 data.fields 未同步，在 attached 补同步
+			var propFields = this.properties.fields;
+			if (propFields && propFields.length > 0) {
+				var dataFields = this.data.fields;
+				if (!dataFields || dataFields.length === 0) {
+					this.setData({ fields: propFields });
+				}
+			}
 		},
 
 		ready: function () {
@@ -77,7 +86,7 @@ Component({
 
 		bindEditTap: function (e) {
 			let idx = pageHelper.dataset(e, 'idx');
-			let edit = pageHelper.dataset(e, 'edit'); 
+			let edit = pageHelper.dataset(e, 'edit');
 			if (!edit) {
 				return pageHelper.showNoneToast('该字段不可编辑和删除');
 			}

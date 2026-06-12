@@ -331,7 +331,7 @@ const transCoverTempPics = async (imgList, dir, id, route) => {
 
   try {
     const res = await callCloudSubmit(route, { id, imgList });
-    return res.data.urls;
+    return res.data?.urls;
   } catch (err) {
     console.error(err);
   }

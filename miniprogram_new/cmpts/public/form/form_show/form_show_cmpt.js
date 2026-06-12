@@ -392,7 +392,7 @@ Component({
 				let opt = {
 					title: '手机验证中'
 				};
-				await cloudHelper.callCloudSumbit('passport/phone', params, opt).then(res => {
+				await cloudHelper.callCloudSubmit('passport/phone', params, opt).then(res => {
 					let phone = res.data;
 					if (!phone || phone.length < 11)
 						wx.showToast({

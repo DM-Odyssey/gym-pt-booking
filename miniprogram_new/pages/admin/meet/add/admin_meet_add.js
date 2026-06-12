@@ -26,8 +26,8 @@ Component({
       if (data.formDaysSet.length <= 0) { router.anchor('formDaysSet', this); return form.formHint(this, 'formDaysSet', '请配置「可预约时段」'); }
       data = validate.check(data, adminMeet.CHECK_FORM, this);
       if (!data) return;
-      data.daysSet = data.formDaysSet;
-      data.joinForms = data.formJoinForms;
+      data.daysSet = this.data.formDaysSet;
+      data.joinForms = this.data.formJoinForms;
       data.cateName = adminMeet.getCateName(data.cateId);
       if (data.cateId == 1 && data.phone && !data.password) { router.anchor('formPassword', this); return form.formHint(this, 'formPassword', '请设置登陆密码'); }
       var forms = this.selectComponent('#cmpt-form')?.getForms?.(true);

@@ -27,7 +27,9 @@ Component({
         isLoad: true, formTitle: meetData.MEET_TITLE, formCateId: meetData.MEET_CATE_ID,
         formOrder: meetData.MEET_ORDER, formCancelSet: String(meetData.MEET_CANCEL_SET != null ? meetData.MEET_CANCEL_SET : "1"),
         formPhone: meetData.MEET_PHONE, formForms: Array.isArray(meetData.MEET_FORMS) ? meetData.MEET_FORMS : [],
-        formDaysSet: meetData.MEET_DAYS_SET || [], formJoinForms: meetData.MEET_JOIN_FORMS || [],
+        formDaysSet: meetData.MEET_DAYS_SET || [],
+        formJoinForms: (meetData.MEET_JOIN_FORMS && meetData.MEET_JOIN_FORMS.length > 0)
+          ? meetData.MEET_JOIN_FORMS : adminMeet.initFormData().formJoinForms,
       });
     },
     url(e) { router.url(e, this); },
@@ -42,7 +44,7 @@ Component({
       if (data.formDaysSet.length <= 0) { router.anchor('formDaysSet', this); return form.formHint(this, 'formDaysSet', '请配置「可预约时段」'); }
       data = validate.check(data, adminMeet.CHECK_FORM, this);
       if (!data) return;
-      data.daysSet = data.formDaysSet; data.joinForms = data.formJoinForms;
+      data.daysSet = this.data.formDaysSet; data.joinForms = this.data.formJoinForms;
       data.cateName = adminMeet.getCateName(data.cateId);
       var forms = this.selectComponent('#cmpt-form')?.getForms?.(true);
       if (!forms) return;
