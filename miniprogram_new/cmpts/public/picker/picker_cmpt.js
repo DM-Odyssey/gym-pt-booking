@@ -263,6 +263,7 @@ Component({
 
 		// 选中值 
 		selected: function (val) {
+			let options = this.data.options;
 			
 			let labelKey = this.data.labelKey;
 			if (this.data.steps == 1) {
