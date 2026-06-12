@@ -7,7 +7,7 @@ const admin = require('../../../../biz/admin.js');
 const adminMeet = require('../../../../biz/admin_meet.js');
 
 Component({
-  data: { isLoad: true, isAdmin: true },
+  data: { isLoad: true, isAdmin: true, formCancelSet: "1" },
   methods: {
     onLoad() {
       if (!admin.isAdmin(this)) return;

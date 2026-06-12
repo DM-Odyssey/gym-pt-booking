@@ -10,7 +10,7 @@ const adminMeet = require('../../../../biz/admin_meet.js');
 const pageInit = require('../../../../utils/page_init.js');
 
 Component({
-  data: { isLoad: false, isEdit: true, isAdmin: true },
+  data: { isLoad: false, isEdit: true, isAdmin: true, formCancelSet: "1" },
   methods: {
     onLoad(options) {
       if (!admin.isAdmin(this)) return;
