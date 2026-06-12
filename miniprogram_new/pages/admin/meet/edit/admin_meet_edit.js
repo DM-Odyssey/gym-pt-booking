@@ -25,7 +25,7 @@ Component({
       if (!meetData) { this.setData({ isLoad: null }); return; }
       this.setData({
         isLoad: true, formTitle: meetData.MEET_TITLE, formCateId: meetData.MEET_CATE_ID,
-        formOrder: meetData.MEET_ORDER, formCancelSet: meetData.MEET_CANCEL_SET,
+        formOrder: meetData.MEET_ORDER, formCancelSet: String(meetData.MEET_CANCEL_SET || "1"),
         formPhone: meetData.MEET_PHONE, formForms: Array.isArray(meetData.MEET_FORMS) ? meetData.MEET_FORMS : [],
         formDaysSet: meetData.MEET_DAYS_SET || [], formJoinForms: meetData.MEET_JOIN_FORMS || [],
       });

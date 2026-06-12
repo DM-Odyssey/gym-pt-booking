@@ -22,7 +22,7 @@
 
 	<view class="form-group" id="formCancelSet">
 		<view class="title must">取消设置</view>
-		<cmpt-picker mark="cancelSet" style="flex:1" item="{{formCancelSet}}" sourceDataStr="0=不可取消,1=随时可取消,2=仅开始前可取消" bind:select="bindCancelSetSelect" />
+		<cmpt-picker mark="cancelSet" style="flex:1" model:item="{{formCancelSet}}" sourceDataStr="0=不可取消,1=随时可取消,2=仅开始前可取消" />
 	</view>
 	<view wx:if="{{formCancelSetFocus}}" class="hint-desc error">{{formCancelSetFocus}}</view>
 
