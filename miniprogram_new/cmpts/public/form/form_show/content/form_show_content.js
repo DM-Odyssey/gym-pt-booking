@@ -1,109 +1,64 @@
 const pageHelper = require('../../../../../utils/index.js');
 
 Page({
+  data: { formContent: [{ type: 'text', val: '' }] },
 
-	/**
-	 * 页面的初始数据
-	 */
-	data: {
-		formContent: [{
-			type: 'text',
-			val: '',
-		}]
-	},
+  onLoad: async function (options) {
+    var parent = pageHelper.getPrevPage(2);
+    if (!parent) return;
+    if (!options || !options.cmptFormName) return;
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: async function (options) {
+    var cmptId = options.cmptId ? '#' + options.cmptId : '';
+    var cmptFormName = options.cmptFormName;
+    var formContent = [];
+    var useParentData = true;
 
-		let parent = pageHelper.getPrevPage(2);
-		if (!parent) return;
+    // Try component first, fall back to parent data
+    if (cmptId) {
+      var cmpt = parent.selectComponent(cmptId);
+      if (cmpt && cmpt.getOneFormVal) {
+        formContent = cmpt.getOneFormVal(cmptFormName);
+        useParentData = false;
+      } else {
+        formContent = parent.data[cmptFormName];
+      }
+    } else {
+      formContent = parent.data[cmptFormName];
+    }
 
-		if (!options) return;
+    if (!formContent || formContent.length === 0) {
+      formContent = [{ type: 'text', val: '' }];
+    }
 
-		if (!options.cmptId || !options.cmptFormName) return;
-		let cmptId = '#' + options.cmptId;
-		let cmptFormName = options.cmptFormName;
+    this.setData({ cmptId: cmptId, cmptFormName: cmptFormName, useParentData: useParentData, formContent: formContent });
 
-		let formContent = parent.selectComponent(cmptId).getOneFormVal(cmptFormName);
+    var curPage = pageHelper.getPrevPage(1);
+    if (curPage && curPage.options && curPage.options.source == 'admin') {
+      wx.setNavigationBarColor({ backgroundColor: '#2499f2', frontColor: '#ffffff' });
+    }
+  },
 
-		if (formContent.length == 0) {
-			formContent = [{ type: 'text', val: '' }];
-		}
+  onReady: function () {},
+  onShow: function () {},
+  onHide: function () {},
+  onUnload: function () {},
+  onPullDownRefresh: async function () {},
 
-		this.setData({
-			cmptId,
-			cmptFormName,
+  model: function (e) { pageHelper.model(this, e); },
+  url: function (e) { pageHelper.url(e, this); },
 
-			formContent
-		});
+  bindSaveTap: function (e) {
+    var formContent = this.selectComponent("#contentEditor").getNodeList();
+    var parent = pageHelper.getPrevPage(2);
+    if (!parent) return;
 
-		let curPage = pageHelper.getPrevPage(1);
-		if (!curPage) return;
-		if (curPage.options && curPage.options.source == 'admin') {
-			wx.setNavigationBarColor({ //管理端顶部
-				backgroundColor: '#2499f2',
-				frontColor: '#ffffff',
-			});
-		}
-
-	},
-
-
-
-
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () { },
-
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: async function () {
-
-	},
-
-	model: function (e) {
-		pageHelper.model(this, e);
-	},
-
-
-	url: function (e) {
-		pageHelper.url(e, this);
-	},
-
-	bindSaveTap: function (e) {
-		// 获取富文本，如果没填写则为[]
-		let formContent = this.selectComponent("#contentEditor").getNodeList();
-
-		let parent = pageHelper.getPrevPage(2);
-		if (!parent) return;
-
-		parent.selectComponent(this.data.cmptId).setOneFormVal(this.data.cmptFormName, formContent);
-
-		wx.navigateBack();
-	}
-})
+    if (this.data.useParentData) {
+      // Write directly to parent page data
+      parent.setData({ [this.data.cmptFormName]: formContent });
+    } else {
+      // Write through cmpt-form-show component
+      parent.selectComponent(this.data.cmptId).setOneFormVal(this.data.cmptFormName, formContent);
+    }
+    wx.navigateBack();
+  }
+});
