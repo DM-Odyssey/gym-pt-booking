@@ -7,12 +7,12 @@ const admin = require('../../../../biz/admin.js');
 const common = require('../../../../biz/common.js');
 
 Component({
-  data: { isLoad: false, NEWS_NAME: '资讯', cateIdOptions: [], dataList: null, sortMenus: [], sortItems: [], search: '' },
+  data: { isLoad: false, NEWS_NAME: '公告', cateIdOptions: [], dataList: null, sortMenus: [], sortItems: [], search: '' },
   methods: {
     onLoad() {
       if (!admin.isAdmin(this)) return;
-      wx.setNavigationBarTitle({ title: '资讯-管理' });
-      this.setData({ NEWS_NAME: '资讯' });
+      wx.setNavigationBarTitle({ title: '公告-管理' });
+      this.setData({ NEWS_NAME: '公告' });
       this._getSearchMenu();
     },
     url(e) { router.url(e, this); },
