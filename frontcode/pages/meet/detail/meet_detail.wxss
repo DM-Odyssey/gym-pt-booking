@@ -14,12 +14,6 @@
   color: #fff; font-size: 36rpx; font-weight: bold;
   text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.4);
 }
-.cover-level {
-  position: absolute; top: 24rpx; right: 24rpx;
-  background: var(--projectColor); color: #fff;
-  padding: 8rpx 24rpx; border-radius: 20rpx; font-size: 24rpx;
-}
-
 /* 简介 */
 .intro-section { width: 100%; padding: 24rpx 0 0; }
 .intro-text {

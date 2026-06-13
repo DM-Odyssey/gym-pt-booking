@@ -10,9 +10,6 @@ const timeHelper = require('../utils/time.js');
 
 // Constants (from old project_setting.js)
 const MEET_FIELDS = [
-  { mark: 'level', title: '星级', type: 'select',
-    selectOptions: [{label:'1星',val:'1'},{label:'2星',val:'2'},{label:'3星',val:'3'},{label:'4星',val:'4'},{label:'5星',val:'5'},{label:'6星',val:'6'}],
-    def: '1', must: true },
   { mark: 'spec', title: '特点标签', type: 'tag', must: true, max: 30 },
   { mark: 'cover', title: '封面图片', type: 'image', min: 1, max: 1, must: true },
   { mark: 'desc', title: '简介', type: 'textarea', max: 60, must: true },

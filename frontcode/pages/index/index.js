@@ -15,12 +15,6 @@ Component({
     isLoad: false,
   },
 
-  lifetimes: {
-    attached() {
-      // Component 生命周期
-    },
-  },
-
   pageLifetimes: {
     show() {
       if (typeof this.getTabBar === 'function' && this.getTabBar()) {

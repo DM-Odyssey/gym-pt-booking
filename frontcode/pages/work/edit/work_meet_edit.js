@@ -21,6 +21,7 @@ Component({
       var id = this.data.id; if (!id) return;
       var meetData = await cloud.callCloudData('work/meet_detail', { id: id }, { title: 'bar' });
       if (!meetData) { this.setData({ isLoad: null }); return; }
+      const costMode = meetData.MEET_COST_MODE != null ? meetData.MEET_COST_MODE : 0;
       this.setData({
         isLoad: true, formTitle: meetData.MEET_TITLE, formCateId: meetData.MEET_CATE_ID,
         formOrder: meetData.MEET_ORDER, formCancelSet: String(meetData.MEET_CANCEL_SET != null ? meetData.MEET_CANCEL_SET : "1"),
@@ -28,11 +29,13 @@ Component({
         formDaysSet: meetData.MEET_DAYS_SET || [],
         formJoinForms: (meetData.MEET_JOIN_FORMS && meetData.MEET_JOIN_FORMS.length > 0)
           ? meetData.MEET_JOIN_FORMS : adminMeet.initFormData().formJoinForms,
+        formCostMode: costMode,
       });
     },
     url(e) { router.url(e, this); },
     bindCateIdSelect(e) { this.setData({ formCateId: e.detail }); if (e.detail != 1) this.setData({ formPhone: '', formPassword: '' }); },
     bindCancelSetSelect(e) { if (e.detail !== '' && e.detail !== undefined && e.detail !== this.data.formCancelSet) this.setData({ formCancelSet: e.detail }); },
+    bindCostModeSelect(e) { if (e.detail !== '' && e.detail !== undefined) this.setData({ formCostMode: e.detail }); },
     bindJoinFormsCmpt(e) { this.setData({ formJoinForms: e.detail }); },
 
     bindFormEditSubmit: async function() {

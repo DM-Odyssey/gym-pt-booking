@@ -1,71 +1,100 @@
-<view class="main">
-  <view class="up">
-    <image mode="aspectFill" src="/images/default_index_bg.png" />
-  </view>
-  <view class="down">
-    <view class="menu card-project shadow-project">
-      <view bindtap="url" data-url="/pages/meet/list/meet_list?id=1" class="item">
-        <view class="item-inner">
-          <view class="img shadow">
-            <image src="/images/menu/man.png" />
-          </view>
-          <view class="title">私教预约</view>
-        </view>
-      </view>
-
-      <view bindtap="url" data-url="/pages/meet/list/meet_list?id=2" class="item">
-        <view class="item-inner">
-          <view class="img shadow">
-            <image src="/images/menu/project.png" />
-          </view>
-          <view class="title">课程预约</view>
-        </view>
-      </view>
-
-      <view bindtap="url" data-type="relaunch" data-url="/pages/meet/calendar/meet_calendar" class="item">
-        <view class="item-inner">
-          <view class="img shadow">
-            <image src="/images/menu/day.png" />
-          </view>
-          <view class="title">课程日历</view>
-        </view>
-      </view>
-
+<view class="home-page">
+  <!-- 1. Hero -->
+  <view class="hero">
+    <view class="hero-bg">
+      <view class="hero-circle c1"></view>
+      <view class="hero-circle c2"></view>
+      <view class="hero-rect r1"></view>
     </view>
-
-    <!-- 教练团队 -->
-    <view wx:if="{{coachList.length>0}}" class="home-section">
-      <view class="home-section-title">教练团队</view>
-      <view class="coach-scroll">
-        <view class="coach-card" wx:for="{{coachList}}" wx:key="id" bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{item.id}}">
-          <image class="coach-avatar" src="{{item.pic}}" mode="aspectFill" />
-          <text class="coach-name">{{item.title}}</text>
-        </view>
-      </view>
-    </view>
-
-    <!-- 最新公告 -->
-    <view class="home-section">
-      <view class="home-section-title">最新公告</view>
-      <view wx:if="{{!dataList}}" class="load loading text-l load-project" style="padding:40rpx 0"></view>
-      <view wx:else class="home-list-box">
-        <import src="/templates/public/base_list_tpl.wxml" />
-        <template is="baseListTpl" data="{{dataList,listMode:'leftbig1'}}" />
-      </view>
-    </view>
-
-    <!-- 推荐课程 -->
-    <view wx:if="{{courseList.length>0}}" class="home-section">
-      <view class="home-section-title">推荐课程</view>
-      <view class="course-list">
-        <view class="course-item" wx:for="{{courseList}}" wx:key="id" bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{item.id}}">
-          <image class="course-pic" src="{{item.pic}}" mode="aspectFill" />
-          <view class="course-info">
-            <text class="course-title">{{item.title}}</text>
-            <text class="course-desc">{{item.desc}}</text>
-          </view>
-        </view>
-      </view>
+    <view class="hero-content">
+      <text class="hero-title">突破极限</text>
+      <text class="hero-sub">PUSH YOUR LIMITS</text>
+      <view class="hero-divider"></view>
+      <text class="hero-desc">专业私教 · 精品课程 · 科学训练</text>
     </view>
   </view>
+
+  <!-- 2. 快捷入口 -->
+  <view class="menu-section">
+    <view class="menu-card" bindtap="url" data-url="/pages/meet/list/meet_list?id=1">
+      <view class="menu-icon-bg bg-coach"><image src="/images/menu/man.png" mode="aspectFit" /></view>
+      <text class="menu-title">私教预约</text>
+      <text class="menu-en">PERSONAL</text>
+    </view>
+    <view class="menu-card" bindtap="url" data-url="/pages/meet/list/meet_list?id=2">
+      <view class="menu-icon-bg bg-course"><image src="/images/menu/project.png" mode="aspectFit" /></view>
+      <text class="menu-title">课程预约</text>
+      <text class="menu-en">COURSE</text>
+    </view>
+    <view class="menu-card" bindtap="url" data-type="relaunch" data-url="/pages/meet/calendar/meet_calendar">
+      <view class="menu-icon-bg bg-calendar"><image src="/images/menu/day.png" mode="aspectFit" /></view>
+      <text class="menu-title">课程日历</text>
+      <text class="menu-en">CALENDAR</text>
+    </view>
+  </view>
+
+  <!-- 3. 教练团队 -->
+  <view wx:if="{{coachList.length>0}}">
+    <view class="section-head">
+      <view class="section-bar"></view>
+      <text class="section-title">教练团队</text>
+      <text class="section-more" bindtap="url" data-url="/pages/meet/list/meet_list?id=1">查看全部 ›</text>
+    </view>
+    <scroll-view scroll-x class="coach-scroll" enable-flex="{{true}}">
+      <view class="coach-mini" wx:for="{{coachList}}" wx:key="id" bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{item.id}}">
+        <image class="coach-mini-avatar" src="{{item.pic}}" mode="aspectFill" />
+        <text class="coach-mini-name">{{item.title}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 4. 最新公告 -->
+  <view wx:if="{{dataList && dataList.length>0}}">
+    <view class="section-head">
+      <view class="section-bar"></view>
+      <text class="section-title">最新公告</text>
+      <text class="section-more" bindtap="url" data-url="/pages/news/list/news_list">查看全部 ›</text>
+    </view>
+    <view class="course-list">
+      <view class="course-card" wx:for="{{dataList}}" wx:key="id" bindtap="url" data-url="/pages/news/detail/news_detail?id={{item.id}}">
+        <view class="course-img-box">
+          <image class="course-img" src="{{item.pic}}" mode="aspectFill" />
+          <view class="course-img-cover"></view>
+          <view wx:if="{{index==0}}" class="course-hot">NEW</view>
+          <text class="course-cate">{{item.ext}}</text>
+        </view>
+        <view class="course-body">
+          <text class="course-name">{{item.title}}</text>
+          <text class="course-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{!dataList}}" class="load loading text-l load-project" style="padding:60rpx 0"></view>
+
+  <!-- 5. 推荐课程 -->
+  <view wx:if="{{courseList.length>0}}">
+    <view class="section-head">
+      <view class="section-bar"></view>
+      <text class="section-title">推荐课程</text>
+      <text class="section-more" bindtap="url" data-url="/pages/meet/list/meet_list?id=2">查看全部 ›</text>
+    </view>
+    <view class="course-list">
+      <view class="course-card" wx:for="{{courseList}}" wx:key="id" bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{item.id}}">
+        <view class="course-img-box">
+          <image class="course-img" src="{{item.pic}}" mode="aspectFill" />
+          <view class="course-img-cover"></view>
+          <view wx:if="{{index==0}}" class="course-hot">HOT</view>
+          <text class="course-cate">{{item.cate||'课程'}}</text>
+        </view>
+        <view class="course-body">
+          <text class="course-name">{{item.title}}</text>
+          <text class="course-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="height: 160rpx;"></view>
 </view>

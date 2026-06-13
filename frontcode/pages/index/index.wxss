@@ -1,187 +1,74 @@
-@import "/style/public/comm_box_list.wxss";
+page { background: #F5F7FA; padding: 0; }
 
-.main {
-  padding: 0 0 140rpx;
-}
+/* 避开全局 .main 的 24rpx padding */
+.home-page { padding: 0; }
 
-.up {
-  width: 100%;
-}
+/* ========================================
+   1. Hero
+   ======================================== */
+.hero { width: 100%; height: 720rpx; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(160deg, #1A1A2E 0%, #0F172A 60%, #1A2A1A 100%); }
+.hero-circle.c1 { width: 420rpx; height: 420rpx; top: -120rpx; right: -80rpx; border-radius: 50%; position: absolute; background: radial-gradient(circle, rgba(74,222,128,0.2) 0%, transparent 70%); }
+.hero-circle.c2 { width: 280rpx; height: 280rpx; bottom: 120rpx; left: -60rpx; border-radius: 50%; position: absolute; background: radial-gradient(circle, rgba(74,222,128,0.12) 0%, transparent 70%); }
+.hero-rect { position: absolute; top: 160rpx; right: 60rpx; width: 100rpx; height: 100rpx; border: 4rpx solid rgba(74,222,128,0.18); border-radius: 24rpx; transform: rotate(25deg); }
+.hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; padding: 140rpx 40rpx 0; }
+.hero-title { font-size: 80rpx; font-weight: 900; color: #fff; letter-spacing: 12rpx; line-height: 1.1; }
+.hero-sub { font-size: 32rpx; font-weight: 300; color: rgba(255,255,255,0.55); letter-spacing: 16rpx; margin-top: 16rpx; }
+.hero-divider { width: 100rpx; height: 8rpx; background: linear-gradient(90deg, #4ADE80, #22C55E); border-radius: 4rpx; margin: 36rpx 0; }
+.hero-desc { font-size: 28rpx; color: rgba(255,255,255,0.4); letter-spacing: 6rpx; }
 
-.up image {
-  width: 100%;
-  height: 500rpx;
-}
+/* ========================================
+   2. 快捷入口
+   ======================================== */
+.menu-section { display: flex; padding: 0 4rpx; margin-top: -80rpx; position: relative; z-index: 10; }
+.menu-card { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 40rpx 0 32rpx; background: #fff; border-radius: 24rpx; box-shadow: 0 12rpx 40rpx rgba(0,0,0,0.06); margin: 0 4rpx; }
+.menu-card:active { transform: scale(0.96); transition: transform 0.15s; }
+.menu-icon-bg { width: 120rpx; height: 120rpx; border-radius: 34rpx; display: flex; align-items: center; justify-content: center; margin-bottom: 20rpx; }
+.menu-icon-bg image { width: 68rpx; height: 68rpx; }
+.bg-coach { background: linear-gradient(135deg, #4ADE80, #22C55E); }
+.bg-course { background: linear-gradient(135deg, #F97316, #FB923C); }
+.bg-calendar { background: linear-gradient(135deg, #3B82F6, #60A5FA); }
+.menu-title { font-size: 30rpx; font-weight: 700; color: #1A1A2E; margin-bottom: 6rpx; }
+.menu-en { font-size: 22rpx; font-weight: 500; color: #9CA3AF; letter-spacing: 3rpx; }
 
-.down {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 24rpx;
-  margin-top: -130rpx;
-  z-index: 9999;
-}
+/* ========================================
+   区块标题
+   ======================================== */
+.section-head { display: flex; align-items: center; padding: 0 12rpx; margin: 52rpx 0 24rpx; }
+.section-bar { width: 8rpx; height: 40rpx; background: linear-gradient(180deg, #4ADE80, #22C55E); border-radius: 4rpx; margin-right: 14rpx; }
+.section-title { font-size: 36rpx; font-weight: 700; color: #1A1A2E; flex: 1; }
+.section-more { font-size: 26rpx; color: #9CA3AF; }
 
-.menu {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #fff;
-  padding: 24rpx 10rpx;
-  border-radius: 16rpx;
-}
+/* ========================================
+   3. 教练团队 — 平铺横滑
+   ======================================== */
+.coach-scroll { white-space: nowrap; padding: 0 4rpx 0; }
+.coach-mini { display: inline-flex; flex-direction: column; align-items: center; width: 170rpx; margin-right: 16rpx; background: #fff; border-radius: 24rpx; padding: 24rpx 10rpx 20rpx; box-shadow: 0 6rpx 20rpx rgba(0,0,0,0.04); flex-shrink: 0; }
+.coach-mini:active { transform: scale(0.95); }
+.coach-mini-avatar { width: 110rpx; height: 110rpx; border-radius: 50%; background: #E5E7EB; border: 4rpx solid #4ADE80; }
+.coach-mini-name { margin-top: 14rpx; font-size: 26rpx; font-weight: 600; color: #1A1A2E; max-width: 140rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-.menu .item {
-  width: 33.3%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 180rpx;
-}
+/* ========================================
+   4. 最新公告 — 平铺列表
+   ======================================== */
+.news-list { padding: 0 4rpx; }
+.news-item { display: flex; align-items: center; padding: 28rpx 24rpx; background: #fff; border-radius: 16rpx; margin-bottom: 8rpx; box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.03); }
+.news-item:active { background: #F9FAFB; }
+.news-dot { width: 12rpx; height: 12rpx; border-radius: 50%; background: #4ADE80; flex-shrink: 0; margin-right: 20rpx; }
+.news-item-title { flex: 1; font-size: 30rpx; color: #1A1A2E; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.news-item-ext { font-size: 24rpx; color: #9CA3AF; margin-left: 20rpx; flex-shrink: 0; }
 
-.menu .item .item-inner {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu .item-inner .img {
-  width: 105rpx;
-  height: 105rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--projectColor);
-  border-radius: 24rpx;
-}
-
-.menu .item-inner .img image {
-  width: 72rpx;
-  height: 72rpx;
-}
-
-.menu .item-inner .title {
-  margin-top: 8rpx;
-  font-size: 26rpx;
-  color: #1A1A2E;
-}
-
-/* ===== 统一分区容器 ===== */
-.home-section {
-  width: 100%;
-  margin-top: 24rpx;
-  padding: 0 6rpx;
-}
-
-.home-section-title {
-  font-size: 28rpx;
-  font-weight: 600;
-  color: #1A1A2E;
-  padding-bottom: 16rpx;
-}
-
-/* 公告列表 */
-.home-list-box {
-  width: 100%;
-}
-
-.home-list-box .comm-list-box {
-  padding: 0;
-  overflow: unset;
-}
-
-.comm-list-box .item-leftbig1 .leftbig-left {
-  border-radius: 10rpx!important;
-  border-top-right-radius: 30rpx!important;
-  border-bottom-left-radius: 30rpx!important;
-}
-
-/* 教练团队卡片 */
-.coach-scroll {
-  width: 100%;
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding-bottom: 8rpx;
-}
-
-.coach-card {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  width: 160rpx;
-  background: #fff;
-  border-radius: 16rpx;
-  padding: 20rpx 10rpx;
-  margin-right: 16rpx;
-  box-shadow: 0 4px 12px rgba(26,26,46,0.05);
-  flex-shrink: 0;
-}
-
-.coach-avatar {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  background: #F5F7FA;
-}
-
-.coach-name {
-  margin-top: 12rpx;
-  font-size: 24rpx;
-  font-weight: 600;
-  color: #1A1A2E;
-  text-align: center;
-  max-width: 140rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* 课程列表 */
-.course-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.course-item {
-  display: flex;
-  background: #fff;
-  border-radius: 16rpx;
-  padding: 20rpx;
-  margin-bottom: 16rpx;
-  box-shadow: 0 4px 12px rgba(26,26,46,0.05);
-}
-
-.course-pic {
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 12rpx;
-  flex-shrink: 0;
-  background: #F5F7FA;
-}
-
-.course-info {
-  flex: 1;
-  margin-left: 20rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.course-title {
-  font-size: 28rpx;
-  font-weight: 600;
-  color: #1A1A2E;
-  margin-bottom: 8rpx;
-}
-
-.course-desc {
-  font-size: 24rpx;
-  color: #8C939D;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
+/* ========================================
+   5. 推荐课程
+   ======================================== */
+.course-list { padding: 0 4rpx; }
+.course-card { display: flex; background: #fff; border-radius: 20rpx; margin-bottom: 12rpx; overflow: hidden; box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.04); }
+.course-card:active { transform: scale(0.98); }
+.course-img-box { width: 270rpx; height: 220rpx; position: relative; flex-shrink: 0; overflow: hidden; }
+.course-img { width: 100%; height: 100%; }
+.course-img-cover { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.3)); }
+.course-hot { position: absolute; top: 14rpx; right: 14rpx; font-size: 20rpx; font-weight: 700; color: #fff; background: #EF4444; padding: 6rpx 16rpx; border-radius: 8rpx; }
+.course-cate { position: absolute; bottom: 12rpx; left: 14rpx; font-size: 22rpx; color: #fff; background: rgba(0,0,0,0.45); padding: 4rpx 14rpx; border-radius: 8rpx; }
+.course-body { flex: 1; padding: 28rpx 24rpx; display: flex; flex-direction: column; justify-content: center; }
+.course-name { font-size: 32rpx; font-weight: 700; color: #1A1A2E; margin-bottom: 10rpx; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.course-desc { font-size: 26rpx; color: #8C939D; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }

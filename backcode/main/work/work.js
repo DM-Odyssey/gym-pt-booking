@@ -19,7 +19,7 @@ async function login(params) {
     const { phone, pwd: password } = vResult.data
     const where = { MEET_PHONE: phone, MEET_STATUS: 1 }
     const meet = await db.getOne('meet', where)
-    if (!meet) return fail(CODE.WORK_ERROR, '账号不存在或已停用')
+    if (!meet) return fail(CODE.LOGIC, '账号或密码错误')
 
     const storedPwd = meet.MEET_PASSWORD
     let pwdOk = false
@@ -29,7 +29,7 @@ async function login(params) {
         const crypto = require('crypto')
         pwdOk = storedPwd === crypto.createHash('md5').update(password).digest('hex')
     }
-    if (!pwdOk) return fail(CODE.WORK_ERROR, '账号不存在或已停用')
+    if (!pwdOk) return fail(CODE.LOGIC, '账号或密码错误')
 
     const token = genRandomString(32)
     const tokenTime = time()
@@ -106,18 +106,20 @@ async function meetEdit(work, params) {
         phone: 'phone|string|default:""',
         password: 'password|string',
         forms: 'forms|array|default:[]',
-        joinForms: 'joinForms|array|default:[]'
+        joinForms: 'joinForms|array|default:[]',
+        costMode: 'costMode|int|default:0'
     })
     if (vResult.err) return vResult.err
 
-    const { id, title, cateId, cateName, order, cancelSet, daysSet, phone, password, forms, joinForms } = vResult.data
+    const { id, title, cateId, cateName, order, cancelSet, daysSet, phone, password, forms, joinForms, costMode } = vResult.data
     if (id !== work._id.toString()) return fail(CODE.LOGIC, '只能编辑自己的课程')
 
     const data = {
         MEET_TITLE: title, MEET_CATE_ID: cateId, MEET_CATE_NAME: cateName,
         MEET_ORDER: order, MEET_CANCEL_SET: cancelSet,
         MEET_DAYS: daysSet, MEET_FORMS: forms, MEET_JOIN_FORMS: joinForms,
-        MEET_OBJ: forms2Obj(forms)
+        MEET_OBJ: forms2Obj(forms),
+        MEET_COST_MODE: costMode || 0
     }
     if (phone) data.MEET_PHONE = phone
     if (password) data.MEET_PASSWORD = await bcrypt.hash(password, 10)

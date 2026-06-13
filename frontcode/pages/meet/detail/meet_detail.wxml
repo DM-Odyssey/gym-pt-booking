@@ -7,7 +7,6 @@
     <view class="meet-cover">
       <image mode="aspectFill" src="{{meet.MEET_OBJ.cover[0]}}" wx:if="{{meet.MEET_OBJ.cover && meet.MEET_OBJ.cover.length}}" />
       <view class="cover-title">{{meet.MEET_TITLE}}</view>
-      <view class="cover-level" wx:if="{{meet.MEET_OBJ.level}}">{{meet.MEET_OBJ.level}}星</view>
     </view>
 
     <!-- 2. 简介 -->

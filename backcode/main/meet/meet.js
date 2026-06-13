@@ -34,7 +34,7 @@ async function getMeetList(openId, params) {
             type: 'meet',
             id: item._id,
             MEET_OBJ: {
-                level: '', spec: '', cover: [], desc: '', content: [],
+                spec: '', cover: [], desc: '', content: [],
                 ...(item.MEET_OBJ || {})
             }
         }))
