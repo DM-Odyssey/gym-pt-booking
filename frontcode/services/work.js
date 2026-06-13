@@ -24,7 +24,8 @@ const workLogin = async (that, phone, pwd) => {
     if (res?.data?.name) cache.set(constants.CACHE_WORK, res.data, constants.WORK_TOKEN_EXPIRE);
     wx.reLaunch({ url: '/pages/work/home/work_home' });
   } catch (e) {
-    console.error(e);
+    if (e && e.msg) wx.showToast({ title: e.msg, icon: 'none' });
+    else wx.showToast({ title: '账号或密码错误', icon: 'none' });
   }
 };
 
@@ -48,7 +49,7 @@ const getWorkId = () => {
 
 /** 教练登录状态检查 */
 const isWork = (that) => {
-  wx.setNavigationBarColor({ backgroundColor: '#1C9399', frontColor: '#ffffff' });
+  wx.setNavigationBarColor({ backgroundColor: '#4ADE80', frontColor: '#ffffff' });
 
   const work = cache.get(constants.CACHE_WORK);
   if (!work) {

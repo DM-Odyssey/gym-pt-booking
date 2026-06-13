@@ -22,5 +22,5 @@
     </view>
   </view>
 
-  <cmpt-detail mode="mode1" topBtnShow="{{topBtnShow}}" oid="{{news._id}}" cate="{{news.NEWS_CATE_NAME}}" title="{{news.NEWS_TITLE}}" cover="{{news.NEWS_PIC[0]}}" desc="查看详情" bg="#FED202" color="red"></cmpt-detail>
+  <cmpt-detail mode="mode1" topBtnShow="{{topBtnShow}}" oid="{{news._id}}" cate="{{news.NEWS_CATE_NAME}}" title="{{news.NEWS_TITLE}}" cover="{{news.NEWS_PIC[0]}}" desc="查看详情" bg="#F97316" color="red"></cmpt-detail>
 </block>

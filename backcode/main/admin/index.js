@@ -66,8 +66,6 @@ const ROUTES = {
     'admin/meet_detail':            [meet.getMeetDetail],
     'admin/meet_edit':              [meet.editMeet],
     'admin/meet_del':               [meet.delMeet],
-    'admin/meet_sort':              [meet.sortMeet],
-    'admin/meet_vouch':             [meet.vouchMeet],
     'admin/meet_status':            [meet.statusMeet],
     'admin/meet_update_forms':      [meet.updateMeetForms],
     'admin/meet_day_list':          [meet.getDayList],

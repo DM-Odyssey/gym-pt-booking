@@ -47,7 +47,7 @@
 }
 
 .modal-bar .modal-bar-comfirm {
-	color: #576B95;
+	color: #1A1A2E;
 	border-left: 1rpx solid #ccc;
 }
 

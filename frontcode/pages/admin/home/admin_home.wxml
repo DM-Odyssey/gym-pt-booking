@@ -16,13 +16,13 @@
   </view>
 
   <view class="bar bg-white solid-bottom margin-top-s">
-    <view class="action"><text class="icon-title"></text>功能管理</view>
+    <view class="action"><text class="icon-title"></text>管理功能</view>
   </view>
 
   <view class="comm-list grid col-3">
-    <view class="item" bindtap="url" data-url="/pages/admin/user/list/admin_user_list"><text class="icon-group_fill text-green"></text><text class="text-black">用户管理</text></view>
+    <view class="item" bindtap="url" data-url="/pages/admin/user/list/admin_user_list"><text class="icon-group_fill text-green"></text><text class="text-black">学员管理</text></view>
     <view class="item" bindtap="url" data-url="/pages/admin/news/list/admin_news_list"><text class="icon-form text-darkgreen"></text><text class="text-black">公告管理</text></view>
-    <view class="item" bindtap="url" data-url="/pages/admin/meet/list/admin_meet_list"><text class="icon-friend text-blue"></text><text class="text-black">教练&预约管理</text></view>
+    <view class="item" bindtap="url" data-url="/pages/admin/meet/list/admin_meet_list"><text class="icon-friend text-blue"></text><text class="text-black">课程与预约</text></view>
   </view>
 
   <view class="comm-list menu margin-top">
@@ -36,10 +36,10 @@
 
   <view class="comm-list menu">
     <view wx:if="{{isSuperAdmin}}" class="item arrow" bindtap="url" data-url="/pages/admin/manager/list/admin_manager_list">
-      <view class="content"><text class="icon-profile text-red"></text><text class="text-black">系统管理员管理</text></view>
+      <view class="content"><text class="icon-profile text-red"></text><text class="text-black">管理员管理</text></view>
     </view>
     <view class="item arrow" bindtap="url" data-url="/pages/admin/manager/password/admin_manager_password">
-      <view class="content"><text class="icon-lock text-orange"></text><text class="text-black">修改我的管理员密码</text></view>
+      <view class="content"><text class="icon-lock text-orange"></text><text class="text-black">修改管理员密码</text></view>
     </view>
     <view class="item arrow" bindtap="url" data-url="/pages/admin/manager/log/admin_log_list">
       <view class="content"><text class="icon-footprint text-brown"></text><text class="text-black">管理员操作日志</text></view>
@@ -52,6 +52,6 @@
     </view>
   </view>
 
-  <button bindtap="bindExitTap" class="btn-admin margin-top">退出登录</button>
+  <button bindtap="bindExitTap" class="btn-admin margin-top">安全退出</button>
 
 </view>

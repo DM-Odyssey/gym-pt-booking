@@ -22,5 +22,5 @@
     </view>
   </view>
 
-  <button bindtap="bindCheckTap" class="btn-base btn-project" style="margin-bottom:100rpx;">提交预约</button>
+  <button bindtap="bindCheckTap" class="btn-base btn-project" style="margin-bottom:100rpx;">确认预约</button>
 </view>

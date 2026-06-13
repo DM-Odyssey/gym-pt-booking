@@ -14,7 +14,11 @@ const { time, timestamp2Time } = require('../common/util')
 async function getMeetList(openId, params) {
     const { cateId, search, sortType, sortVal, page = 1, size = 20 } = params
     const where = {}
-    if (cateId && cateId !== '0') where.MEET_CATE_ID = cateId
+    if (cateId && cateId !== '0') {
+        // 兼容：项目+团课合并为项目课程(cateId=2)，同时查2和3
+        if (cateId === '2') where.MEET_CATE_ID = db.cmd().in(['2', '3'])
+        else where.MEET_CATE_ID = cateId
+    }
     if (search) where.MEET_TITLE = db.regexp(search)
     if (sortType === 'cateId' && sortVal) where.MEET_CATE_ID = String(sortVal)
 

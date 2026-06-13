@@ -24,7 +24,8 @@ const adminLogin = async (that, name, pwd) => {
     if (res?.data?.name) cache.set(constants.CACHE_ADMIN, res.data, constants.ADMIN_TOKEN_EXPIRE);
     wx.reLaunch({ url: '/pages/admin/home/admin_home' });
   } catch (e) {
-    console.error(e);
+    if (e && e.msg) wx.showToast({ title: e.msg, icon: 'none' });
+    else wx.showToast({ title: '账号或密码错误', icon: 'none' });
   }
 };
 
@@ -48,7 +49,7 @@ const isSuperAdmin = () => {
 
 /** 管理员登录状态检查 */
 const isAdmin = (that, isSuper = false) => {
-  wx.setNavigationBarColor({ backgroundColor: '#2499f2', frontColor: '#ffffff' });
+  wx.setNavigationBarColor({ backgroundColor: '#1A1A2E', frontColor: '#ffffff' });
 
   const admin = cache.get(constants.CACHE_ADMIN);
   if (!admin) {

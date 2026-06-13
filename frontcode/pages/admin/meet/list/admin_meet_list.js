@@ -39,30 +39,10 @@ Component({
       });
     },
 
-    _setSort: async function(e) { var meetId = dom.dataset(e, 'id'); var sort = dom.dataset(e, 'sort'); if (!meetId) return;
-      try { await cloud.callCloudSubmit('admin/meet_sort', { meetId: meetId, sort: sort }); list.modifyListNode(meetId, this.data.dataList.list, 'MEET_ORDER', sort); this.setData({ dataList: this.data.dataList }); toast.showSuccToast('设置成功'); } catch(err) { console.error(err); } },
-    _setVouch: async function(e) { var id = dom.dataset(e, 'id'); var vouch = dom.dataset(e, 'vouch'); if (!id) return;
-      try { await cloud.callCloudSubmit('admin/meet_vouch', { id: id, vouch: vouch }); list.modifyListNode(id, this.data.dataList.list, 'MEET_VOUCH', vouch); this.setData({ dataList: this.data.dataList }); toast.showSuccToast('设置成功'); } catch(err) { console.error(err); } },
     _setStatus: async function(that, meetId, status) { if (!meetId) return;
       try { await cloud.callCloudSubmit('admin/meet_status', { meetId: meetId, status: status }); list.modifyListNode(meetId, that.data.dataList.list, 'MEET_STATUS', status, '_id'); that.setData({ dataList: that.data.dataList }); toast.showSuccToast('设置成功'); } catch(err) { console.error(err); } },
     _del: async function(that, meetId) { if (!meetId) return;
       toast.showConfirm('确认删除？删除不可恢复', async function() { try { await cloud.callCloudSubmit('admin/meet_del', { meetId: meetId }, { title: '删除中' }); list.delListNode(meetId, that.data.dataList.list, '_id'); that.data.dataList.total--; that.setData({ dataList: that.data.dataList }); toast.showSuccToast('删除成功'); } catch(err) { console.error(err); } }); },
-
-    bindMoreSelectTap(e) {
-      var self = this; var idx = dom.dataset(e, 'idx');
-      var order = self.data.dataList.list[idx].MEET_ORDER; var orderDesc = (order == 0) ? '取消置顶' : '置顶';
-      var vouch = self.data.dataList.list[idx].MEET_VOUCH; var vouchDesc = (vouch == 0) ? '推荐到首页' : '取消首页推荐';
-      wx.showActionSheet({ itemList: ['预览', orderDesc, vouchDesc, '生成专属二维码'],
-        success: async function(res) {
-          switch(res.tapIndex) {
-            case 0: var id = dom.dataset(e, 'id'); wx.navigateTo({ url: '/pages/meet/detail/meet_detail?id=' + id }); break;
-            case 1: var s = (order == 0) ? 9999 : 0; e.currentTarget.dataset['sort'] = s; await self._setSort(e); break;
-            case 2: vouch = (vouch == 0) ? 1 : 0; e.currentTarget.dataset['vouch'] = vouch; await self._setVouch(e); break;
-            case 3: var qrVal2 = dom.dataset(e, 'qr'); var title2 = encodeURIComponent(dom.dataset(e, 'title')); wx.navigateTo({ url: '/pages/admin/setup/qrcode/admin_setup_qrcode?title=' + title2 + (qrVal2 ? '&qr=' + encodeURIComponent(qrVal2) : '') }); break;
-          }
-        }
-      });
-    },
 
     bindStatusSelectTap(e) {
       var self = this; var meetId = dom.dataset(e, 'id');

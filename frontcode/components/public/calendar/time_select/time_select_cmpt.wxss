@@ -73,8 +73,8 @@
 }
 
 .time-table .list .item .right.selected {
-	border-top: 1rpx solid #dfffd8;
-	background-color: #dfffd8;
+	border-top: 1rpx solid #F0FDF4;
+	background-color: #F0FDF4;
 }
 
 .time-table .list .item .right.selected-first {
@@ -88,11 +88,11 @@
 
 .time-table .list .item .right.used,
 .time-table .list .item .right.used-first {
-	border-top: 0rpx solid #E0EBFE;
-	background-color: #E0EBFE;
-	color: #f37445;
+	border-top: 0rpx solid #F5F7FA;
+	background-color: #F5F7FA;
+	color: var(--projectColor);
 	font-size: 28rpx;
-	border-left: 6rpx solid #1A65FF;
+	border-left: 6rpx solid #4ADE80;
 	text-align: left;
 }
 

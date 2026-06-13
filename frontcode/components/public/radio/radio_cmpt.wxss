@@ -96,8 +96,8 @@
 }
 
 .form-radio-tags .item .tag-txt.cur {
-	border: 1rpx solid var(--btnColor);
-	background-color: var(--btnColor);
+	border: 1rpx solid var(--projectColor);
+	background-color: var(--projectColor);
 	color: #fff;
 
 }

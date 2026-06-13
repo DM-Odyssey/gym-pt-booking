@@ -21,15 +21,15 @@ App({
     this.globalData = {};
 
     // 自定义导航栏高度
-    const sysInfo = wx.getSystemInfoSync();
-    this.globalData.statusBarHeight = sysInfo.statusBarHeight;
+    const windowInfo = wx.getWindowInfo();
+    this.globalData.statusBarHeight = windowInfo.statusBarHeight;
 
     const capsule = wx.getMenuButtonBoundingClientRect();
     if (capsule) {
-      this.globalData.customBarHeight = capsule.bottom + capsule.top - sysInfo.statusBarHeight;
+      this.globalData.customBarHeight = capsule.bottom + capsule.top - windowInfo.statusBarHeight;
       this.globalData.capsule = capsule;
     } else {
-      this.globalData.customBarHeight = sysInfo.statusBarHeight + 50;
+      this.globalData.customBarHeight = windowInfo.statusBarHeight + 50;
     }
   },
 });

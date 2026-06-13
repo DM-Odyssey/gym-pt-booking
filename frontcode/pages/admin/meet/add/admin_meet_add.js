@@ -29,7 +29,7 @@ Component({
       data.daysSet = this.data.formDaysSet;
       data.joinForms = this.data.formJoinForms;
       data.cateName = adminMeet.getCateName(data.cateId);
-      if (data.cateId == 1 && data.phone && !data.password) { router.anchor('formPassword', this); return form.formHint(this, 'formPassword', '请设置登陆密码'); }
+      if (data.cateId == 1 && data.phone && !data.password) { router.anchor('formPassword', this); return form.formHint(this, 'formPassword', '请设置登录密码'); }
       var forms = this.selectComponent('#cmpt-form')?.getForms?.(true);
       if (!forms) return;
       data.forms = forms;

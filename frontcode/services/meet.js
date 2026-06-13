@@ -9,8 +9,7 @@ const cloud = require('../utils/cloud.js');
 // 课程分类
 const MEET_CATE = [
   { id: 1, title: '私教预约', style: 'leftbig1' },
-  { id: 2, title: '项目预约', style: 'leftbig1' },
-  { id: 3, title: '团课预约', style: 'leftbig1' },
+  { id: 2, title: '项目课程', style: 'leftbig1' },
 ];
 
 // 课程表单字段定义

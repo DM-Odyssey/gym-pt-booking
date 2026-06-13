@@ -6,6 +6,6 @@
     "cmpt-picker-multi": "/components/public/picker_multi/picker_multi_cmpt"
   },
   "styleIsolation": "apply-shared",
-  "navigationBarBackgroundColor": "#1C9399",
+  "navigationBarBackgroundColor": "#4ADE80",
   "navigationBarTextStyle": "white"
 }

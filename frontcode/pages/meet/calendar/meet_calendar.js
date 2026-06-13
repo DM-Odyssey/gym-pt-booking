@@ -18,6 +18,9 @@ Component({
 
   pageLifetimes: {
     show() {
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({ selected: 2 });
+      }
       this.setData({ day: timeHelper.time('Y-M-D') }, () => {
         this._loadHasList();
         this._loadList();

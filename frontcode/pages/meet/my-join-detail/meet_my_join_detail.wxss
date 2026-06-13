@@ -35,7 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FED202;
+  color: var(--projectColor);
 }
 
 .text-pic-list-box .item .oprt .btn {

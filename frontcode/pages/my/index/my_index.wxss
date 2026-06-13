@@ -8,7 +8,7 @@ page {
 
 .top {
   height: 320rpx;
-  background-color: #FED202;
+  background: linear-gradient(180deg, #F0FDF4 0%, #F5F7FA 100%);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -64,7 +64,7 @@ page {
   font-size: 24rpx;
   padding: 0 25rpx;
   background-color: #333;
-  color: #FED202;
+  color: #4ADE80;
   border-radius: 20rpx;
 }
 

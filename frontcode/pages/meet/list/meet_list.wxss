@@ -24,7 +24,7 @@
   right: 20rpx;
   top: 20rpx;
   font-size: 24rpx;
-  color: #FED202;
+  color: var(--projectColor);
 }
 
 .k-list .item .left {
@@ -60,8 +60,8 @@
 
 .k-list .item .right .tag-list .tag {
   font-size: 22rpx;
-  color: #FED202;
-  border: 1rpx solid #FED202;
+  color: var(--projectColor);
+  border: 1rpx solid var(--projectColor);
   padding: 2rpx 10rpx;
   border-radius: 10rpx;
   margin-right: 10rpx;

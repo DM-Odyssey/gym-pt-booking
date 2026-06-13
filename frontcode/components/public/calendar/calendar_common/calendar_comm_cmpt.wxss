@@ -1,215 +1,169 @@
 @import "./din.wxss";
 
-page {
-	/*#### 父组件日历颜色定义*/
-	/* 整体颜色 */
-	--calendarPageColor: #fff;
-	/* 加重颜色*/
-	--calendarMainColor: #1F6ED4;
-	/* 加重的亮颜色 用于选中日期的数据小圆点 */
-	--calendarLightColor: #A2C7FF;
-}
-
-.calendar-text {
-	color: var(--calendarMainColor) !important
-}
-
-.calendar-bg {
-	background-color: var(--calendarMainColor) !important
-}
+.calendar-text { color: var(--calendarMainColor) !important; }
+.calendar-bg { background-color: var(--calendarMainColor) !important; }
 
 .cal-container {
-	width: 100%;
-	padding-bottom: 10rpx;
-	background-color: var(--calendarPageColor)
+  width: 100%;
+  padding: 12rpx 0;
+  background-color: #fff;
 }
 
-.cal-container .cal-nav {
-	position: relative;
-	width: 100%;
-	min-height: 80rpx;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	padding: 0 20rpx;
-	color: #666; 
-	font-weight: bold;
-	background-color: #f8f8f8;
+.cal-main { width: 100%; padding: 0; }
+
+/* 导航栏 */
+.cal-nav {
+  position: relative;
+  width: 100%;
+  height: 64rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12rpx;
+  box-sizing: border-box;
 }
 
-.cal-container .cal-nav .select-item {
-	width: 500rpx;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+.cal-nav .select-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
 }
 
-.cal-container .cal-nav .arrow {
-	width: 150rpx;
-	font-size: 40rpx;
+.cal-nav .nav-arrow {
+  width: 56rpx; height: 56rpx;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 28rpx; color: #8C939D;
 }
 
-.cal-container .cal-nav .fold {
-	position: absolute;
-	right: 0rpx;
-	width: 100rpx;
-	font-size: 40rpx;
-	font-weight: bold;
+.cal-nav .nav-label {
+  font-size: 30rpx; font-weight: bold; color: #1A1A2E;
 }
 
-.cal-container .cal-nav .to-now {
-	position: absolute;
-	left: 5rpx;
-	width: 100rpx;
-	font-size: 28rpx; 
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.cal-nav .fold {
+  position: absolute; right: 12rpx;
+  font-size: 24rpx; font-weight: normal;
 }
 
-.cal-main {
-	width: 100%;
-	padding: 0rpx 0rpx;
+.cal-nav .to-now {
+  position: absolute; left: 12rpx;
+  font-size: 24rpx; font-weight: normal;
+  color: var(--calendarMainColor);
 }
 
+/* ===== 折叠态：横向日期条 ===== */
+.date-strip {
+  width: 100%;
+  margin-top: 12rpx;
+  padding: 0 12rpx;
+  box-sizing: border-box;
+}
+
+.strip-scroll {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.strip-day {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx; height: 100rpx;
+  border-radius: 16rpx;
+  margin-right: 8rpx;
+}
+
+.strip-week {
+  font-size: 22rpx; color: #8C939D;
+  margin-bottom: 6rpx;
+}
+
+.strip-date {
+  font-size: 30rpx; font-weight: 600; color: #1A1A2E;
+}
+
+.strip-day.is-today { background: #F0FDF4; }
+.strip-day.is-today .strip-date { color: var(--calendarMainColor); }
+
+.strip-day.is-active { background: var(--calendarMainColor); }
+.strip-day.is-active .strip-week,
+.strip-day.is-active .strip-date { color: #fff; }
+
+.strip-day.is-other { opacity: 0.3; }
+
+/* 日期条绿点覆盖全局的 ::before 位置 */
+.strip-day.data-has::before {
+  right: auto;
+  top: auto;
+  bottom: 8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rpx;
+  height: 8rpx;
+}
+
+/* ===== 展开态：月历 ===== */
 .cal-title {
-	display: flex;
-	width: 100%;
-	border-bottom: 2rpx dashed #ccc;
-	background-color: #f8f8f8;
+  display: flex; width: 100%;
+  margin-top: 8rpx;
+  background: transparent;
+  border: none;
 }
 
-.cal-title .cal-title-view {
-	width: 14.28%;
-	height: 70rpx;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #333;
-	font-size: 32rpx;
-	font-weight: bold;
+.cal-weekday {
+  width: 14.28%; height: 48rpx;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 22rpx; color: #8C939D;
 }
 
 .cal-center {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap; 
-	overflow: hidden;
-	justify-content: center;
-	align-items: center;
-}
- 
-.cal-center .cube {
-	width: 14.28%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
 }
 
-.cal-center .cube.lunar {
-	margin-bottom: 0rpx;
+.cal-center .cube {
+  width: 14.28%;
+  display: flex; justify-content: center; align-items: center;
 }
 
 .cal-center .num-grid {
-	min-width: 70rpx;
-	height: 70rpx;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #333;
-	margin-bottom: 2rpx;
-	border-radius: 10rpx;
-}
-
-.cal-center .cube.lunar .num-grid {
-	width: 70rpx;
-	height: 90rpx;
+  width: 72rpx; height: 72rpx;
+  display: flex; justify-content: center; align-items: center;
+  border-radius: 12rpx;
+  font-size: 28rpx; color: #1A1A2E;
+  font-family: 'din';
 }
 
 .cal-center .num-grid.now-day-cur {
-	background-color: #fadbd9;
-	color: orangered;
-	font-weight: bold;
+  background: var(--calendarMainColor);
+  color: #fff; font-weight: 600;
+  border-radius: 50%;
 }
-
-.cal-center .num-grid.now-day-cur.calendar-bg {
-	color: #fbbd08 !important;
-}
-
 
 .cal-center .num {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	font-size: 32rpx;
-	font-family: 'din';
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  font-size: 28rpx;
 }
 
-.cal-center .num .lunar {
-	font-size: 20rpx;
-	font-weight: normal;
-	color: #aaa;
-}
+.cal-center .text-no-month { color: #D1D5DB; }
 
-.cal-center .text-no-month {
-	color: #333;
-	opacity: .5;
-}
+.cal-center .cube.timeout { opacity: 0.3; }
 
-.cal-center .calendar-bg .text-no-month {
-	color: #ccc;
-	opacity: 1;
-}
-
-
-/* 当日有数据 */
-.data-has {
-	position: relative;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
+/* 有数据 */
+.data-has { position: relative; }
 .data-has::before {
-	position: absolute;
-	content: '';
-	width: 12rpx;
-	height: 12rpx;
-	border-radius: 50%;
-	background-color: var(--calendarMainColor);
-	right: -16rpx;
-	top: 14rpx;
+  position: absolute; content: '';
+  width: 8rpx; height: 8rpx;
+  border-radius: 50%;
+  background: var(--calendarMainColor);
+  right: -12rpx; top: 8rpx;
 }
 
-.calendar-bg .data-has::before {
-	background-color: var(--calendarLightColor);
+/* 选中日 */
+.cube.data-checked .num-grid {
+  background: var(--calendarMainColor); color: #fff;
+  border-radius: 12rpx;
 }
-
-
-/* 选中某日 */
-.cube .data-checked {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.cube .data-checked::before {
-	position: absolute;
-	content: '';
-	width: 17rpx;
-	height: 17rpx;
-	transform: rotate(45deg);
-	border-right: 3rpx solid #fff;
-	border-bottom: 3rpx solid #fff;
-	bottom: 13rpx;
-}
-
-.cube.lunar .data-checked::before {
-	bottom: 38rpx;
-}
+.cube.data-checked .num-grid .text-no-month { color: rgba(255,255,255,0.6); }
+.cube.data-checked .data-has::before { background: #fff; }

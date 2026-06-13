@@ -1,17 +1,17 @@
 page {
-	--workColor: #1C9399;
-	--workRedColor: #F64B4D;
+	--workColor: #4ADE80;
+	--workRedColor: #DC2626;
 }
 
 .main-work {
 	width: 100%;
-	padding: 30rpx 20rpx;
+	padding: 24rpx 24rpx;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;
 	box-sizing: border-box;
-	margin-bottom: 100rpx;
+	margin-bottom: 24rpx;
 }
 
 
@@ -36,7 +36,7 @@ page {
 .bg-work.light,
 .bg-blue.light {
 	color: var(--workColor) !important;
-	background-color: #cce6ff !important;
+	background-color: #F0FDF4 !important;
 }
 
 .border-work,
@@ -45,11 +45,11 @@ page {
 }
 
 .form-box {
-	border-radius: 10rpx;
+	border-radius: 16rpx;
 }
 
 .btn {
-	border-radius: 10rpx;
+	border-radius: 16rpx;
 }
 
 .search-form.round {
@@ -174,7 +174,7 @@ page {
 	background-color: #fff;
 	border-radius: 5rpx;
 	overflow: hidden;
-	margin-bottom: 30rpx;
+	margin-bottom: 16rpx;
 	position: relative;
 	border: 1rpx solid #ccc;
 }
@@ -308,7 +308,7 @@ page {
 }
 
 .work-comm-list .btn-more {
-	background-color: #fadbd9 !important;
+	background-color: #FEE2E2 !important;
 	color: #e54d42;
 }
 
@@ -363,6 +363,7 @@ page {
 
 .btn-bottom-work .save {
 	background-color: var(--workColor);
+	color: #fff;
 }
 
 

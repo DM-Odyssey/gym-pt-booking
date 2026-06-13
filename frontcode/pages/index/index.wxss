@@ -1,7 +1,7 @@
 @import "/style/public/comm_box_list.wxss";
 
 .main {
-  padding: 0rpx 0rpx 100rpx;
+  padding: 0 0 140rpx;
 }
 
 .up {
@@ -16,7 +16,7 @@
 .down {
   width: 100%;
   box-sizing: border-box;
-  padding: 10rpx 30rpx;
+  padding: 0 24rpx;
   margin-top: -130rpx;
   z-index: 9999;
 }
@@ -26,8 +26,8 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  padding: 20rpx 10rpx;
-  border-radius: 20rpx;
+  padding: 24rpx 10rpx;
+  border-radius: 16rpx;
 }
 
 .menu .item {
@@ -52,29 +52,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f7d52c;
-  border-radius: 25rpx;
+  background-color: var(--projectColor);
+  border-radius: 24rpx;
 }
 
 .menu .item-inner .img image {
-  width: 75rpx;
-  height: 75rpx;
+  width: 72rpx;
+  height: 72rpx;
 }
 
 .menu .item-inner .title {
-  margin-top: 20rpx;
+  margin-top: 8rpx;
   font-size: 26rpx;
-  color: #4f5368;
+  color: #1A1A2E;
 }
 
+/* ===== 统一分区容器 ===== */
+.home-section {
+  width: 100%;
+  margin-top: 24rpx;
+  padding: 0 6rpx;
+}
+
+.home-section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  padding-bottom: 16rpx;
+}
+
+/* 公告列表 */
 .home-list-box {
   width: 100%;
-  margin-bottom: 200rpx;
-  margin-top: 20rpx;
 }
 
 .home-list-box .comm-list-box {
-  padding: 20rpx 0rpx 30rpx 0rpx;
+  padding: 0;
   overflow: unset;
 }
 
@@ -82,4 +95,93 @@
   border-radius: 10rpx!important;
   border-top-right-radius: 30rpx!important;
   border-bottom-left-radius: 30rpx!important;
+}
+
+/* 教练团队卡片 */
+.coach-scroll {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 8rpx;
+}
+
+.coach-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx 10rpx;
+  margin-right: 16rpx;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.05);
+  flex-shrink: 0;
+}
+
+.coach-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #F5F7FA;
+}
+
+.coach-name {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  text-align: center;
+  max-width: 140rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 课程列表 */
+.course-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-item {
+  display: flex;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.05);
+}
+
+.course-pic {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+  background: #F5F7FA;
+}
+
+.course-info {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.course-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-bottom: 8rpx;
+}
+
+.course-desc {
+  font-size: 24rpx;
+  color: #8C939D;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }

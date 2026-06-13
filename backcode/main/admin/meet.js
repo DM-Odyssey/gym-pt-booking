@@ -139,28 +139,6 @@ async function statusMeet(admin, params) {
     return success()
 }
 
-async function sortMeet(admin, params) {
-    const vResult = validate(params, {
-        meetId: 'meetId|required|string|desc:课程ID',
-        sort: 'sort|required|int|desc:排序值'
-    })
-    if (vResult.err) return vResult.err
-
-    await db.edit('meet', { _id: vResult.data.meetId }, { MEET_ORDER: vResult.data.sort })
-    return success()
-}
-
-async function vouchMeet(admin, params) {
-    const vResult = validate(params, {
-        id: 'id|required|string|desc:课程ID',
-        vouch: 'vouch|required|int|desc:推荐状态'
-    })
-    if (vResult.err) return vResult.err
-
-    await db.edit('meet', { _id: vResult.data.id }, { MEET_VOUCH: vResult.data.vouch })
-    return success()
-}
-
 async function updateMeetForms(admin, params) {
     const vResult = validate(params, {
         id: 'id|required|string|desc:课程ID',
@@ -549,7 +527,7 @@ async function upsertSetup(key, val, type = '') {
 
 module.exports = {
     getAdminMeetList, insertMeet, getMeetDetail, editMeet, delMeet,
-    statusMeet, sortMeet, vouchMeet, updateMeetForms,
+    statusMeet, updateMeetForms,
     getDayList, setDays,
     getJoinList, statusJoin, delJoin, scanJoin, checkinJoin, cancelJoinByTimeMark,
     genSelfCheckinQr,

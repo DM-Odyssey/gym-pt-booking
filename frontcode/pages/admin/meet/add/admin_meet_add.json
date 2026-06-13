@@ -5,7 +5,7 @@
     "cmpt-picker-time": "/components/public/picker_time/picker_time_cmpt",
     "cmpt-picker-multi": "/components/public/picker_multi/picker_multi_cmpt"
   },
-  "navigationBarBackgroundColor": "#2499f2",
+  "navigationBarBackgroundColor": "#1A1A2E",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh": true
 }

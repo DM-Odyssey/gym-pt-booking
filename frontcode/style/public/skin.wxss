@@ -1,21 +1,21 @@
 page {
-	background-color: #f8f8f8;
+	background-color: #F5F7FA;
 
-	--projectColor: #FED202; 
-	--projectLightColor:#FFFBEA; 
-	--projectBorderColor:#e6e6e6;
+	--projectColor: #4ADE80;
+	--projectLightColor:#F0FDF4;
+	--projectBorderColor:#EEEEEE;
 
 	/*#### 父组件日历颜色定义*/
 	/* 整体颜色 */
-	--calendarPageColor: #F0F4FF;
+	--calendarPageColor: #F0FDF4;
 	/* 加重颜色*/
-	--calendarMainColor: #1F6ED4 !important;
+	--calendarMainColor: #4ADE80 !important;
 	/* 加重的亮颜色 用于选中日期的数据小圆点 */
-	--calendarLightColor: #A2C7FF;
+	--calendarLightColor: #BBF7D0;
 }
 
 .bg-admin {
-	background-color: #2499f2;
+	background-color: #1A1A2E;
 }
 
 .text-project {
@@ -65,7 +65,7 @@ page {
 	height: 80rpx;
 	color: #000;
 	background-color: var(--projectColor);
-	border-radius: 10rpx!important;
+	border-radius: 16rpx!important;
 }
 
 .phone-button {
@@ -73,7 +73,7 @@ page {
 }
 
 .shadow-project {
-	box-shadow: 6rpx 6rpx 8rpx rgba(216, 220, 223, 0.5);
+	box-shadow: 0 4px 12px rgba(26,26,46,0.05);
 }
 
 .card-project,
@@ -86,7 +86,7 @@ page {
 .comm-list-box .item.card-project,
 .form-box.card-project,
 .bar .search-form {
-	border-radius: 20rpx !important;
+	border-radius: 16rpx !important;
 }
 
 .up-project {
@@ -109,6 +109,6 @@ page {
 
 
 .comm-list-box {
-	padding: 20rpx 30rpx 30rpx 30rpx;
+	padding: 16rpx 0 0 0;
 }
 /*#### 日历组件颜色定义*/

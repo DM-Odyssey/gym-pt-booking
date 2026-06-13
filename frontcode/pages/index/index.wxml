@@ -4,15 +4,6 @@
   </view>
   <view class="down">
     <view class="menu card-project shadow-project">
-      <view bindtap="url" data-type="relaunch" data-url="/pages/news/list/news_list?id=1" class="item">
-        <view class="item-inner">
-          <view class="img shadow">
-            <image src="/images/menu/news.png" />
-          </view>
-          <view class="title">本店公告</view>
-        </view>
-      </view>
-
       <view bindtap="url" data-url="/pages/meet/list/meet_list?id=1" class="item">
         <view class="item-inner">
           <view class="img shadow">
@@ -27,16 +18,7 @@
           <view class="img shadow">
             <image src="/images/menu/project.png" />
           </view>
-          <view class="title">项目预约</view>
-        </view>
-      </view>
-
-      <view bindtap="url" data-url="/pages/meet/list/meet_list?id=3" class="item">
-        <view class="item-inner">
-          <view class="img shadow">
-            <image src="/images/menu/class.png" />
-          </view>
-          <view class="title">团课预约</view>
+          <view class="title">课程预约</view>
         </view>
       </view>
 
@@ -45,26 +27,45 @@
           <view class="img shadow">
             <image src="/images/menu/day.png" />
           </view>
-          <view class="title">预约日历</view>
+          <view class="title">课程日历</view>
         </view>
       </view>
 
-      <view bindtap="url" data-url="/pages/about/detail/about_detail" class="item">
-        <view class="item-inner">
-          <view class="img shadow">
-            <image src="/images/menu/about.png" />
-          </view>
-          <view class="title">关于我们</view>
+    </view>
+
+    <!-- 教练团队 -->
+    <view wx:if="{{coachList.length>0}}" class="home-section">
+      <view class="home-section-title">教练团队</view>
+      <view class="coach-scroll">
+        <view class="coach-card" wx:for="{{coachList}}" wx:key="id" bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{item.id}}">
+          <image class="coach-avatar" src="{{item.pic}}" mode="aspectFill" />
+          <text class="coach-name">{{item.title}}</text>
         </view>
       </view>
     </view>
 
-    <!-- List -->
-    <view wx:if="{{!dataList}}" class="margin-top load loading text-l load-project"></view>
+    <!-- 最新公告 -->
+    <view class="home-section">
+      <view class="home-section-title">最新公告</view>
+      <view wx:if="{{!dataList}}" class="load loading text-l load-project" style="padding:40rpx 0"></view>
+      <view wx:else class="home-list-box">
+        <import src="/templates/public/base_list_tpl.wxml" />
+        <template is="baseListTpl" data="{{dataList,listMode:'leftbig1'}}" />
+      </view>
+    </view>
 
-    <view wx:else class="home-list-box">
-      <import src="/templates/public/base_list_tpl.wxml" />
-      <template is="baseListTpl" data="{{dataList,listMode:'leftbig1'}}" />
+    <!-- 推荐课程 -->
+    <view wx:if="{{courseList.length>0}}" class="home-section">
+      <view class="home-section-title">推荐课程</view>
+      <view class="course-list">
+        <view class="course-item" wx:for="{{courseList}}" wx:key="id" bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{item.id}}">
+          <image class="course-pic" src="{{item.pic}}" mode="aspectFill" />
+          <view class="course-info">
+            <text class="course-title">{{item.title}}</text>
+            <text class="course-desc">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

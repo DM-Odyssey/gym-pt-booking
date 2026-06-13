@@ -50,17 +50,17 @@
     "components/public/form/form_set/field/form_set_field"
   ],
   "window": {
-    "backgroundColor": "#f1f1f1",
+    "backgroundColor": "#F5F7FA",
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#FED202",
-    "navigationBarTitleText": "健身房私教预约",
+    "navigationBarBackgroundColor": "#F0FDF4",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "custom": false,
+    "custom": true,
     "backgroundColor": "#FFFFFF",
-    "color": "#999999",
-    "selectedColor": "#000000",
+    "color": "#8C939D",
+    "selectedColor": "#4ADE80",
     "list": [
       {
         "pagePath": "pages/index/index",

@@ -10,6 +10,8 @@ const router = require('../../utils/router.js');
 Component({
   data: {
     dataList: null,
+    coachList: [],
+    courseList: [],
     isLoad: false,
   },
 
@@ -21,6 +23,9 @@ Component({
 
   pageLifetimes: {
     show() {
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({ selected: 0 });
+      }
       this._loadList();
     },
   },
@@ -30,8 +35,11 @@ Component({
       const opts = { title: 'bar' };
       try {
         const res = await cloud.callCloudSubmit('home/list', {}, opts);
+        const result = (res && res.data) || res || {};
         this.setData({
-          dataList: res.data,
+          dataList: result.list || [],
+          coachList: result.coachList || [],
+          courseList: result.courseList || [],
           isLoad: true,
         });
       } catch (err) {

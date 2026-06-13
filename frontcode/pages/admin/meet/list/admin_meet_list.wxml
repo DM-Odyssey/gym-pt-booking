@@ -58,11 +58,11 @@
 					<view class="oprt">
 						<view bindtap="url" data-url="/pages/admin/meet/edit/admin_meet_edit?id={{item._id}}" class="btn margin-right-s"><text class="icon-settings margin-right-xxs text-blue"></text>设置</view>
 
-						<view bindtap="bindRecordSelectTap" data-id="{{item._id}}" data-title="{{item.MEET_TITLE}}" class="btn margin-right-s">名单与核销</view>
+						<view bindtap="bindRecordSelectTap" data-id="{{item._id}}" data-title="{{item.MEET_TITLE}}" class="btn margin-right-s">名单与签到</view>
 
 						<view bindtap="bindStatusSelectTap" data-id="{{item._id}}" class="btn   margin-right-s"><text class="icon-cascades margin-right-xxs text-orange"></text>状态</view>
 
-						<view bindtap="bindMoreSelectTap" data-id="{{item._id}}" data-idx="{{index}}" data-qr="{{item.MEET_QR}}" data-title="{{item.MEET_TITLE}}" class="btn">更多..</view>
+						<view bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{item._id}}" class="btn">预览</view>
 
 					</view>
 				</view>

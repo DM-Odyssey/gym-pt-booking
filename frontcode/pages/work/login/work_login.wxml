@@ -1,28 +1,23 @@
-<view class="main-work bg-work">
+<view class="container">
+  <image class="bg-image" src="/images/login/coach_login.png" mode="aspectFill"></image>
+  <view class="overlay"></view>
 
-	<view class="login">
+  <view class="content-wrapper">
+    <text class="title">教练登录</text>
 
-		<view class=pic"><text class="icon-peoplefill text-red"></text></view>
-		<view class="hint">教练平台</view>
+    <view class="input-group">
+      <input class="custom-input" type="number" maxlength="11" placeholder="请输入手机号码" placeholder-class="ph" model:value="{{phone}}" />
+    </view>
 
+    <view class="input-group">
+      <input class="custom-input" password maxlength="30" placeholder="请输入登录密码" placeholder-class="ph" model:value="{{pwd}}" />
+    </view>
 
-		<view class="form-group margin-top">
-			<view class="title">手机：</view>
-			<input type="number" placeholder="请输入手机号码" maxlength="11" placeholder-class="phc" model:value="{{phone}}"></input>
-		</view>
+    <button class="login-btn" bindtap="bindLoginTap">登 录</button>
 
-		<view class="form-group">
-			<view class="title">密码：</view>
-			<input placeholder="请输入您的密码" maxlength="30" type="password" placeholder-class="phc" model:value="{{pwd}}"></input>
-		</view>
-
-
-		<button class="btn bg-work margin-bottom margin-top" bindtap="bindLoginTap">点击登录</button>
-		<view class="return text-grey">本系统仅限于教练登录</view>
-		<view bindtap="url" data-url="/pages/my/index/my_index" class="return text-grey"><text class="icon-back"></text>返回用户端</view>
-
-
-	</view>
- 
-
+    <view class="bottom-links">
+      <text class="link-text">仅限教练登录</text>
+      <text class="link-back" bindtap="url" data-url="/pages/my/index/my_index">返回用户端</text>
+    </view>
+  </view>
 </view>

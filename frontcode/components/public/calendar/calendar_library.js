@@ -263,7 +263,21 @@ function createDay(that) {
 		}
 	}
 
+	// 补星期字段 + 滚动日期条(从今天起10天)
+	const WEEK_NAMES = ['日', '一', '二', '三', '四', '五', '六'];
+	const ft = that.data.fullToday || timeHelper.time('Y-M-D');
+	let stripDays = [];
+	data.forEach(item => {
+		let parts = item.full.split('-');
+		let d = new Date(parts[0], parts[1] - 1, parts[2]);
+		item.week = WEEK_NAMES[d.getDay()];
+		if (item.full >= ft && item.curMonth && stripDays.length < 10) {
+			stripDays.push(item);
+		}
+	});
+
 	that.setData({
+		stripDays,
 		weekNo,
 		dayArr: data
 	});
@@ -309,7 +323,7 @@ function bindToNowTap(that) {
 	that.setData({
 		month,
 		year,
-		fold: false
+		fold: true
 	});
 
 	that.setData({
@@ -389,12 +403,12 @@ function bindNextTap(that) {
 		that.setData({
 			year: that.data.year + 1,
 			month: 1,
-			fold: false //翻页不折叠
+			fold: true //保持折叠
 		})
 	} else {
 		that.setData({
 			month: month + 1,
-			fold: false
+			fold: true
 		})
 	}
 	createDay(that);
@@ -414,12 +428,12 @@ function bindLastTap(that) {
 		that.setData({
 			year: that.data.year - 1,
 			month: 12,
-			fold: false
+			fold: true
 		})
 	} else {
 		that.setData({
 			month: month - 1,
-			fold: false
+			fold: true
 		})
 	}
 	createDay(that);

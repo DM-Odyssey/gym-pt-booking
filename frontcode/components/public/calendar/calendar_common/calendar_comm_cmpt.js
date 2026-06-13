@@ -36,7 +36,7 @@ Component({
 		},
 		fold: { //日历折叠
 			type: Boolean,
-			value: false
+			value: true
 		},
 		selectTimeout: { //过期时间选择(mode=multi)
 			type: Boolean,

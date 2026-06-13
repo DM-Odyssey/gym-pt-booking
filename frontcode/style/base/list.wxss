@@ -141,7 +141,7 @@
 }
 
 .comm-list.menu>.item.cur {
-	background-color: #fcf7e9
+	background-color: #F0FDF4
 }
 
 .comm-list.menu>.item.arrow {

@@ -1,61 +1,62 @@
 <wxs src="../../../../templates/wxs/tools.wxs" module="tools" />
 <wxs module="utils">
-	// 比较操作日期所在月是否当前显示的月
-	function compareYearMonth(oneDoDay, year, month) {
-		var arr = oneDoDay.split('-');
-		return arr[0] == year && arr[1] == month;
-	} 
-
-	module.exports = {
-		compareYearMonth: compareYearMonth,
-	};
+  function compareYearMonth(oneDoDay, year, month) {
+    var arr = oneDoDay.split('-');
+    return arr[0] == year && arr[1] == month;
+  }
+  module.exports = { compareYearMonth: compareYearMonth };
 </wxs>
+
 <view class="cal-container">
-	<view bindtap="bindLastTap" class="left"><text class="icon-back"></text></view>
-	<view class="cal-main">
-		<view class="text-center cal-nav">
-			<view class="to-now" bindtap="bindToNowTap">本月</view>
-			<view class="select-item">
-				<!--<view class="arrow text-grey" bindtap="bindLastTap"><text class="icon-backwardfill" /></view>-->
-				<view class="text-lg">{{year}}年{{month}}月</view>
-				<!--<view class="arrow text-grey" bindtap="bindNextTap"><text class=" icon-play_forward_fill" /></view>-->
-			</view>
-			<block wx:if="{{mode=='one'}}">
-				<view wx:if="{{!fold}}" class="fold text-grey" bindtap="bindFoldTap"><text
-						class="icon-fold calendar-text"></text></view>
-				<view wx:if="{{fold}}" class="fold" bindtap="bindFoldTap"><text class="icon-unfold calendar-text"></text>
-				</view>
-			</block>
-		</view>
+  <view class="cal-main">
+    <!-- 导航栏 -->
+    <view class="cal-nav">
+      <view class="to-now" bindtap="bindToNowTap">本月</view>
+      <view class="select-item">
+        <view class="nav-arrow" bindtap="bindLastTap"><text class="icon-back"></text></view>
+        <view class="nav-label">{{year}}年{{month}}月</view>
+        <view class="nav-arrow" bindtap="bindNextTap"><text class="icon-right"></text></view>
+      </view>
+      <view class="fold" bindtap="bindFoldTap">
+        <text class="calendar-text">{{fold ? '展开' : '收起'}}</text>
+      </view>
+    </view>
 
-		<view class="cal-title">
-			<view class="cal-weekday">一</view>
-			<view class="cal-weekday">二</view>
-			<view class="cal-weekday">三</view>
-			<view class="cal-weekday">四</view>
-			<view class="cal-weekday">五</view>
-			<view class="text-orange text-bold">六</view>
-			<view class="text-red text-bold">日</view>
-		</view>
-		<view class="cal-center {{!fold?'cur':''}}">
-			 
+    <!-- 折叠态：横向日期条（10天） -->
+    <view wx:if="{{fold}}" class="date-strip">
+      <scroll-view scroll-x class="strip-scroll" enhanced show-scrollbar="{{false}}">
+        <view class="strip-day {{item.full==fullToday?'is-today':''}} {{item.full==oneDoDay?'is-active':''}} {{!item.curMonth?'is-other':''}}"
+              wx:for="{{dayArr}}" wx:key="key"
+              bindtap="bindDayOneTap" data-fullday="{{item.full}}">
+          <text class="strip-week">{{item.week}}</text>
+          <text class="strip-date">{{item.show}}</text>
+        </view>
+      </scroll-view>
+    </view>
 
-			<!--多选begin-->
-			<view wx:for="{{dayArr}}" wx:if="{{mode=='multi'}}" wx:key="key" data-fullday="{{item.full}}" class="cube {{glow}} {{isLunar?'lunar':''}} {{item.full<fullToday?'timeout':''}} {{tools.includes(multiDoDay,item.full)? 'calendar-bg text-white data-checked' : ''}} {{tools.includes(hasDays,item.full)?'data-has':''}} {{tools.includes(hasJoinDays,item.full)?'join-has':''}}"
-				bindtap="bindDayMultiTap">
-				<view
-					class="num-grid {{fullToday==item.full? 'now-day-cur' : ''}} ">
-				<view
-					class="num {{!item.curMonth? 'text-no-month' : ''}} "> 
-					<text class="dd">{{item.show}}</text>
-					<text wx:if="{{isLunar}}" class="lunar {{tools.includes(multiDoDay,item.full)? 'text-white' : ''}} {{item.holiday?'text-red':''}}" >{{item.lunar}}</text>
-				</view>
-				</view>
-			</view>
-			<!--多选END-->
+    <!-- 展开态：完整月历 -->
+    <block wx:if="{{!fold}}">
+      <view class="cal-title">
+        <view class="cal-weekday">一</view>
+        <view class="cal-weekday">二</view>
+        <view class="cal-weekday">三</view>
+        <view class="cal-weekday">四</view>
+        <view class="cal-weekday">五</view>
+        <view class="cal-weekday">六</view>
+        <view class="cal-weekday">日</view>
+      </view>
 
-		</view>
-
-	</view>
-	<view bindtap="bindNextTap" class="left"><text class="icon-right"></text></view>
-</view> 
+      <view class="cal-center">
+        <view wx:for="{{dayArr}}" wx:key="key" data-fullday="{{item.full}}"
+              class="cube {{item.full<fullToday?'timeout':''}} {{tools.includes(hasDays,item.full)?'data-has':''}} {{tools.includes(hasJoinDays,item.full)?'join-has':''}} {{item.full==oneDoDay?'data-checked':''}}"
+              bindtap="bindDayOneTap">
+          <view class="num-grid {{fullToday==item.full?'now-day-cur':''}}">
+            <view class="num {{!item.curMonth?'text-no-month':''}}">
+              <text class="dd">{{item.show}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

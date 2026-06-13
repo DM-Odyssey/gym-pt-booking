@@ -29,8 +29,8 @@
 					<view class="mao">：</view>
 					<view class="content">
 						<view wx:if="{{item.JOIN_STATUS==1}}" class="text-black"><text class="icon-roundcheck margin-right-xxs"></text>预约成功
-							<text wx:if="{{item.JOIN_IS_CHECKIN==1}}">，已核销</text>
-							<text class="text-grey" wx:else>，未核销</text>
+							<text wx:if="{{item.JOIN_IS_CHECKIN==1}}">，已签到</text>
+							<text class="text-grey" wx:else>，未签到</text>
 						</view>
 						<view wx:elif="{{item.JOIN_STATUS==10}}">用户取消</view>
 						<view wx:elif="{{item.JOIN_STATUS==99}}">系统取消</view>
@@ -64,16 +64,16 @@
 					<view class="content text-grey">{{item.JOIN_ADD_TIME}}</view>
 				</view>
 				<view class="info-item" wx:if="{{item.JOIN_IS_CHECKIN==1}}">
-					<view class="title text-grey" style="font-weight: normal;">核销</view>
+					<view class="title text-grey" style="font-weight: normal;">签到</view>
 					<view class="mao text-grey" style="font-weight: normal;">：</view>
 					<view class="content text-grey" style="font-weight: normal;">{{item.JOIN_CHECKIN_TIME}}</view>
 				</view>
 
 				<view class="oprt">
 					<block wx:if="{{item.JOIN_STATUS==1}}">
-						<view wx:if="{{item.JOIN_IS_CHECKIN==0}}" bindtap="bindCheckinTap" data-idx="{{index}}" data-flag="1" class="btn bg-purple margin-right-s light">核销预约</view>
+						<view wx:if="{{item.JOIN_IS_CHECKIN==0}}" bindtap="bindCheckinTap" data-idx="{{index}}" data-flag="1" class="btn bg-purple margin-right-s light">确认签到</view>
 
-						<view wx:else bindtap="bindCheckinTap" data-idx="{{index}}" data-flag="0" class="btn bg-grey light margin-right-s">取消核销</view>
+						<view wx:else bindtap="bindCheckinTap" data-idx="{{index}}" data-flag="0" class="btn bg-grey light margin-right-s">取消签到</view>
 					</block>
 
 					<block wx:if="{{item.JOIN_STATUS==1}}">

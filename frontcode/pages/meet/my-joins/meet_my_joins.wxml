@@ -7,7 +7,7 @@
       <view class="item card-project shadow-project" wx:for="{{dataList.list}}" wx:key="index">
         <view class="status bg-grey light" wx:if="{{item.isTimeout}}">已过期</view>
         <view class="status bg-green light" wx:elif="{{item.JOIN_STATUS==1&&item.JOIN_IS_CHECKIN==0}}">可使用</view>
-        <view class="status bg-blue light" wx:elif="{{item.JOIN_STATUS==1&&item.JOIN_IS_CHECKIN==1}}">已核销</view>
+        <view class="status bg-blue light" wx:elif="{{item.JOIN_STATUS==1&&item.JOIN_IS_CHECKIN==1}}">已签到</view>
         <view class="status bg-orange light" wx:elif="{{item.JOIN_STATUS==10}}">已取消</view>
         <view class="status bg-red light" wx:elif="{{item.JOIN_STATUS==99}}">系统取消</view>
 

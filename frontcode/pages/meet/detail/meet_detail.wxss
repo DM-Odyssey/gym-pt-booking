@@ -28,8 +28,8 @@
   position: absolute;
   top: 20rpx;
   right: 20rpx;
-  background: #FED202;
-  color: #333;
+  background: var(--projectColor);
+  color: #fff;
   padding: 6rpx 20rpx;
   border-radius: 20rpx;
   font-size: 24rpx;
@@ -49,8 +49,8 @@
 }
 
 .meet-tab .item.cur {
-  color: #FED202;
-  border-bottom: 4rpx solid #FED202;
+  color: var(--projectColor);
+  border-bottom: 4rpx solid var(--projectColor);
 }
 
 .date {
@@ -73,8 +73,8 @@
 }
 
 .date-inner .item.cur {
-  background: #FED202;
-  color: #333;
+  background: var(--projectColor);
+  color: #fff;
 }
 
 .date-inner .item .status {
@@ -115,7 +115,8 @@
 }
 
 .time .item.cur {
-  background: #FED202;
+  background: var(--projectColor);
+  color: #fff;
 }
 
 .time .item.selected {
@@ -158,8 +159,8 @@
 }
 
 .bottom .right {
-  background: #FED202;
-  color: #333;
+  background: var(--projectColor);
+  color: #fff;
   padding: 15rpx 50rpx;
   border-radius: 40rpx;
   font-size: 28rpx;

@@ -45,7 +45,7 @@
 }
 
 .date-select .item.cur {
-	background-color: #f37445;
+	background-color: var(--projectColor);
 }
 
 .date-select .item.cur .week,

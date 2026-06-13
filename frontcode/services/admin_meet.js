@@ -82,8 +82,8 @@ const CHECK_FORM = {
   cateId: 'formCateId|must|id|name=分类',
   order: 'formOrder|must|int|min:0|max:9999|name=排序号',
   cancelSet: 'formCancelSet|must|int|name=取消设置',
-  phone: 'formPhone|string|len:11|name=教练登陆手机',
-  password: 'formPassword|string|min:6|max:30|name=教练登陆密码',
+  phone: 'formPhone|string|len:11|name=教练登录手机',
+  password: 'formPassword|string|min:6|max:30|name=教练登录密码',
 };
 
 module.exports = {

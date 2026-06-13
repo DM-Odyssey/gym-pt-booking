@@ -34,7 +34,7 @@ Page({
 
     var curPage = pageHelper.getPrevPage(1);
     if (curPage && curPage.options && curPage.options.source == 'admin') {
-      wx.setNavigationBarColor({ backgroundColor: '#2499f2', frontColor: '#ffffff' });
+      wx.setNavigationBarColor({ backgroundColor: '#1A1A2E', frontColor: '#ffffff' });
     }
   },
 
