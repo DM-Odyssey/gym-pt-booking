@@ -72,9 +72,11 @@ Component({
 	},
 
 	data: {
-		weekNo: 0, // 正在操作的那天位于第几周 
-		fullToday: 0, //今天  
+		weekNo: 0, // 正在操作的那天位于第几周
+		fullToday: 0, //今天
 		glow: '', //闪烁效果
+		dayArr: [],
+		stripDays: [],
 	},
 
 	lifetimes: {

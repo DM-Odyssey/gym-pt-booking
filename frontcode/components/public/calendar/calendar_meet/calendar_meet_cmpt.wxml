@@ -17,13 +17,13 @@
         <view class="nav-label">{{year}}年{{month}}月</view>
         <view class="nav-arrow" bindtap="bindNextTap"><text class="icon-right"></text></view>
       </view>
-      <view class="fold" bindtap="bindFoldTap">
+      <view wx:if="{{mode=='one'}}" class="fold" bindtap="bindFoldTap">
         <text class="calendar-text">{{fold ? '展开' : '收起'}}</text>
       </view>
     </view>
 
-    <!-- 折叠态：横向日期条（10天） -->
-    <view wx:if="{{fold}}" class="date-strip">
+    <!-- 折叠态：横向日期条（仅单选模式） -->
+    <view wx:if="{{fold && mode=='one'}}" class="date-strip">
       <scroll-view scroll-x class="strip-scroll" enhanced show-scrollbar="{{false}}">
         <view class="strip-day {{item.full==fullToday?'is-today':''}} {{item.full==oneDoDay?'is-active':''}} {{!item.curMonth?'is-other':''}}"
               wx:for="{{dayArr}}" wx:key="key"
@@ -35,7 +35,7 @@
     </view>
 
     <!-- 展开态：完整月历 -->
-    <block wx:if="{{!fold}}">
+    <block wx:if="{{!fold || mode=='multi'}}">
       <view class="cal-title">
         <view class="cal-weekday">一</view>
         <view class="cal-weekday">二</view>
@@ -46,7 +46,21 @@
         <view class="cal-weekday">日</view>
       </view>
 
-      <view class="cal-center">
+      <!-- 多选模式 -->
+      <view wx:if="{{mode=='multi'}}" class="cal-center">
+        <view wx:for="{{dayArr}}" wx:key="key" data-fullday="{{item.full}}"
+              class="cube {{tools.includes(multiDoDay,item.full)?'data-checked':''}} {{item.full<fullToday&&selectTimeout?'timeout':''}}"
+              bindtap="bindDayMultiTap">
+          <view class="num-grid {{fullToday==item.full?'now-day-cur':''}}">
+            <view class="num {{!item.curMonth?'text-no-month':''}}">
+              <text class="dd">{{item.show}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 单选模式 -->
+      <view wx:if="{{mode=='one'}}" class="cal-center">
         <view wx:for="{{dayArr}}" wx:key="key" data-fullday="{{item.full}}"
               class="cube {{item.full<fullToday?'timeout':''}} {{tools.includes(hasDays,item.full)?'data-has':''}} {{tools.includes(hasJoinDays,item.full)?'join-has':''}} {{item.full==oneDoDay?'data-checked':''}}"
               bindtap="bindDayOneTap">

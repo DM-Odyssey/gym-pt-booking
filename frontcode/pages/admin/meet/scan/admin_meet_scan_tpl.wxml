@@ -1,17 +1,10 @@
-<view class="form-box shadow">
-	<view class="form-group" wx:if="{{isAdmin||isWork}}">
-		<view class="title text-cut">{{title}}</view>
-	</view>
+<view class="scan-page">
+  <view class="scan-title" wx:if="{{title}}">{{title}}</view>
 
-</view>
-
-<view class="form-box shadow margin-top-xs">
-
-	<view class="checkin" bindtap="bindScanTap">
-		<view class="notice"><text class="icon-scan margin-right-s text-bold"></text>扫码签到</view>
-		<view class="desc" wx:if="{{isAdmin}}">管理员扫描学员签到码进行签到</view>
-		<view class="desc" wx:if="{{isWork}}">扫描学员签到码进行签到</view>
-		<view class="oprt">立即签到</view>
-	</view>
-
+  <view class="scan-body" bindtap="bindScanTap">
+    <view class="scan-icon"><text class="icon-scan"></text></view>
+    <text class="scan-label">扫码签到</text>
+    <text class="scan-desc">扫描学员签到码完成签到</text>
+    <view class="scan-btn">立即签到</view>
+  </view>
 </view>

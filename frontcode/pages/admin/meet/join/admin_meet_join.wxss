@@ -2,145 +2,120 @@
 
 .join-list {
   width: 100%;
-  padding: 0rpx 20rpx 20rpx;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
+  padding: 0 24rpx 24rpx;
 }
 
 .join-list .item {
   width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #fff;
-  border-radius: 5rpx;
+  background: #fff;
+  border-radius: 16rpx;
   overflow: hidden;
-  margin-bottom: 30rpx;
-  position: relative;
-  border: 1rpx solid #ddd;
-}
-
-.join-list .item .no {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  font-size: 25rpx;
-  color: #999;
-  line-height: 2;
-  padding: 0rpx 15rpx 0rpx 15rpx;
-  background-color: #eee;
-  border-top-left-radius: 15rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
 }
 
 .join-list .item .header {
   width: 100%;
   font-size: 26rpx;
-  text-align: left;
-  line-height: 2.6;
-  background-color: #f2f2f2;
-  padding: 0 15rpx;
+  padding: 20rpx 24rpx 12rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: transparent;
 }
 
 .join-list .item .header .left {
-  color: #333;
+  color: #1A1A2E;
+  font-weight: 600;
 }
 
 .join-list .item .header .right {
-  font-size: 25rpx;
-  color: #666;
+  font-size: 24rpx;
+  color: #8C939D;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+  background: #F5F7FA;
 }
 
 .join-list .item .info {
   width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #fff;
-  min-height: 150rpx;
-  padding: 15rpx 20rpx 20rpx;
+  padding: 0 24rpx 20rpx;
   position: relative;
-}
-
-.join-list .item .info .right-corner {
-  position: absolute;
-  left: 10rpx;
-  top: 0;
-  width: 100rpx;
-  height: 50rpx;
-}
-
-.join-list .item .info .fold {
-  width: 100%;
-  text-align: center;
-  font-size: 24rpx;
-  color: #999;
-  padding: 0 20rpx 10rpx;
 }
 
 .join-list .item .info .info-item {
   width: 100%;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
-  background-color: #fff;
-  line-height: 1.5;
-  font-size: 25rpx;
-  font-weight: bold;
-  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
 }
 
 .join-list .item .info .info-item .title {
-  width: 160rpx;
-  color: #777;
-  text-align: right;
+  width: 140rpx;
+  color: #8C939D;
+  flex-shrink: 0;
 }
 
 .join-list .item .info .info-item .mao {
-  color: #777;
-  text-align: left;
-  margin-right: 10rpx;
+  color: #8C939D;
+  margin-right: 8rpx;
 }
 
 .join-list .item .info .info-item .content {
   flex: 1;
-  color: #333;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  color: #1A1A2E;
 }
 
 .join-list .item .info .info-item.add-time {
   font-size: 24rpx !important;
-  font-weight: normal !important;
-  border-top: 1rpx dashed #ccc;
-  padding-top: 15rpx;
+  border-top: 1rpx solid #F5F7FA;
+  padding-top: 12rpx;
+  margin-top: 8rpx;
 }
 
+.join-list .item .info .fold {
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #8C939D;
+  padding: 4rpx 0 12rpx;
+}
+
+/* 操作按钮 */
 .join-list .item .info .oprt {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0rpx 0 0rpx;
+  gap: 12rpx;
+  padding-top: 12rpx;
+  border-top: 1rpx solid #F5F7FA;
 }
 
 .join-list .item .info .oprt .btn {
-  padding: 0 30rpx;
+  flex: 1;
+  text-align: center;
+  padding: 14rpx 0;
   font-size: 26rpx;
-  border-radius: 10rpx !important;
+  border-radius: 16rpx !important;
+  height: auto !important;
+  line-height: 1.4;
 }
 
-.cancel-area {
-  border: 1rpx solid #ddd;
+/* 序号角标隐藏 */
+.join-list .item .no {
+  display: none;
 }
 
+/* 时间线 */
 .time-line {
   width: 100%;
   text-align: right;
   font-size: 24rpx;
+  color: #8C939D;
+  padding: 8rpx 0;
+}
+
+.cancel-area {
+  border: 1rpx solid #E5E7EB;
 }

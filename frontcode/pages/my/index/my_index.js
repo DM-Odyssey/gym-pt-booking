@@ -48,16 +48,17 @@ Component({
     },
 
     bindSetTap() {
-      const itemList = ['清除缓存', '后台管理'];
+      const itemList = ['个人资料', '清除缓存', '后台管理'];
       wx.showActionSheet({
         itemList,
         success: (res) => {
           const idx = res.tapIndex;
           if (idx === 0) {
+            wx.navigateTo({ url: '/pages/my/edit/my_edit' });
+          } else if (idx === 1) {
             cache.clear();
-            wx.showToast({ title: '清除缓存成功', icon: 'none' });
-          }
-          if (idx === 1) {
+            wx.showToast({ title: '缓存已清除', icon: 'none' });
+          } else if (idx === 2) {
             wx.reLaunch({ url: '/pages/admin/login/admin_login' });
           }
         },

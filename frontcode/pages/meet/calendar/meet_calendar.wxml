@@ -3,7 +3,7 @@
 
 <view class="main" wx:if="{{isLoad}}">
   <view class="plan-date">
-    <cmpt-calendar mode="one" hasDays="{{hasDays}}" bind:click="bindClickCmpt" bind:monthChange="bindMonthChangeCmpt" />
+    <cmpt-calendar id="calendar" mode="one" hasDays="{{hasDays}}" bind:click="bindClickCmpt" bind:monthChange="bindMonthChangeCmpt" />
   </view>
 
   <view class="list">

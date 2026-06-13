@@ -7,14 +7,14 @@ page {
 }
 
 .top {
-  height: 320rpx;
+  height: 240rpx;
   background: linear-gradient(180deg, #F0FDF4 0%, #F5F7FA 100%);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 240%;
   border-radius: 0 0 50% 50%;
-  padding-top: 40rpx;
+  padding-top: 20rpx;
   position: relative;
   overflow: hidden;
 }
@@ -111,7 +111,7 @@ page {
 .meet-menu {
   width: 100%;
   padding: 25rpx;
-  margin-top: 30rpx;
+  margin-top: -20rpx;
   background-color: #fff;
 }
 
