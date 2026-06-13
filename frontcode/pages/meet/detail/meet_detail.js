@@ -17,9 +17,7 @@ Component({
     days: [],
     dayIdx: 0,
     timeIdx: -1,
-    cur: 'mind',
-    topBtnShow: false,
-    canNullTime: false,
+    isCoach: false,
   },
 
   methods: {
@@ -36,12 +34,14 @@ Component({
       const params = { id };
       const opt = { title: 'bar' };
       const meet = await cloud.callCloudData('meet/view', params, opt);
+      if (meet && !meet.MEET_OBJ) meet.MEET_OBJ = {};
       if (!meet) {
         this.setData({ isLoad: null });
         return;
       }
 
-      const days = meet.MEET_DAYS_SET || [];
+      let days = meet.MEET_DAYS_SET || [];
+      if (!Array.isArray(days)) days = [];
       const now = timeHelper.time('Y-M-D');
       const tmr = timeHelper.time('Y-M-D', 86400);
       const dat = timeHelper.time('Y-M-D', 86400 * 2);
@@ -54,7 +54,10 @@ Component({
         d.date = d.day.split('-')[1] + '-' + d.day.split('-')[2];
       });
 
-      this.setData({ isLoad: true, meet, days });
+      const isCoach = meet.MEET_CATE_ID == 1 || meet.MEET_CATE_ID === '1';
+      const title = isCoach ? '教练详情' : '课程详情';
+      wx.setNavigationBarTitle({ title });
+      this.setData({ isLoad: true, meet, days, isCoach });
     },
 
     bindDayTap(e) {
@@ -72,7 +75,6 @@ Component({
     async bindJoinTap() {
       if (!(await auth.loginMustCancelWin(this))) return;
 
-      this.setData({ cur: 'time' });
       const dayIdx = this.data.dayIdx;
       const timeIdx = this.data.timeIdx;
       if (timeIdx < 0) return wx.showToast({ title: '请先选择预约时段', icon: 'none' });
@@ -94,21 +96,12 @@ Component({
       }
     },
 
-    bindTabTap(e) {
-      const cur = e.currentTarget.dataset.cur;
-      this.setData({ cur });
-    },
-
     url(e) {
       router.url(e, this);
     },
 
     onPullDownRefresh() {
       this._loadDetail().then(() => wx.stopPullDownRefresh());
-    },
-
-    onPageScroll(e) {
-      this.setData({ topBtnShow: e.scrollTop > 100 });
     },
 
     onShareAppMessage() {},

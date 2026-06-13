@@ -132,6 +132,7 @@ async function viewMeet(openId, params) {
         MEET_DAYS_SET: getDaysSet,
         MEET_QR: meet.MEET_QR || '',
         MEET_TITLE: meet.MEET_TITLE || '',
+        MEET_CATE_ID: meet.MEET_CATE_ID || '',
         MEET_CATE_NAME: meet.MEET_CATE_NAME || '',
         MEET_OBJ: meet.MEET_OBJ || {}
     })

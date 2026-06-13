@@ -1,15 +1,47 @@
 <view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l text-grey"></view>
 <view wx:if="{{isLoad===false}}" class="margin-top load loading text-l text-grey"></view>
-<view wx:if="{{isLoad && isAdmin}}" class="main-admin">
-  <view class="admin-comm-list">
-    <view class="item"><view class="info">
-      <view class="info-item"><view class="title">用户昵称</view><view class="mao">：</view><view class="content text-admin text-l">{{user.USER_NAME}}</view></view>
-      <view class="info-item" bindtap="url" data-type="phone" data-url="{{user.USER_MOBILE}}">
-        <view class="title">手机号码</view><view class="mao">：</view><view class="content">{{user.USER_MOBILE}} <text class="icon-phone text-l margin-left-xs"></text></view>
+
+<view wx:if="{{isLoad && isAdmin}}" class="main-detail">
+  <!-- 头部卡片 -->
+  <view class="header-card">
+    <view class="header-avatar"><text class="icon-profilefill"></text></view>
+    <view class="header-info">
+      <view class="header-name">{{user.USER_NAME}}</view>
+      <view class="header-meta">
+        <text wx:if="{{user.USER_STATUS==1}}" class="tag tag-ok">正常</text>
+        <text wx:elif="{{user.USER_STATUS==0}}" class="tag tag-warn">待审核</text>
+        <text wx:elif="{{user.USER_STATUS==8}}" class="tag tag-warn">审核未过</text>
+        <text wx:elif="{{user.USER_STATUS==9}}" class="tag tag-bad">已禁用</text>
       </view>
-      <view class="info-item"><view class="title">注册时间</view><view class="mao">：</view><view class="content">{{user.USER_ADD_TIME}}</view></view>
-    </view></view>
+    </view>
   </view>
-  <import src="/templates/public/admin_forms_detail_tpl.wxml" />
-  <template is="adminFormsDetailTpl" data="{{forms:user.USER_FORMS}}" />
+
+  <!-- 基本信息 -->
+  <view class="info-card">
+    <view class="card-title">基本信息</view>
+    <view class="card-row" bindtap="url" data-type="phone" data-url="{{user.USER_MOBILE}}">
+      <text class="row-label">手机号码</text>
+      <text class="row-value">{{user.USER_MOBILE}}</text>
+      <text class="row-icon icon-phone"></text>
+    </view>
+    <view class="card-row">
+      <text class="row-label">注册时间</text>
+      <text class="row-value">{{user.USER_ADD_TIME}}</text>
+    </view>
+  </view>
+
+  <!-- 注册表单 -->
+  <view wx:if="{{user.USER_FORMS && user.USER_FORMS.length>0}}" class="info-card">
+    <view class="card-title">注册信息</view>
+    <view class="card-row" wx:for="{{user.USER_FORMS}}" wx:key="key">
+      <text class="row-label">{{item.title}}</text>
+      <block wx:if="{{item.type=='image'}}">
+        <image wx:for="{{item.val}}" wx:for-item="img" wx:key="k" bindtap="url" data-type="image" data-url="{{img}}" src="{{img}}" mode="aspectFill" class="form-img" />
+      </block>
+      <text wx:elif="{{item.type=='switch'}}" class="row-value">{{item.val===true?'是':'否'}}</text>
+      <text wx:else class="row-value">{{item.val}}</text>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
 </view>
