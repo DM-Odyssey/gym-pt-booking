@@ -18,6 +18,8 @@ Component({
     dayIdx: 0,
     timeIdx: -1,
     isCoach: false,
+    costMode: 0,
+    costCardName: '',
   },
 
   methods: {
@@ -55,9 +57,15 @@ Component({
       });
 
       const isCoach = meet.MEET_CATE_ID == 1 || meet.MEET_CATE_ID === '1';
+      const costMode = meet.MEET_COST_MODE || 0;
+      let costCardName = '';
+      if (costMode === 1) {
+        if (isCoach) costCardName = '私教卡';
+        else costCardName = '课程卡';
+      }
       const title = isCoach ? '教练详情' : '课程详情';
       wx.setNavigationBarTitle({ title });
-      this.setData({ isLoad: true, meet, days, isCoach });
+      this.setData({ isLoad: true, meet, days, isCoach, costMode, costCardName });
     },
 
     bindDayTap(e) {
@@ -87,6 +95,27 @@ Component({
 
       const meetId = this.data.id;
       const timeMark = time.mark;
+      const costMode = this.data.costMode;
+
+      // 消耗模式确认
+      if (costMode === 1) {
+        wx.showModal({
+          title: '确认预约',
+          content: '本次预约将消耗1次' + (this.data.costCardName || '健身卡') + '次数',
+          success: async (res) => {
+            if (!res.confirm) return;
+            try {
+              const opts = { title: '请稍候' };
+              await cloud.callCloudSubmit('meet/before_join', { meetId, timeMark }, opts);
+              wx.navigateTo({ url: `/pages/meet/join/meet_join?id=${meetId}&timeMark=${timeMark}` });
+            } catch (ex) {
+              console.error(ex);
+            }
+          }
+        });
+        return;
+      }
+
       try {
         const opts = { title: '请稍候' };
         await cloud.callCloudSubmit('meet/before_join', { meetId, timeMark }, opts);

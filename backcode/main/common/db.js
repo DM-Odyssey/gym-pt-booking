@@ -133,8 +133,25 @@ function withPID(where = {}, pid = 'workfit') {
     return where
 }
 
+// 确保集合存在（不存在则自动创建）
+async function ensureColl(name) {
+    const fullName = COLLECTION_PREFIX + name
+    try {
+        await db.createCollection(fullName)
+        console.log('[db] 集合已创建: ' + fullName)
+    } catch (e) {
+        // 集合已存在则忽略（本地调试 -501001，云端 -502005）
+        const code = e.errCode || 0
+        const msg = String(e.message || e)
+        if (code === -501001 || code === -502005 || msg.includes('ALREADY_EXIST') || msg.includes('ResourceExist')) {
+            return
+        }
+        console.warn('[db] 创建集合失败: ' + fullName, e.message || e)
+    }
+}
+
 module.exports = {
     init, coll, cmd,
     getOne, getAll, getList, insert, edit, del, count, inc,
-    withPID, regexp, neq
+    withPID, regexp, neq, ensureColl
 }

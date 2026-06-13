@@ -134,7 +134,8 @@ async function viewMeet(openId, params) {
         MEET_TITLE: meet.MEET_TITLE || '',
         MEET_CATE_ID: meet.MEET_CATE_ID || '',
         MEET_CATE_NAME: meet.MEET_CATE_NAME || '',
-        MEET_OBJ: meet.MEET_OBJ || {}
+        MEET_OBJ: meet.MEET_OBJ || {},
+        MEET_COST_MODE: meet.MEET_COST_MODE || 0
     })
 }
 
@@ -176,6 +177,13 @@ async function beforeJoin(openId, params) {
         JOIN_USER_ID: openId, JOIN_STATUS: 1
     })
     if (cnt >= 1) return fail(CODE.LOGIC, '您本时段已经预约')
+
+    // 健身卡检查
+    if (meet.MEET_COST_MODE === 1) {
+        const cardResult = await findMatchingCard(openId, meet.MEET_CATE_ID)
+        if (!cardResult) return fail(CODE.LOGIC, '您没有可用次数，请先办卡')
+        return success({ cardId: cardResult._id, cardType: cardResult.CARD_TYPE })
+    }
 
     return success()
 }
@@ -242,6 +250,16 @@ async function join(openId, params) {
     })
     if (cnt >= 1) return fail(CODE.LOGIC, '您本时段已经预约')
 
+    // 健身卡扣次
+    let usedCardId = ''
+    if (meet.MEET_COST_MODE === 1) {
+        const card = await findMatchingCard(openId, meet.MEET_CATE_ID)
+        if (!card) return fail(CODE.LOGIC, '您没有可用次数，请先办卡')
+        const consumed = await consumeCard(card._id)
+        if (!consumed) return fail(CODE.LOGIC, '扣次失败，请重试')
+        usedCardId = card._id
+    }
+
     // 写入预约
     const day = daySet.day
     const startTime = timeUtil(day + ' ' + (timeSet.start || '00:00') + ':00')
@@ -263,7 +281,8 @@ async function join(openId, params) {
             JOIN_OBJ: forms2Obj(forms),
             JOIN_CODE: code,
             JOIN_STATUS: 1,
-            JOIN_IS_CHECKIN: 0
+            JOIN_IS_CHECKIN: 0,
+            JOIN_CARD_ID: usedCardId
         })
     }
 
@@ -406,6 +425,78 @@ function forms2Obj(forms) {
         if (f.mark) obj[f.mark] = f.val
     }
     return obj
+}
+
+// ===== 健身卡辅助 =====
+
+/**
+ * 查找用户匹配的可用卡
+ * 规则：专用卡优先（私教→私教卡，课程→课程卡），其次健身卡
+ * 同类型多张：优先消耗即将到期的
+ */
+async function findMatchingCard(openId, meetCateId) {
+    const today = timestamp2Time(time(), 'Y-M-D')
+    const cards = await db.getAll('card', {
+        CARD_USER_ID: openId,
+        CARD_STATUS: 1
+    }, { orderBy: { field: 'CARD_EXPIRE', direction: 'asc' }, limit: 20 })
+
+    // 过滤有效且未过期的卡
+    const validCards = cards.filter(c => {
+        if (c.CARD_EXPIRE && c.CARD_EXPIRE < today) return false
+        const remain = (c.CARD_TOTAL || 0) - (c.CARD_USED || 0)
+        return remain > 0
+    })
+
+    if (validCards.length === 0) return null
+
+    // 按优先级选择：专用卡 > 健身卡
+    const cateId = String(meetCateId)
+    let dedicated = null  // 专用卡
+    let general = null    // 健身卡
+
+    for (const card of validCards) {
+        if (card.CARD_TYPE === 1 && cateId === '1') dedicated = card
+        else if (card.CARD_TYPE === 2 && cateId !== '1') dedicated = card
+        else if (card.CARD_TYPE === 3 && !general) general = card
+    }
+
+    return dedicated || general || null
+}
+
+/**
+ * 原子扣次：使用 inc + 条件 where 防止并发
+ */
+async function consumeCard(cardId) {
+    try {
+        const result = await db.coll('card').where({
+            _id: cardId,
+            CARD_STATUS: 1
+        }).update({
+            data: { CARD_USED: db.cmd().inc(1) }
+        })
+        if (!result.stats || result.stats.updated === 0) return false
+
+        // 检查是否用完，更新状态
+        const card = await db.getOne('card', { _id: cardId }, 'CARD_TOTAL,CARD_USED')
+        if (card && (card.CARD_USED >= card.CARD_TOTAL)) {
+            await db.edit('card', { _id: cardId }, { CARD_STATUS: 0 })
+        }
+
+        // 写日志
+        await db.insert('card_log', {
+            LOG_CARD_ID: cardId,
+            LOG_USER_ID: card.CARD_USER_ID || '',
+            LOG_TYPE: 1,
+            LOG_CNT: -1,
+            LOG_MEMO: '预约消耗'
+        })
+
+        return true
+    } catch (e) {
+        console.error('consumeCard error:', e)
+        return false
+    }
 }
 
 module.exports = {

@@ -34,6 +34,15 @@
 .section-header {
   font-size: 30rpx; font-weight: 600; color: #1A1A2E;
   padding: 0 24rpx 16rpx;
+  display: flex; align-items: center;
+}
+.cost-tag {
+  margin-left: 16rpx; font-size: 22rpx; font-weight: 500;
+  padding: 4rpx 16rpx; border-radius: 20rpx;
+  background: #FEF3C7; color: #D97706;
+}
+.cost-tag.cost-free {
+  background: #F0FDF4; color: #22C55E;
 }
 
 /* 日期条 */

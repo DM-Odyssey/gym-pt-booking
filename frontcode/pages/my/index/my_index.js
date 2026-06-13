@@ -12,6 +12,8 @@ const auth = require('../../../services/auth.js');
 Component({
   data: {
     user: null,
+    cards: [],
+    cardLoaded: false,
   },
 
   pageLifetimes: {
@@ -37,10 +39,17 @@ Component({
       const opts = { title: 'bar' };
       const user = await cloud.callCloudData('passport/my_detail', {}, opts);
       if (!user) {
-        this.setData({ user: null });
+        this.setData({ user: null, cards: [], cardLoaded: true });
         return;
       }
       this.setData({ user });
+      // 并行加载卡信息
+      try {
+        const cardData = await cloud.callCloudData('passport/my_card', {}, { title: 'bar' });
+        this.setData({ cards: cardData.cards || [], cardLoaded: true });
+      } catch (e) {
+        this.setData({ cardLoaded: true });
+      }
     },
 
     url(e) {

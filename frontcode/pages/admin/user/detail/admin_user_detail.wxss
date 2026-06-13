@@ -86,3 +86,96 @@ page { background: #F5F7FA; }
   border-radius: 8rpx;
   margin: 8rpx 8rpx 0 0;
 }
+
+/* 健身卡 */
+.card-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border-bottom: 1rpx solid #F5F7FA;
+}
+.card-item:last-child { border-bottom: none; }
+
+.card-item-info { flex: 1; }
+
+.card-item-type {
+  display: flex; align-items: center; margin-bottom: 8rpx;
+}
+
+.card-type-tag {
+  font-size: 22rpx; padding: 4rpx 14rpx; border-radius: 8rpx; margin-right: 12rpx;
+}
+.ct-coach { background: #DBEAFE; color: #2563EB; }
+.ct-course { background: #FEF3C7; color: #D97706; }
+.ct-general { background: #D1FAE5; color: #059669; }
+
+.card-item-status { font-size: 20rpx; }
+.cs-ok { color: #22C55E; }
+.cs-bad { color: #EF4444; }
+.cs-gray { color: #9CA3AF; }
+
+.card-item-count { font-size: 26rpx; color: #1A1A2E; margin-bottom: 4rpx; }
+.cc-num { font-size: 30rpx; font-weight: 600; color: var(--projectColor); }
+
+.card-item-expire { font-size: 22rpx; color: #8C939D; }
+.card-item-memo { font-size: 22rpx; color: #9CA3AF; margin-top: 2rpx; }
+
+.card-item-action {
+  font-size: 32rpx; color: #2563EB; padding: 12rpx;
+}
+
+.card-empty {
+  padding: 32rpx 24rpx; text-align: center; color: #9CA3AF; font-size: 26rpx;
+}
+
+.card-add-btn {
+  margin: 16rpx 24rpx 24rpx;
+  padding: 20rpx 0; text-align: center;
+  background: #EFF6FF; color: #2563EB;
+  font-size: 28rpx; border-radius: 12rpx;
+  border: 2rpx dashed #BFDBFE;
+}
+
+/* 发卡表单 */
+.card-form { padding-bottom: 24rpx; }
+
+.card-form-types {
+  display: flex; padding: 0 24rpx; margin-bottom: 20rpx; gap: 16rpx;
+}
+
+.form-type-item {
+  flex: 1; text-align: center; padding: 16rpx 0;
+  background: #F5F7FA; border-radius: 12rpx;
+  font-size: 26rpx; color: #6B7280;
+  border: 2rpx solid transparent;
+}
+.form-type-item.cur {
+  background: #EFF6FF; color: #2563EB;
+  border-color: #2563EB; font-weight: 600;
+}
+
+.form-group {
+  display: flex; align-items: center;
+  padding: 16rpx 24rpx;
+}
+.form-label {
+  width: 120rpx; font-size: 26rpx; color: #8C939D; flex-shrink: 0;
+}
+.form-input {
+  flex: 1; font-size: 26rpx; color: #1A1A2E;
+  background: #F5F7FA; border-radius: 10rpx; padding: 14rpx 16rpx;
+}
+
+.form-btns {
+  display: flex; padding: 24rpx 24rpx 0; gap: 20rpx;
+}
+.form-btn-cancel {
+  flex: 1; text-align: center; padding: 20rpx;
+  background: #F5F7FA; border-radius: 12rpx;
+  font-size: 28rpx; color: #6B7280;
+}
+.form-btn-ok {
+  flex: 2; text-align: center; padding: 20rpx;
+  background: #2563EB; border-radius: 12rpx;
+  font-size: 28rpx; color: #fff; font-weight: 600;
+}

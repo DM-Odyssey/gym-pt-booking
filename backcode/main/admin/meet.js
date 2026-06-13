@@ -43,11 +43,12 @@ async function insertMeet(admin, params) {
         phone: 'phone|string|default:""',
         password: 'password|string',
         forms: 'forms|array|default:[]',
-        joinForms: 'joinForms|array|default:[]'
+        joinForms: 'joinForms|array|default:[]',
+        costMode: 'costMode|int|default:0'
     })
     if (vResult.err) return vResult.err
 
-    const { title, order, cancelSet, cateId, cateName, daysSet, phone, password, forms, joinForms } = vResult.data
+    const { title, order, cancelSet, cateId, cateName, daysSet, phone, password, forms, joinForms, costMode } = vResult.data
 
     const data = {
         MEET_ADMIN_ID: admin._id,
@@ -57,7 +58,8 @@ async function insertMeet(admin, params) {
         MEET_OBJ: forms2Obj(forms),
         MEET_PHONE: phone,
         MEET_PASSWORD: password ? await bcrypt.hash(password, 10) : '',
-        MEET_STATUS: 1, MEET_VOUCH: 0
+        MEET_STATUS: 1, MEET_VOUCH: 0,
+        MEET_COST_MODE: costMode || 0
     }
 
     const id = await db.insert('meet', data)
@@ -97,17 +99,19 @@ async function editMeet(admin, params) {
         phone: 'phone|string|default:""',
         password: 'password|string',
         forms: 'forms|array|default:[]',
-        joinForms: 'joinForms|array|default:[]'
+        joinForms: 'joinForms|array|default:[]',
+        costMode: 'costMode|int|default:0'
     })
     if (vResult.err) return vResult.err
 
-    const { id, title, cateId, cateName, order, cancelSet, daysSet, phone, password, forms, joinForms } = vResult.data
+    const { id, title, cateId, cateName, order, cancelSet, daysSet, phone, password, forms, joinForms, costMode } = vResult.data
 
     const data = {
         MEET_TITLE: title, MEET_CATE_ID: cateId, MEET_CATE_NAME: cateName,
         MEET_ORDER: order, MEET_CANCEL_SET: cancelSet,
         MEET_DAYS: daysSet, MEET_FORMS: forms, MEET_JOIN_FORMS: joinForms,
-        MEET_OBJ: forms2Obj(forms)
+        MEET_OBJ: forms2Obj(forms),
+        MEET_COST_MODE: costMode || 0
     }
     if (phone) data.MEET_PHONE = phone
     if (password) data.MEET_PASSWORD = await bcrypt.hash(password, 10)

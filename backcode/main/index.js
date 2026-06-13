@@ -23,6 +23,10 @@ exports.main = async (event, context) => {
 
     db.init(env)
 
+    // 自动创建业务所需集合
+    try { await db.ensureColl('card'); } catch (_) {}
+    try { await db.ensureColl('card_log'); } catch (_) {}
+
     try {
         const openId = cloud.getWXContext().OPENID
 

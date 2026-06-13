@@ -17,6 +17,7 @@ Component({
     url(e) { router.url(e, this); },
     bindCateIdSelect(e) { this.setData({ formCateId: e.detail }); if (e.detail != 1) this.setData({ formPhone: '', formPassword: '' }); },
     bindCancelSetSelect(e) { if (e.detail !== '' && e.detail !== undefined && e.detail !== this.data.formCancelSet) this.setData({ formCancelSet: e.detail }); },
+    bindCostModeSelect(e) { if (e.detail !== '' && e.detail !== undefined) this.setData({ formCostMode: e.detail }); },
     bindJoinFormsCmpt(e) { this.setData({ formJoinForms: e.detail }); },
 
     bindFormAddSubmit: async function() {

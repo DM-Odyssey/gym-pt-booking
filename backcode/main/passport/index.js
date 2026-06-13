@@ -12,6 +12,7 @@ const ROUTES = {
     'passport/phone':      [passport.getPhone],
     'passport/my_detail':  [passport.getMyDetail],
     'passport/edit_base':  [passport.editBase],
+    'passport/my_card':    [passport.getMyCard],
 }
 
 async function handle(route, openId, params, token) {

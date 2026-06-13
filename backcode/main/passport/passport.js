@@ -6,7 +6,7 @@
 const cloud = require('wx-server-sdk')
 const db = require('../common/db')
 const { success, fail, CODE } = require('../common/response')
-const { time, makeID } = require('../common/util')
+const { time, makeID, timestamp2Time } = require('../common/util')
 const { validate } = require('../common/validate')
 
 async function login(openId, params) {
@@ -99,4 +99,55 @@ async function editBase(openId, params) {
     return success()
 }
 
-module.exports = { login, register, getPhone, getMyDetail, editBase }
+// ===== 健身卡查询 =====
+
+async function getMyCard(openId, params) {
+    const today = timestamp2Time(time(), 'Y-M-D')
+    const cards = await db.getAll('card', {
+        CARD_USER_ID: openId
+    }, { orderBy: { field: 'CARD_ADD_TIME', direction: 'desc' }, limit: 20 })
+
+    // 实时判断过期 + 格式化（代码层过滤状态，避免 cmd.in 兼容问题）
+    const validCards = []
+    let totalCoach = 0, totalCourse = 0, totalGeneral = 0
+
+    for (const card of cards) {
+        // 跳过已作废的卡
+        if (card.CARD_STATUS === 99) continue
+
+        const remaining = Math.max(0, (card.CARD_TOTAL || 0) - (card.CARD_USED || 0))
+        const isExpired = card.CARD_EXPIRE && card.CARD_EXPIRE < today
+
+        const cardInfo = {
+            id: card._id,
+            type: card.CARD_TYPE,
+            typeName: { 1: '私教卡', 2: '课程卡', 3: '健身卡' }[card.CARD_TYPE] || '',
+            total: card.CARD_TOTAL || 0,
+            used: card.CARD_USED || 0,
+            remain: isExpired ? 0 : remaining,
+            expire: card.CARD_EXPIRE || '',
+            status: isExpired ? 9 : (card.CARD_STATUS || 1),
+            statusName: isExpired ? '已过期' : (remaining <= 0 ? '已用完' : '有效'),
+            memo: card.CARD_MEMO || ''
+        }
+
+        validCards.push(cardInfo)
+
+        if (cardInfo.status === 1 && remaining > 0) {
+            if (card.CARD_TYPE === 1) totalCoach += remaining
+            else if (card.CARD_TYPE === 2) totalCourse += remaining
+            else if (card.CARD_TYPE === 3) totalGeneral += remaining
+        }
+    }
+
+    return success({
+        cards: validCards,
+        totalRemain: {
+            coach: totalCoach,
+            course: totalCourse,
+            general: totalGeneral
+        }
+    })
+}
+
+module.exports = { login, register, getPhone, getMyDetail, editBase, getMyCard }

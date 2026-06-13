@@ -17,6 +17,25 @@
 
   </view>
 
+  <!-- 健身卡 -->
+  <view wx:if="{{cardLoaded && cards.length>0}}" class="card-section">
+    <view class="card-title">我的健身卡</view>
+    <view class="card-item" wx:for="{{cards}}" wx:key="id">
+      <view class="card-left">
+        <view class="card-type {{item.type==1?'type-coach':(item.type==2?'type-course':'type-general')}}">{{item.typeName}}</view>
+        <view wx:if="{{item.expire}}" class="card-expire">有效期至 {{item.expire}}</view>
+      </view>
+      <view class="card-right">
+        <view class="card-remain">{{item.remain}}<text class="card-unit">次</text></view>
+        <view class="card-total">共 {{item.total}} 次</view>
+      </view>
+      <view wx:if="{{item.status!=1}}" class="card-badge {{item.status==9?'badge-expire':'badge-done'}}">{{item.statusName}}</view>
+    </view>
+  </view>
+  <view wx:if="{{cardLoaded && cards.length==0}}" class="card-section">
+    <view class="card-empty">暂未办卡，请联系健身房</view>
+  </view>
+
   <view class="meet-menu">
     <view class="inner">
       <view class="item" bindtap="url" data-url="/pages/meet/my-joins/meet_my_joins?status=use">

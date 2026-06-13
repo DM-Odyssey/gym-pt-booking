@@ -26,6 +26,11 @@
 	</view>
 	<view wx:if="{{formCancelSetFocus}}" class="hint-desc error">{{formCancelSetFocus}}</view>
 
+	<view class="form-group" id="formCostMode">
+		<view class="title must">消耗模式</view>
+		<cmpt-picker mark="costMode" style="flex:1" item="{{formCostMode}}" bind:select="bindCostModeSelect" sourceDataStr="0=免费预约,1=消耗次数" />
+	</view>
+
 </view>
 
 <view id="formDaysSet" class="form-box shadow" style="background-color: #fef2ce;">

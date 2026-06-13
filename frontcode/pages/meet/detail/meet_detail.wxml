@@ -18,7 +18,11 @@
 
     <!-- 3. 预约时段 -->
     <view class="time-section">
-      <view class="section-header">{{isCoach?'预约教练':'预约时段'}}</view>
+      <view class="section-header">
+        <text>{{isCoach?'预约教练':'预约时段'}}</text>
+        <text wx:if="{{costMode==1}}" class="cost-tag">消耗1次{{costCardName}}</text>
+        <text wx:else class="cost-tag cost-free">免费</text>
+      </view>
       <scroll-view scroll-x class="date" enable-flex="{{true}}">
         <view bindtap="bindDayTap" data-idx="{{index}}" class="date-inner" wx:for="{{days}}" wx:key="key" wx:for-index="index">
           <view class="item {{dayIdx==index?'cur':''}}">

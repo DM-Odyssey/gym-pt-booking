@@ -11,6 +11,7 @@ const setup = require('./setup')
 const user = require('./user')
 const news = require('./news')
 const meet = require('./meet')
+const card = require('./card')
 
 const ROUTES = {
     // 登录
@@ -84,6 +85,14 @@ const ROUTES = {
     'admin/join_data_get':          [meet.getJoinDataURL],
     'admin/join_data_export':       [meet.exportJoinData],
     'admin/join_data_del':          [meet.deleteJoinData],
+
+    // 健身卡管理
+    'admin/card_list':      [card.getCardList],
+    'admin/card_add':       [card.addCard],
+    'admin/card_edit':      [card.editCard],
+    'admin/card_del':       [card.delCard],
+    'admin/card_user':      [card.getUserCards],
+    'admin/card_log':       [card.getCardLog],
 }
 
 async function handle(route, openId, params, token) {

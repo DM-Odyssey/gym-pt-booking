@@ -66,7 +66,8 @@ const initFormData = function() {
     formDaysSet: [],
     formPhone: '',
     formPassword: '',
-    formJoinForms: helper.deepClone(MEET_JOIN_FIELDS)
+    formJoinForms: helper.deepClone(MEET_JOIN_FIELDS),
+    formCostMode: 0
   };
 };
 
@@ -82,6 +83,7 @@ const CHECK_FORM = {
   cateId: 'formCateId|must|id|name=分类',
   order: 'formOrder|must|int|min:0|max:9999|name=排序号',
   cancelSet: 'formCancelSet|must|int|name=取消设置',
+  costMode: 'formCostMode|int|default:0|name=消耗模式',
   phone: 'formPhone|string|len:11|name=教练登录手机',
   password: 'formPassword|string|min:6|max:30|name=教练登录密码',
 };
