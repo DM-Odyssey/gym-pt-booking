@@ -1,5 +1,5 @@
 <view class="container">
-  <image class="bg-image" src="/images/login/coach_login.png" mode="aspectFill"></image>
+  <image class="bg-image" src="/images/login/coach_login.jpg" mode="aspectFill"></image>
   <view class="overlay"></view>
 
   <view class="content-wrapper">

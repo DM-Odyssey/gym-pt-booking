@@ -7,33 +7,17 @@
       <view class="right">
         <view class="line1">
           <view class="name">{{user?user.USER_NAME:'注册 / 登录'}}</view>
-          <view wx:if="{{user&&user.USER_STATUS==9}}" class="type bg-red">已禁用</view>
-          <view wx:elif="{{user&&user.USER_STATUS==0}}" class="type bg-orange">已注册，待审核</view>
-          <view wx:elif="{{user&&user.USER_STATUS==8}}" class="type bg-orange">审核未通过，请修改资料</view>
+          <view wx:if="{{user&&user.USER_STATUS==9}}" class="type type-bad">已禁用</view>
+          <view wx:elif="{{user&&user.USER_STATUS==0}}" class="type type-warn">待审核</view>
+          <view wx:elif="{{user&&user.USER_STATUS==8}}" class="type type-warn">审核未过</view>
+          <block wx:if="{{user && user.USER_STATUS==1 && cardLoaded}}" wx:for="{{cards}}" wx:key="id">
+            <view wx:if="{{item.remain > 0}}" class="type card-tag-{{item.type}}">{{item.typeName}} {{item.remain}}</view>
+          </block>
         </view>
         <view class="line2">{{user?'欢迎回来 👋':'加入我们，开启健身之旅'}}</view>
       </view>
     </view>
 
-  </view>
-
-  <!-- 健身卡 -->
-  <view wx:if="{{cardLoaded && cards.length>0}}" class="card-section">
-    <view class="card-title">我的健身卡</view>
-    <view class="card-item" wx:for="{{cards}}" wx:key="id">
-      <view class="card-left">
-        <view class="card-type {{item.type==1?'type-coach':(item.type==2?'type-course':'type-general')}}">{{item.typeName}}</view>
-        <view wx:if="{{item.expire}}" class="card-expire">有效期至 {{item.expire}}</view>
-      </view>
-      <view class="card-right">
-        <view class="card-remain">{{item.remain}}<text class="card-unit">次</text></view>
-        <view class="card-total">共 {{item.total}} 次</view>
-      </view>
-      <view wx:if="{{item.status!=1}}" class="card-badge {{item.status==9?'badge-expire':'badge-done'}}">{{item.statusName}}</view>
-    </view>
-  </view>
-  <view wx:if="{{cardLoaded && cards.length==0}}" class="card-section">
-    <view class="card-empty">暂未办卡，请联系健身房</view>
   </view>
 
   <view class="meet-menu">

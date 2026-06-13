@@ -61,12 +61,16 @@ page {
 }
 
 .top .inner .right .line1 .type {
-  font-size: 24rpx;
-  padding: 0 25rpx;
-  background-color: #333;
-  color: #4ADE80;
-  border-radius: 20rpx;
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  margin-left: 10rpx;
 }
+.type-bad { background: #FEE2E2; color: #EF4444; }
+.type-warn { background: #FFF7ED; color: #F97316; }
+.card-tag-1 { background: #DBEAFE; color: #2563EB; }
+.card-tag-2 { background: #FEF3C7; color: #D97706; }
+.card-tag-3 { background: #D1FAE5; color: #059669; }
 
 .top .inner .right .line2 {
   font-size: 24rpx;
@@ -106,117 +110,6 @@ page {
 .top .ex .ex-inner .title {
   font-size: 30rpx;
   flex: 1;
-}
-
-/* 健身卡 */
-.card-section {
-  width: 100%;
-  padding: 0 25rpx 10rpx;
-  background-color: #fff;
-}
-
-.card-title {
-  font-size: 30rpx;
-  font-weight: 600;
-  color: #1A1A2E;
-  padding: 10rpx 0 20rpx;
-}
-
-.card-item {
-  display: flex;
-  align-items: center;
-  background: #FFFFFF;
-  border-radius: 16rpx;
-  padding: 24rpx;
-  margin-bottom: 16rpx;
-  position: relative;
-  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
-}
-
-.card-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.card-type {
-  font-size: 28rpx;
-  font-weight: 600;
-  padding: 6rpx 20rpx;
-  border-radius: 8rpx;
-  display: inline-block;
-  width: fit-content;
-  margin-bottom: 10rpx;
-}
-
-.card-type.type-coach {
-  background: #DBEAFE;
-  color: #2563EB;
-}
-
-.card-type.type-course {
-  background: #FEF3C7;
-  color: #D97706;
-}
-
-.card-type.type-general {
-  background: #D1FAE5;
-  color: #059669;
-}
-
-.card-expire {
-  font-size: 22rpx;
-  color: #8C939D;
-}
-
-.card-right {
-  text-align: right;
-  margin-right: 20rpx;
-}
-
-.card-remain {
-  font-size: 56rpx;
-  font-weight: bold;
-  color: var(--projectColor);
-  line-height: 1.1;
-}
-
-.card-unit {
-  font-size: 28rpx;
-  font-weight: normal;
-  margin-left: 4rpx;
-}
-
-.card-total {
-  font-size: 22rpx;
-  color: #8C939D;
-  margin-top: 4rpx;
-}
-
-.card-badge {
-  position: absolute;
-  top: 16rpx;
-  right: 16rpx;
-  font-size: 20rpx;
-  padding: 4rpx 16rpx;
-  border-radius: 20rpx;
-}
-
-.badge-done {
-  background: #FEE2E2;
-  color: #DC2626;
-}
-
-.badge-expire {
-  background: #F3F4F6;
-  color: #6B7280;
-}
-
-.card-empty {
-  text-align: center;
-  padding: 40rpx 0;
-  color: #9CA3AF;
-  font-size: 26rpx;
 }
 
 .meet-menu {

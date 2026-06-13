@@ -14,6 +14,7 @@ Component({
     user: null,
     cards: [],
     cardLoaded: false,
+    totalRemain: 0,
   },
 
   pageLifetimes: {
@@ -39,14 +40,19 @@ Component({
       const opts = { title: 'bar' };
       const user = await cloud.callCloudData('passport/my_detail', {}, opts);
       if (!user) {
-        this.setData({ user: null, cards: [], cardLoaded: true });
+        this.setData({ user: null, cards: [], cardLoaded: true, totalRemain: 0 });
         return;
       }
       this.setData({ user });
       // 并行加载卡信息
       try {
         const cardData = await cloud.callCloudData('passport/my_card', {}, { title: 'bar' });
-        this.setData({ cards: cardData.cards || [], cardLoaded: true });
+        const tr = cardData.totalRemain || {};
+        this.setData({
+          cards: cardData.cards || [],
+          cardLoaded: true,
+          totalRemain: (tr.coach || 0) + (tr.course || 0) + (tr.general || 0),
+        });
       } catch (e) {
         this.setData({ cardLoaded: true });
       }
