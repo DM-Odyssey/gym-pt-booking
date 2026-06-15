@@ -7,7 +7,6 @@ page { background: #F2F2F7; }
 /* 封面 */
 .meet-cover {
   width: 100%; position: relative;
-  height: 65vh; overflow: hidden;
 }
 .meet-cover image {
   width: 100%; display: block;
