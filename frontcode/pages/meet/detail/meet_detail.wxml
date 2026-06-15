@@ -6,6 +6,7 @@
     <!-- 1. 封面 -->
     <view class="meet-cover">
       <image mode="widthFix" src="{{meet.MEET_OBJ.cover[0]}}" wx:if="{{meet.MEET_OBJ.cover && meet.MEET_OBJ.cover.length}}" />
+      <view class="cover-gradient"></view>
       <view class="cover-title">{{meet.MEET_TITLE}}</view>
     </view>
 

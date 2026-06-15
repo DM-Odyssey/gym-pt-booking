@@ -11,10 +11,16 @@ page { background: #F2F2F7; }
 .meet-cover image {
   width: 100%; display: block;
 }
+.cover-gradient {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 300rpx; z-index: 1;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
 .cover-title {
-  position: absolute; bottom: 24rpx; left: 24rpx;
-  color: #fff; font-size: 36rpx; font-weight: bold;
-  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.4);
+  position: absolute; bottom: 50vh; left: 24rpx; right: 24rpx;
+  color: #fff; font-size: 36rpx; font-weight: bold; z-index: 2;
+  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.5);
 }
 /* 简介 */
 .intro-section {
