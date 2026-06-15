@@ -6,6 +6,7 @@
 const db = require('../common/db')
 const { validate } = require('../common/validate')
 const { success, fail, CODE } = require('../common/response')
+const { time, timestamp2Time } = require('../common/util')
 const { insertLog } = require('./_helper')
 
 async function getAdminNewsList(admin, params) {
@@ -22,6 +23,13 @@ async function getAdminNewsList(admin, params) {
         fields: 'NEWS_TITLE,NEWS_DESC,NEWS_CATE_ID,NEWS_CATE_NAME,NEWS_EDIT_TIME,NEWS_ADD_TIME,NEWS_ORDER,NEWS_STATUS,NEWS_VOUCH,NEWS_OBJ',
         orderBy: { NEWS_ORDER: 'asc' }, page, size
     })
+    if (result.list) {
+        result.list = result.list.map(item => ({
+            ...item,
+            NEWS_ADD_TIME: item.NEWS_ADD_TIME ? timestamp2Time(item.NEWS_ADD_TIME) : '',
+            NEWS_EDIT_TIME: item.NEWS_EDIT_TIME ? timestamp2Time(item.NEWS_EDIT_TIME) : ''
+        }))
+    }
     return success(result)
 }
 

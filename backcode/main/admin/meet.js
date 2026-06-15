@@ -29,6 +29,19 @@ async function getAdminMeetList(admin, params) {
         fields: 'MEET_CATE_ID,MEET_CATE_NAME,MEET_TITLE,MEET_STATUS,MEET_DAYS,MEET_ADD_TIME,MEET_EDIT_TIME,MEET_ORDER,MEET_VOUCH,MEET_QR',
         orderBy, page, size
     })
+    if (result.list) {
+        const today = timestamp2Time(time(), 'Y-M-D')
+        result.list = result.list.map(item => {
+            const days = item.MEET_DAYS || []
+            const leaveDay = days.filter(d => d.day >= today).length
+            return {
+                ...item,
+                leaveDay,
+                MEET_ADD_TIME: item.MEET_ADD_TIME ? timestamp2Time(item.MEET_ADD_TIME) : '',
+                MEET_EDIT_TIME: item.MEET_EDIT_TIME ? timestamp2Time(item.MEET_EDIT_TIME) : ''
+            }
+        })
+    }
     return success(result)
 }
 
