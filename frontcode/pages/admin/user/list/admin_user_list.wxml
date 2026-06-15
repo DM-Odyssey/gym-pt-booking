@@ -58,9 +58,9 @@
 
 						<view wx:if="{{item.USER_STATUS!=9}}" bindtap="bindStatusTap" data-status="9" data-idx="{{index}}" class="btn  margin-right-s"><text class="icon-close margin-right-xxs text-purple"></text>禁用</view>
 
-						<view bindtap="url" data-url="/pages/admin/user/detail/admin_user_detail?id={{item.USER_MINI_OPENID}}" class="btn btn-card margin-right-s"><text class="icon-card margin-right-xxs text-green"></text>发卡</view>
-
 						<view bindtap="bindDelTap" data-id="{{item.USER_MINI_OPENID}}" class="btn  margin-right-s"><text class="icon-delete margin-right-xxs text-orange"></text>删除</view>
+
+						<view bindtap="url" data-url="/pages/admin/user/detail/admin_user_detail?id={{item.USER_MINI_OPENID}}" class="btn btn-card margin-right-s"><text class="icon-card margin-right-xxs text-green"></text>发卡</view>
 
 					</view>
 				</view>
