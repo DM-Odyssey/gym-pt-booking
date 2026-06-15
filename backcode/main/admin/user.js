@@ -116,16 +116,45 @@ async function exportUserData(admin, params) {
     // 2. 查所有匹配用户
     const list = await db.getAll('user', where, { limit: 10000 })
 
-    // 3. 组装 Excel
-    const header = fields && fields.length ? fields : ['姓名', '手机', '状态', '注册时间']
+    // 3. 查所有用户的健身卡
+    const userIds = list.map(u => u.USER_MINI_OPENID).filter(Boolean)
+    const cardMap = {}
+    if (userIds.length > 0) {
+        const allCards = await db.getAll('card', { CARD_USER_ID: db.cmd().in(userIds) }, { limit: 50000 })
+        for (const card of allCards) {
+            const uid = card.CARD_USER_ID
+            if (!cardMap[uid]) cardMap[uid] = { coach: { remain: 0, total: 0 }, course: { remain: 0, total: 0 }, general: { remain: 0, total: 0 } }
+            const used = card.CARD_USED || 0
+            const total = card.CARD_TOTAL || 0
+            const remain = Math.max(0, total - used)
+            if (card.CARD_TYPE === 1) {
+                cardMap[uid].coach.remain += remain
+                cardMap[uid].coach.total += total
+            } else if (card.CARD_TYPE === 2) {
+                cardMap[uid].course.remain += remain
+                cardMap[uid].course.total += total
+            } else if (card.CARD_TYPE === 3) {
+                cardMap[uid].general.remain += remain
+                cardMap[uid].general.total += total
+            }
+        }
+    }
+
+    // 4. 组装 Excel
+    const header = fields && fields.length ? fields : ['姓名', '手机', '状态', '注册时间', '私教卡(剩余/总数)', '课程卡(剩余/总数)', '健身卡(剩余/总数)']
     const dataArr = [header]
+    const statusMap = { 0: '待审核', 1: '正常', 8: '审核未通过', 9: '禁用' }
     for (const user of list) {
-        const statusMap = { 0: '待审核', 1: '正常', 8: '审核未通过', 9: '禁用' }
+        const cards = cardMap[user.USER_MINI_OPENID]
+        const fmtCard = (c) => c && (c.remain > 0 || c.total > 0) ? c.remain + '/' + c.total : '无'
         dataArr.push([
             user.USER_NAME || '',
             user.USER_MOBILE || '',
             statusMap[user.USER_STATUS] || '',
-            user.USER_ADD_TIME ? timestamp2Time(user.USER_ADD_TIME) : ''
+            user.USER_ADD_TIME ? timestamp2Time(user.USER_ADD_TIME) : '',
+            cards ? fmtCard(cards.coach) : '无',
+            cards ? fmtCard(cards.course) : '无',
+            cards ? fmtCard(cards.general) : '无'
         ])
     }
 
