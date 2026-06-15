@@ -80,10 +80,11 @@ page { background: #F2F2F7; }
 /* 时段卡片 */
 .time-cards {
   display: flex; flex-wrap: wrap; padding: 0;
+  justify-content: space-between;
 }
 .time-card {
-  width: 47%; margin: 0 1.5% 16rpx 1.5%;
-  padding: 26rpx 16rpx; background: #F5F7FA;
+  width: 48%; margin: 0 0 16rpx 0;
+  padding: 24rpx 12rpx; background: #F5F7FA;
   border-radius: 16rpx; text-align: center;
   position: relative; box-sizing: border-box;
   border: 2rpx solid transparent;
@@ -96,7 +97,7 @@ page { background: #F2F2F7; }
 }
 .time-card.disabled { background: #F3F4F6; opacity: 0.45; }
 .time-range {
-  font-size: 32rpx; font-weight: 700; color: #1A1A2E; margin-bottom: 8rpx;
+  font-size: 28rpx; font-weight: 700; color: #1A1A2E; margin-bottom: 6rpx;
 }
 .time-card.cur .time-range { color: #166534; }
 .time-quota { font-size: 24rpx; color: #8C939D; }
