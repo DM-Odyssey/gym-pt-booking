@@ -1,10 +1,10 @@
 page { background: #F2F2F7; }
 
-.main { padding: 0 0 24rpx; }
+.main { padding: 0 0 24rpx; box-sizing: border-box; overflow-x: hidden; }
 
 /* ========== 1. 封面 ========== */
 .meet-cover {
-  width: 100%; position: relative; line-height: 0;
+  width: 100%; position: relative; line-height: 0; overflow: hidden;
 }
 .meet-cover image {
   width: 100%; display: block;
@@ -24,15 +24,16 @@ page { background: #F2F2F7; }
 
 /* ========== 2. 简介卡片 ========== */
 .intro-section {
-  margin: -24rpx 20rpx 0;
+  margin: -24rpx 16rpx 0;
   background: #fff; border-radius: 20rpx;
-  padding: 28rpx 28rpx 24rpx;
+  padding: 24rpx 20rpx;
   position: relative; z-index: 2;
   box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  box-sizing: border-box;
 }
 .section-header {
   font-size: 30rpx; font-weight: 700; color: #1A1A2E;
-  padding-bottom: 16rpx; display: flex; align-items: center;
+  padding-bottom: 12rpx; display: flex; align-items: center;
 }
 .intro-text {
   font-size: 28rpx; color: #4B5563; line-height: 1.8;
@@ -40,10 +41,11 @@ page { background: #F2F2F7; }
 
 /* ========== 3. 时段卡片 ========== */
 .time-section {
-  margin: 20rpx 20rpx 0;
+  margin: 16rpx 16rpx 0;
   background: #fff; border-radius: 20rpx;
-  padding: 28rpx 28rpx 24rpx;
+  padding: 24rpx 20rpx;
   box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  box-sizing: border-box; overflow-x: hidden;
 }
 .cost-tag {
   margin-left: 16rpx; font-size: 22rpx; font-weight: 500;
@@ -56,15 +58,15 @@ page { background: #F2F2F7; }
 
 /* 日期条 */
 .date {
-  white-space: nowrap; padding: 0 0 16rpx;
+  white-space: nowrap; padding: 0 0 14rpx;
 }
 .date-inner {
   display: inline-block; margin-right: 12rpx;
 }
 .date-inner .item {
-  width: 130rpx; padding: 16rpx 0; text-align: center;
+  width: 120rpx; padding: 14rpx 0; text-align: center;
   border-radius: 14rpx; background: #F5F7FA; border: 2rpx solid transparent;
-  transition: all 0.2s;
+  box-sizing: border-box;
 }
 .date-inner .item.cur {
   background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
@@ -73,7 +75,7 @@ page { background: #F2F2F7; }
 }
 .date-inner .item .status { font-size: 20rpx; display: block; }
 .date-inner .item .week { display: block; font-size: 22rpx; margin-top: 2rpx; opacity: 0.85; }
-.date-inner .item .day { display: block; font-size: 30rpx; font-weight: bold; }
+.date-inner .item .day { display: block; font-size: 28rpx; font-weight: bold; }
 .date-inner .item.cur .week,
 .date-inner .item.cur .status { opacity: 1; }
 
@@ -83,30 +85,29 @@ page { background: #F2F2F7; }
   justify-content: space-between;
 }
 .time-card {
-  width: 48%; margin: 0 0 16rpx 0;
-  padding: 24rpx 12rpx; background: #F5F7FA;
+  width: 49%; margin: 0 0 14rpx 0;
+  padding: 22rpx 8rpx; background: #F5F7FA;
   border-radius: 16rpx; text-align: center;
   position: relative; box-sizing: border-box;
   border: 2rpx solid transparent;
-  transition: all 0.15s;
 }
 .time-card.cur {
   background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
   border-color: #22C55E;
-  box-shadow: 0 4rpx 16rpx rgba(34,197,94,0.15);
+  box-shadow: 0 4rpx 12rpx rgba(34,197,94,0.12);
 }
 .time-card.disabled { background: #F3F4F6; opacity: 0.45; }
 .time-range {
-  font-size: 28rpx; font-weight: 700; color: #1A1A2E; margin-bottom: 6rpx;
+  font-size: 26rpx; font-weight: 700; color: #1A1A2E; margin-bottom: 4rpx;
 }
 .time-card.cur .time-range { color: #166534; }
-.time-quota { font-size: 24rpx; color: #8C939D; }
+.time-quota { font-size: 22rpx; color: #8C939D; }
 .time-card.cur .time-quota { color: #16A34A; }
 .time-quota.error-text { color: #EF4444; }
 .time-check {
-  position: absolute; top: 8rpx; right: 12rpx;
-  font-size: 22rpx; color: #22C55E;
-  background: #fff; width: 36rpx; height: 36rpx;
+  position: absolute; top: 6rpx; right: 8rpx;
+  font-size: 20rpx; color: #22C55E;
+  background: #fff; width: 32rpx; height: 32rpx;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.08);
 }
@@ -117,10 +118,11 @@ page { background: #F2F2F7; }
 
 /* ========== 4. 详情卡片 ========== */
 .detail-section {
-  margin: 20rpx 20rpx 0;
+  margin: 16rpx 16rpx 0;
   background: #fff; border-radius: 20rpx;
-  padding: 28rpx 28rpx 24rpx;
+  padding: 24rpx 20rpx;
   box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  box-sizing: border-box;
 }
 .detail-content { padding: 0; }
 .content-text {
@@ -138,14 +140,15 @@ page { background: #F2F2F7; }
   box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.08);
   padding-bottom: env(safe-area-inset-bottom);
   z-index: 10;
+  box-sizing: border-box;
 }
 .bottom .inner { padding: 16rpx 24rpx; }
 .bottom .line2 { display: flex; justify-content: space-between; align-items: center; }
 .bottom .left { font-size: 26rpx; color: #4B5563; }
 .bottom .right {
   background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
-  color: #fff; padding: 18rpx 60rpx; border-radius: 44rpx;
-  font-size: 30rpx; font-weight: 700; letter-spacing: 2rpx;
+  color: #fff; padding: 16rpx 52rpx; border-radius: 44rpx;
+  font-size: 28rpx; font-weight: 700; letter-spacing: 2rpx;
   box-shadow: 0 6rpx 20rpx rgba(34,197,94,0.35);
 }
-.bottom .right:active { opacity: 0.85; transform: scale(0.98); }
+.bottom .right:active { opacity: 0.85; }
