@@ -142,6 +142,8 @@ function getLastMonthArr(that, year, month) {
  */
 function getNextMonthArr(that, year, month, hasDayLen) {
 
+	let dayArr = [];
+
 	if (that.mode == 'multi') {
 		if (month == 12) {
 			month = 1;
@@ -149,8 +151,6 @@ function getNextMonthArr(that, year, month, hasDayLen) {
 		} else
 			month++;
 
-		// 多选统一补成6行
-		let dayArr = [];
 		for (let i = 1; i <= (6 * 7 - hasDayLen); i++) {
 			let weekNo = Math.ceil((hasDayLen + i) / 7); // 计算当前是第几周 
 
