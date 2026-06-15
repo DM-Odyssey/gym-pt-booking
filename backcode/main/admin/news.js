@@ -20,14 +20,14 @@ async function getAdminNewsList(admin, params) {
     if (sortType === 'top') where.NEWS_ORDER = 0
 
     const result = await db.getList('news', where, {
-        fields: 'NEWS_TITLE,NEWS_DESC,NEWS_CATE_ID,NEWS_CATE_NAME,NEWS_EDIT_TIME,NEWS_ADD_TIME,NEWS_ORDER,NEWS_STATUS,NEWS_VOUCH,NEWS_OBJ',
+        fields: 'NEWS_TITLE,NEWS_DESC,NEWS_CATE_ID,NEWS_CATE_NAME,NEWS_ORDER,NEWS_STATUS,NEWS_VOUCH,NEWS_OBJ,ADD_TIME,EDIT_TIME',
         orderBy: { NEWS_ORDER: 'asc' }, page, size
     })
     if (result.list) {
         result.list = result.list.map(item => ({
             ...item,
-            NEWS_ADD_TIME: item.NEWS_ADD_TIME ? timestamp2Time(item.NEWS_ADD_TIME) : '',
-            NEWS_EDIT_TIME: item.NEWS_EDIT_TIME ? timestamp2Time(item.NEWS_EDIT_TIME) : ''
+            NEWS_ADD_TIME: item.ADD_TIME ? timestamp2Time(item.ADD_TIME) : '',
+            NEWS_EDIT_TIME: item.EDIT_TIME ? timestamp2Time(item.EDIT_TIME) : ''
         }))
     }
     return success(result)

@@ -26,7 +26,7 @@ async function getAdminMeetList(admin, params) {
     if (sortType === 'sort' && sortVal === 'view') orderBy = { MEET_VIEW_CNT: 'desc' }
 
     const result = await db.getList('meet', where, {
-        fields: 'MEET_CATE_ID,MEET_CATE_NAME,MEET_TITLE,MEET_STATUS,MEET_DAYS,MEET_ADD_TIME,MEET_EDIT_TIME,MEET_ORDER,MEET_VOUCH,MEET_QR',
+        fields: 'MEET_CATE_ID,MEET_CATE_NAME,MEET_TITLE,MEET_STATUS,MEET_DAYS,MEET_ORDER,MEET_VOUCH,MEET_QR,ADD_TIME,EDIT_TIME',
         orderBy, page, size
     })
     if (result.list) {
@@ -37,8 +37,8 @@ async function getAdminMeetList(admin, params) {
             return {
                 ...item,
                 leaveDay,
-                MEET_ADD_TIME: item.MEET_ADD_TIME ? timestamp2Time(item.MEET_ADD_TIME) : '',
-                MEET_EDIT_TIME: item.MEET_EDIT_TIME ? timestamp2Time(item.MEET_EDIT_TIME) : ''
+                MEET_ADD_TIME: item.ADD_TIME ? timestamp2Time(item.ADD_TIME) : '',
+                MEET_EDIT_TIME: item.EDIT_TIME ? timestamp2Time(item.EDIT_TIME) : ''
             }
         })
     }
