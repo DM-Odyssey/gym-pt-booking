@@ -17,7 +17,7 @@
 
     <view class="bottom-links">
       <text class="link-text">仅限教练登录</text>
-      <text class="link-back" bindtap="url" data-url="/pages/my/index/my_index">返回用户端</text>
+      <text class="link-back" bindtap="url" data-type="switch" data-url="/pages/my/index/my_index">返回用户端</text>
     </view>
   </view>
 </view>
