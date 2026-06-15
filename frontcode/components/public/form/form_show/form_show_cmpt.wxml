@@ -42,7 +42,7 @@
 	<block wx:elif="{{item.type=='text'}}">
 		<view class="form-group" id="form{{item.mark}}">
 			<view class="title {{item.must?'must':''}}">{{item.title}}:</view>
-			<input placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="{{item.max}}" bindinput="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}"></input>
+			<input placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="{{item.max}}" bindblur="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}"></input>
 		</view>
 		<view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
 	</block>
@@ -50,7 +50,7 @@
 	<block wx:elif="{{item.type=='int'}}">
 		<view class="form-group" id="form{{item.mark}}">
 			<view class="title {{item.must?'must':''}}">{{item.title}}:</view>
-			<input type="number" placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="{{item.max}}" bindinput="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}"></input>
+			<input type="number" placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="{{item.max}}" bindblur="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}"></input>
 		</view>
 		<view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
 	</block>
@@ -58,7 +58,7 @@
 	<block wx:elif="{{item.type=='digit'}}">
 		<view class="form-group" id="form{{item.mark}}">
 			<view class="title {{item.must?'must':''}}">{{item.title}}:</view>
-			<input type="digit" placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="{{item.max}}" bindinput="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}"></input>
+			<input type="digit" placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="{{item.max}}" bindblur="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" focus="{{item.focus}}"></input>
 		</view>
 		<view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
 	</block>
@@ -184,7 +184,7 @@
 		</view>
 
 		<view class="form-group align-start">
-				<textarea bindinput="bindMultiBlur" data-idx="{{index}}" value="{{item.val}}" placeholder-class="phc" placeholder="{{item.desc||'请填写'+item.title}}" style="min-height:{{item.max<300?'100':''}}{{item.max>=300&&item.max<1000?(item.max/100)*40:''}}{{item.max>=1000?'400':''}}rpx" auto-height="true" maxlength="{{item.max}}" focus="{{item.focus}}" cursor-spacing="80"></textarea>
+				<textarea bindblur="bindMultiBlur" data-idx="{{index}}" value="{{item.val}}" placeholder-class="phc" placeholder="{{item.desc||'请填写'+item.title}}" style="min-height:{{item.max<300?'100':''}}{{item.max>=300&&item.max<1000?(item.max/100)*40:''}}{{item.max>=1000?'400':''}}rpx" auto-height="true" maxlength="{{item.max}}" focus="{{item.focus}}" cursor-spacing="80"></textarea>
 		</view>
 		<view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
 	</block>
@@ -197,7 +197,7 @@
 		</view>
 
 		<view class="form-group align-start">
-			<textarea bindinput="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" placeholder-class="phc" placeholder="{{item.desc||'请填写'+item.title}}" style="min-height:100rpx" auto-height="true" maxlength="{{item.max}}" cursor-spacing="80"></textarea>
+			<textarea bindblur="bindLineBlur" data-idx="{{index}}" value="{{item.val}}" placeholder-class="phc" placeholder="{{item.desc||'请填写'+item.title}}" style="min-height:100rpx" auto-height="true" maxlength="{{item.max}}" cursor-spacing="80"></textarea>
 		</view>
 		<view class="hint-desc"><text class="icon-tag"></text>多个标签请用逗号分隔</view>
 		<view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
@@ -206,7 +206,7 @@
 	<block wx:elif="{{item.type=='idcard'}}">
 		<view class="form-group" id="form{{item.mark}}">
 			<view class="title {{item.must?'must':''}}">{{item.title}}:</view>
-			<input type="idcard" placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="18" bindinput="bindLineBlur" data-idx="{{index}}" value="{{item.val}}"></input>
+			<input type="idcard" placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="18" bindblur="bindLineBlur" data-idx="{{index}}" value="{{item.val}}"></input>
 		</view>
 		<view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
 	</block>
@@ -237,7 +237,7 @@
 	<block wx:elif="{{item.type=='mobile' && !mobileCheck}}">
 		<view class="form-group" id="form{{item.mark}}">
 			<view class="title {{item.must?'must':''}}">{{item.title}}:</view>
-			<input placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="11" bindinput="bindLineBlur" data-idx="{{index}}" value="{{item.val}}"></input>
+			<input placeholder="{{item.desc||'请填写'+item.title}}" placeholder-class="phc" maxlength="11" bindblur="bindLineBlur" data-idx="{{index}}" value="{{item.val}}"></input>
 		</view>
 		<view wx:if="{{item.focus}}" class="hint-desc error">{{item.focus}}</view>
 	</block>
