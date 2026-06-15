@@ -127,7 +127,7 @@
 }
 
 .cal-weekday {
-  width: 80rpx;
+  width: 14.28%;
   height: 48rpx;
   display: flex;
   justify-content: center;
@@ -143,7 +143,7 @@
 }
 
 .cal-center .cube {
-  width: 80rpx;
+  width: 14.28%;
   height: 80rpx;
   display: flex;
   justify-content: center;
