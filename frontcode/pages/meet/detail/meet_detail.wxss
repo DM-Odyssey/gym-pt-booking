@@ -6,7 +6,7 @@ page { background: #F2F2F7; }
 
 /* 封面 */
 .meet-cover {
-  width: 100%; position: relative; z-index: 0;
+  width: 100%; position: fixed; top: 0; left: 0; z-index: 0;
 }
 .meet-cover image {
   width: 100%; display: block;
@@ -22,11 +22,12 @@ page { background: #F2F2F7; }
   color: #fff; font-size: 36rpx; font-weight: bold; z-index: 2;
   text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.5);
 }
+.cover-spacer { height: 60vh; }
 /* 简介 */
 .intro-section {
   width: 100%; padding: 24rpx 0 0;
   background: #fff;
-  margin-top: -35vh; position: relative; z-index: 1;
+  position: relative; z-index: 1;
   border-radius: 20rpx 20rpx 0 0;
 }
 .intro-text {
@@ -38,6 +39,7 @@ page { background: #F2F2F7; }
 .time-section {
   width: 100%; padding: 24rpx 0 0;
   background: #fff;
+  position: relative; z-index: 1;
 }
 .section-header {
   font-size: 30rpx; font-weight: 600; color: #1A1A2E;
@@ -101,6 +103,7 @@ page { background: #F2F2F7; }
 .detail-section {
   width: 100%; padding: 8rpx 0 0;
   background: #fff;
+  position: relative; z-index: 1;
 }
 .detail-content { padding: 0 24rpx; }
 .content-text {
@@ -116,6 +119,7 @@ page { background: #F2F2F7; }
   position: fixed; bottom: 0; left: 0; width: 100%;
   background: #fff; box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.08);
   padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
 }
 .bottom .inner { padding: 16rpx 24rpx; }
 .bottom .line2 { display: flex; justify-content: space-between; align-items: center; }

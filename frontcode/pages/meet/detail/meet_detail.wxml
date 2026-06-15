@@ -10,6 +10,9 @@
       <view class="cover-title">{{meet.MEET_TITLE}}</view>
     </view>
 
+    <!-- 占位 — 把内容推到照片下方 -->
+    <view class="cover-spacer"></view>
+
     <!-- 2. 简介 -->
     <view class="intro-section" wx:if="{{meet.MEET_OBJ.desc}}">
       <view class="section-header">{{isCoach?'教练简介':'课程简介'}}</view>
