@@ -1,34 +1,49 @@
-@import "/style/public/detail.wxss";
+page { background: #F2F2F7; }
 
 .main { padding: 0 0 24rpx; }
 
-/* 封面 */
+/* ========== 1. 封面 ========== */
 .meet-cover {
-  width: 100%; position: relative;
+  width: 100%; position: relative; line-height: 0;
 }
 .meet-cover image {
-  width: 100%; height: 480rpx; display: block;
+  width: 100%; display: block;
+}
+.cover-gradient {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 200rpx;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
 }
 .cover-title {
-  position: absolute; bottom: 24rpx; left: 24rpx;
-  color: #fff; font-size: 36rpx; font-weight: bold;
-  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.4);
-}
-/* 简介 */
-.intro-section { width: 100%; padding: 24rpx 0 0; }
-.intro-text {
-  font-size: 28rpx; color: #4B5563; line-height: 1.8;
-  padding: 0 24rpx;
+  position: absolute; bottom: 32rpx; left: 28rpx; right: 28rpx;
+  color: #fff; font-size: 40rpx; font-weight: 700;
+  text-shadow: 0 2rpx 12rpx rgba(0,0,0,0.5);
+  letter-spacing: 2rpx; line-height: 1.3;
 }
 
-/* 时段区域 */
-.time-section {
-  width: 100%; padding: 24rpx 0 0;
+/* ========== 2. 简介卡片 ========== */
+.intro-section {
+  margin: -24rpx 20rpx 0;
+  background: #fff; border-radius: 20rpx;
+  padding: 28rpx 28rpx 24rpx;
+  position: relative; z-index: 2;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
 }
 .section-header {
-  font-size: 30rpx; font-weight: 600; color: #1A1A2E;
-  padding: 0 24rpx 16rpx;
-  display: flex; align-items: center;
+  font-size: 30rpx; font-weight: 700; color: #1A1A2E;
+  padding-bottom: 16rpx; display: flex; align-items: center;
+}
+.intro-text {
+  font-size: 28rpx; color: #4B5563; line-height: 1.8;
+}
+
+/* ========== 3. 时段卡片 ========== */
+.time-section {
+  margin: 20rpx 20rpx 0;
+  background: #fff; border-radius: 20rpx;
+  padding: 28rpx 28rpx 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
 }
 .cost-tag {
   margin-left: 16rpx; font-size: 22rpx; font-weight: 500;
@@ -41,67 +56,95 @@
 
 /* 日期条 */
 .date {
-  white-space: nowrap; padding: 0 24rpx 16rpx;
+  white-space: nowrap; padding: 0 0 16rpx;
 }
 .date-inner {
   display: inline-block; margin-right: 12rpx;
 }
 .date-inner .item {
-  width: 120rpx; padding: 14rpx 0; text-align: center;
-  border-radius: 12rpx; background: #F5F7FA;
+  width: 130rpx; padding: 16rpx 0; text-align: center;
+  border-radius: 14rpx; background: #F5F7FA; border: 2rpx solid transparent;
+  transition: all 0.2s;
 }
 .date-inner .item.cur {
-  background: var(--projectColor); color: #fff;
+  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  color: #fff; border-color: transparent;
+  box-shadow: 0 4rpx 12rpx rgba(34,197,94,0.3);
 }
 .date-inner .item .status { font-size: 20rpx; display: block; }
-.date-inner .item .week { display: block; font-size: 22rpx; margin-top: 2rpx; }
-.date-inner .item .day { display: block; font-size: 28rpx; font-weight: bold; }
+.date-inner .item .week { display: block; font-size: 22rpx; margin-top: 2rpx; opacity: 0.85; }
+.date-inner .item .day { display: block; font-size: 30rpx; font-weight: bold; }
+.date-inner .item.cur .week,
+.date-inner .item.cur .status { opacity: 1; }
 
 /* 时段卡片 */
 .time-cards {
-  display: flex; flex-wrap: wrap; padding: 0 24rpx;
+  display: flex; flex-wrap: wrap; padding: 0;
 }
 .time-card {
   width: 47%; margin: 0 1.5% 16rpx 1.5%;
-  padding: 24rpx 16rpx; background: #F5F7FA;
+  padding: 26rpx 16rpx; background: #F5F7FA;
   border-radius: 16rpx; text-align: center;
   position: relative; box-sizing: border-box;
+  border: 2rpx solid transparent;
+  transition: all 0.15s;
 }
 .time-card.cur {
-  background: #F0FDF4; border: 2rpx solid var(--projectColor);
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+  border-color: #22C55E;
+  box-shadow: 0 4rpx 16rpx rgba(34,197,94,0.15);
 }
-.time-card.disabled { background: #F3F4F6; opacity: 0.5; }
-.time-range { font-size: 30rpx; font-weight: 600; color: #1A1A2E; margin-bottom: 10rpx; }
-.time-card.cur .time-range { color: var(--projectColor); }
+.time-card.disabled { background: #F3F4F6; opacity: 0.45; }
+.time-range {
+  font-size: 32rpx; font-weight: 700; color: #1A1A2E; margin-bottom: 8rpx;
+}
+.time-card.cur .time-range { color: #166534; }
 .time-quota { font-size: 24rpx; color: #8C939D; }
-.time-card.cur .time-quota { color: var(--projectColor); }
+.time-card.cur .time-quota { color: #16A34A; }
 .time-quota.error-text { color: #EF4444; }
-.time-check { position: absolute; top: 12rpx; right: 16rpx; font-size: 24rpx; color: var(--projectColor); }
-.no-time { text-align: center; padding: 60rpx 0; color: #8C939D; font-size: 28rpx; }
+.time-check {
+  position: absolute; top: 8rpx; right: 12rpx;
+  font-size: 22rpx; color: #22C55E;
+  background: #fff; width: 36rpx; height: 36rpx;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.08);
+}
+.no-time {
+  text-align: center; padding: 60rpx 0;
+  color: #8C939D; font-size: 28rpx;
+}
 
-/* 详情介绍 */
-.detail-section { width: 100%; padding: 8rpx 0 0; }
-.detail-content { padding: 0 24rpx; }
+/* ========== 4. 详情卡片 ========== */
+.detail-section {
+  margin: 20rpx 20rpx 0;
+  background: #fff; border-radius: 20rpx;
+  padding: 28rpx 28rpx 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+}
+.detail-content { padding: 0; }
 .content-text {
-  font-size: 28rpx; color: #1A1A2E; line-height: 1.8;
+  font-size: 28rpx; color: #1A1A2E; line-height: 1.9;
   margin-bottom: 20rpx;
 }
 .content-img image {
   width: 100%; border-radius: 12rpx; margin-bottom: 20rpx;
 }
 
-/* 底部栏 */
+/* ========== 5. 底部预约栏 ========== */
 .bottom {
   position: fixed; bottom: 0; left: 0; width: 100%;
-  background: #fff; box-shadow: 0 -2rpx 12rpx rgba(0,0,0,0.06);
+  background: #fff;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.08);
   padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
 }
 .bottom .inner { padding: 16rpx 24rpx; }
 .bottom .line2 { display: flex; justify-content: space-between; align-items: center; }
-.bottom .left { font-size: 26rpx; color: #1A1A2E; }
+.bottom .left { font-size: 26rpx; color: #4B5563; }
 .bottom .right {
-  background: var(--projectColor); color: #fff;
-  padding: 16rpx 56rpx; border-radius: 40rpx;
-  font-size: 28rpx; font-weight: 600;
+  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  color: #fff; padding: 18rpx 60rpx; border-radius: 44rpx;
+  font-size: 30rpx; font-weight: 700; letter-spacing: 2rpx;
+  box-shadow: 0 6rpx 20rpx rgba(34,197,94,0.35);
 }
-.bottom .right:active { opacity: 0.85; }
+.bottom .right:active { opacity: 0.85; transform: scale(0.98); }
