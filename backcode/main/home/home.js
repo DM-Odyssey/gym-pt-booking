@@ -4,7 +4,7 @@ const { success, CODE } = require('../common/response')
 
 async function getHomeList(openId, params) {
     // ========== 1. 最新公告 ==========
-    const retList = await db.getAll('news', { NEWS_STATUS: 1 }, {
+    const retList = await db.getAll('news', { NEWS_STATUS: 1, NEWS_VOUCH: 1 }, {
         fields: 'NEWS_PIC,NEWS_CATE_NAME,NEWS_TITLE,NEWS_DESC,NEWS_ADD_TIME',
         orderBy: { field: 'NEWS_ORDER', direction: 'asc' }, limit: 10
     })
