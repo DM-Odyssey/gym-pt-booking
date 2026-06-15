@@ -1,45 +1,29 @@
 @import "/style/public/detail.wxss";
 
-page { background: #F2F2F7; }
-
 .main { padding: 0 0 24rpx; }
 
-/* ========== 封面 ========== */
+/* 封面 */
 .meet-cover {
-  width: 100%; position: relative; line-height: 0;
+  width: 100%; position: relative;
 }
 .meet-cover image {
   width: 100%; display: block;
 }
-.cover-gradient {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 180rpx;
-  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.55) 100%);
-  pointer-events: none;
-}
 .cover-title {
-  position: absolute; bottom: 28rpx; left: 24rpx; right: 24rpx;
+  position: absolute; bottom: 24rpx; left: 24rpx;
   color: #fff; font-size: 36rpx; font-weight: bold;
   text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.4);
 }
-
-/* ========== 简介 ========== */
-.intro-section {
-  background: #fff; margin: -20rpx 16rpx 0;
-  border-radius: 16rpx; padding: 24rpx 24rpx 8rpx;
-  position: relative; z-index: 2;
-  box-shadow: 0 2rpx 16rpx rgba(0,0,0,0.05);
-}
+/* 简介 */
+.intro-section { width: 100%; padding: 24rpx 0 0; }
 .intro-text {
   font-size: 28rpx; color: #4B5563; line-height: 1.8;
-  padding: 0;
+  padding: 0 24rpx;
 }
 
-/* ========== 时段区域 ========== */
+/* 时段区域 */
 .time-section {
-  background: #fff; margin: 16rpx 16rpx 0;
-  border-radius: 16rpx; padding: 24rpx 0 8rpx;
-  box-shadow: 0 2rpx 16rpx rgba(0,0,0,0.05);
+  width: 100%; padding: 24rpx 0 0;
 }
 .section-header {
   font-size: 30rpx; font-weight: 600; color: #1A1A2E;
@@ -67,10 +51,11 @@ page { background: #F2F2F7; }
   border-radius: 12rpx; background: #F5F7FA;
 }
 .date-inner .item.cur {
-  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
-  color: #fff;
-  box-shadow: 0 4rpx 12rpx rgba(34,197,94,0.25);
+  background: var(--projectColor); color: #fff;
 }
+.date-inner .item .status { font-size: 20rpx; display: block; }
+.date-inner .item .week { display: block; font-size: 22rpx; margin-top: 2rpx; }
+.date-inner .item .day { display: block; font-size: 28rpx; font-weight: bold; }
 
 /* 时段卡片 */
 .time-cards {
@@ -83,25 +68,19 @@ page { background: #F2F2F7; }
   position: relative; box-sizing: border-box;
 }
 .time-card.cur {
-  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
-  border: 2rpx solid #22C55E;
-  box-shadow: 0 2rpx 12rpx rgba(34,197,94,0.1);
+  background: #F0FDF4; border: 2rpx solid var(--projectColor);
 }
 .time-card.disabled { background: #F3F4F6; opacity: 0.5; }
-.time-range { font-size: 30rpx; font-weight: 600; color: #1A1A2E; margin-bottom: 8rpx; }
-.time-card.cur .time-range { color: #166534; }
+.time-range { font-size: 30rpx; font-weight: 600; color: #1A1A2E; margin-bottom: 10rpx; }
+.time-card.cur .time-range { color: var(--projectColor); }
 .time-quota { font-size: 24rpx; color: #8C939D; }
-.time-card.cur .time-quota { color: #16A34A; }
+.time-card.cur .time-quota { color: var(--projectColor); }
 .time-quota.error-text { color: #EF4444; }
-.time-check { position: absolute; top: 12rpx; right: 16rpx; font-size: 24rpx; color: #22C55E; }
+.time-check { position: absolute; top: 12rpx; right: 16rpx; font-size: 24rpx; color: var(--projectColor); }
 .no-time { text-align: center; padding: 60rpx 0; color: #8C939D; font-size: 28rpx; }
 
-/* ========== 详情 ========== */
-.detail-section {
-  background: #fff; margin: 16rpx 16rpx 0;
-  border-radius: 16rpx; padding: 24rpx 0 8rpx;
-  box-shadow: 0 2rpx 16rpx rgba(0,0,0,0.05);
-}
+/* 详情介绍 */
+.detail-section { width: 100%; padding: 8rpx 0 0; }
 .detail-content { padding: 0 24rpx; }
 .content-text {
   font-size: 28rpx; color: #1A1A2E; line-height: 1.8;
@@ -111,21 +90,18 @@ page { background: #F2F2F7; }
   width: 100%; border-radius: 12rpx; margin-bottom: 20rpx;
 }
 
-/* ========== 底部栏 ========== */
+/* 底部栏 */
 .bottom {
   position: fixed; bottom: 0; left: 0; width: 100%;
-  background: #fff; box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.08);
+  background: #fff; box-shadow: 0 -2rpx 12rpx rgba(0,0,0,0.06);
   padding-bottom: env(safe-area-inset-bottom);
-  z-index: 10;
 }
 .bottom .inner { padding: 16rpx 24rpx; }
 .bottom .line2 { display: flex; justify-content: space-between; align-items: center; }
-.bottom .left { font-size: 26rpx; color: #4B5563; }
+.bottom .left { font-size: 26rpx; color: #1A1A2E; }
 .bottom .right {
-  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
-  color: #fff;
+  background: var(--projectColor); color: #fff;
   padding: 16rpx 56rpx; border-radius: 40rpx;
   font-size: 28rpx; font-weight: 600;
-  box-shadow: 0 4rpx 16rpx rgba(34,197,94,0.3);
 }
 .bottom .right:active { opacity: 0.85; }

@@ -3,6 +3,5 @@
     "cmpt-detail": "/components/business/detail/detail_cmpt"
   },
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "课程详情",
-  "styleIsolation": "apply-shared"
+  "navigationBarTitleText": "课程详情"
 }
