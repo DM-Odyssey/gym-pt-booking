@@ -18,9 +18,14 @@ page { background: #F2F2F7; }
   pointer-events: none;
 }
 .cover-title {
-  position: absolute; bottom: 50vh; left: 24rpx; right: 24rpx;
+  position: absolute; bottom: 30vh; left: 24rpx; right: 24rpx;
   color: #fff; font-size: 36rpx; font-weight: bold; z-index: 2;
-  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.5);
+  text-shadow: 0 2rpx 12rpx rgba(0,0,0,0.6);
+}
+.cover-title .title-inner {
+  display: inline-block;
+  background: rgba(0,0,0,0.45);
+  padding: 8rpx 24rpx; border-radius: 8rpx;
 }
 .cover-spacer { height: 60vh; }
 /* 简介 */
