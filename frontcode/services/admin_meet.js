@@ -12,7 +12,7 @@ const timeHelper = require('../utils/time.js');
 const MEET_FIELDS = [
   { mark: 'spec', title: '特点标签', type: 'tag', must: true, max: 30 },
   { mark: 'cover', title: '封面图片', type: 'image', min: 1, max: 1, must: true },
-  { mark: 'desc', title: '简介', type: 'textarea', max: 60, must: true },
+  { mark: 'desc', title: '简介', type: 'textarea', max: 120, must: true },
   { mark: 'content', title: '详情', type: 'content', must: true },
 ];
 const MEET_JOIN_FIELDS = [
