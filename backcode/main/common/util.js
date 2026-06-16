@@ -11,16 +11,17 @@ function time() {
     return Math.floor(Date.now() / 1000)
 }
 
-// 时间戳转格式化字符串
+// 时间戳转格式化字符串（北京时间 UTC+8）
 function timestamp2Time(ts, format = 'Y-M-D h:m:s') {
     if (!ts || ts === 0) return ''
-    const d = new Date(ts * 1000)
-    const Y = d.getFullYear()
-    const M = String(d.getMonth() + 1).padStart(2, '0')
-    const D = String(d.getDate()).padStart(2, '0')
-    const h = String(d.getHours()).padStart(2, '0')
-    const m = String(d.getMinutes()).padStart(2, '0')
-    const s = String(d.getSeconds()).padStart(2, '0')
+    const UTC8 = 8 * 3600 * 1000
+    const d = new Date(ts * 1000 + UTC8)
+    const Y = d.getUTCFullYear()
+    const M = String(d.getUTCMonth() + 1).padStart(2, '0')
+    const D = String(d.getUTCDate()).padStart(2, '0')
+    const h = String(d.getUTCHours()).padStart(2, '0')
+    const m = String(d.getUTCMinutes()).padStart(2, '0')
+    const s = String(d.getUTCSeconds()).padStart(2, '0')
     return format
         .replace('Y', Y).replace('M', M).replace('D', D)
         .replace('h', h).replace('m', m).replace('s', s)

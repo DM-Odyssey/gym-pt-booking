@@ -20,12 +20,24 @@ Component({
     isCoach: false,
     costMode: 0,
     costCardName: '',
+    coverSpacer: 400,
   },
 
   methods: {
     onLoad(options) {
       if (!pageInit.initPageOptions(this, options)) return;
       this._loadDetail();
+    },
+
+    bindCoverLoad(e) {
+      const w = e.detail.width;
+      const h = e.detail.height;
+      if (w && h) {
+        const sys = wx.getSystemInfoSync();
+        const screenW = sys.windowWidth;
+        const imgH = (h / w) * screenW;
+        this.setData({ coverSpacer: Math.round(imgH * 0.66) });
+      }
     },
 
     async _loadDetail() {

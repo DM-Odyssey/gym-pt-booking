@@ -74,7 +74,7 @@ Component({
             cache.clear();
             wx.showToast({ title: '缓存已清除', icon: 'none' });
           } else if (idx === 2) {
-            wx.reLaunch({ url: '/pages/admin/login/admin_login' });
+            wx.navigateTo({ url: '/pages/admin/login/admin_login' });
           }
         },
       });

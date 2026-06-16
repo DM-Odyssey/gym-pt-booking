@@ -5,13 +5,13 @@
   <view class="main">
     <!-- 1. 封面 -->
     <view class="meet-cover">
-      <image mode="aspectFill" src="{{meet.MEET_OBJ.cover[0]}}" wx:if="{{meet.MEET_OBJ.cover && meet.MEET_OBJ.cover.length}}" />
+      <image mode="widthFix" src="{{meet.MEET_OBJ.cover[0]}}" bindload="bindCoverLoad" wx:if="{{meet.MEET_OBJ.cover && meet.MEET_OBJ.cover.length}}" />
       <view class="cover-gradient"></view>
       <view class="cover-title"><text class="title-inner">{{meet.MEET_TITLE}}</text></view>
     </view>
 
     <!-- 占位 — 把内容推到照片下方 -->
-    <view class="cover-spacer"></view>
+    <view class="cover-spacer" style="height: {{coverSpacer}}px;"></view>
 
     <!-- 2. 简介 -->
     <view class="intro-section" wx:if="{{meet.MEET_OBJ.desc}}">
