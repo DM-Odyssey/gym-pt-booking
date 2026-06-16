@@ -1,0 +1,72 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-work"></view>
+
+<view class="main-work" wx:if="{{isLoad && isWork}}">
+  <!-- 头部卡片 -->
+  <view class="header-card">
+    <view class="header-bar"></view>
+    <view class="header-body">
+      <view class="header-avatar">
+        <image mode="aspectFill" src="{{work.pic||'/images/tabbar/my_cur.png'}}" />
+      </view>
+      <view class="header-info">
+        <text class="header-name">{{work.name}}</text>
+        <text wx:if="{{work.cnt}}" class="header-meta">共登录{{work.cnt}}次，上次{{work.last}}</text>
+        <text wx:else class="header-meta">首次登录~</text>
+      </view>
+      <view class="header-exit" bindtap="bindExitTap"><text class="icon-exit"></text></view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-list">
+    <view class="menu-item" bindtap="url" data-url="/pages/work/edit/work_meet_edit?id={{id}}">
+      <view class="menu-icon"><text class="icon-calendar"></text></view>
+      <view class="menu-body">
+        <text class="menu-title">排课管理</text>
+        <text class="menu-desc">设置可预约时段与排期</text>
+      </view>
+      <text class="menu-arrow">›</text>
+    </view>
+
+    <view class="menu-item" bindtap="url" data-url="/pages/work/join/work_meet_join?meetId={{id}}">
+      <view class="menu-icon"><text class="icon-form"></text></view>
+      <view class="menu-body">
+        <text class="menu-title">预约记录</text>
+        <text class="menu-desc">查看与管理学员预约</text>
+      </view>
+      <text class="menu-arrow">›</text>
+    </view>
+
+    <view class="menu-item" bindtap="url" data-url="/pages/work/scan/work_meet_scan?meetId={{id}}">
+      <view class="menu-icon"><text class="icon-scan"></text></view>
+      <view class="menu-body">
+        <text class="menu-title">签到核销</text>
+        <text class="menu-desc">扫码核销学员预约码</text>
+      </view>
+      <text class="menu-arrow">›</text>
+    </view>
+
+    <view class="menu-item" bindtap="url" data-url="/pages/work/password/work_password">
+      <view class="menu-icon"><text class="icon-edit"></text></view>
+      <view class="menu-body">
+        <text class="menu-title">修改登录密码</text>
+        <text class="menu-desc">更新账户安全设置</text>
+      </view>
+      <text class="menu-arrow">›</text>
+    </view>
+
+    <view class="menu-item" bindtap="url" data-url="/pages/meet/detail/meet_detail?id={{id}}">
+      <view class="menu-icon"><text class="icon-attention"></text></view>
+      <view class="menu-body">
+        <text class="menu-title">预览课程</text>
+        <text class="menu-desc">查看用户端课程展示</text>
+      </view>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 退出 -->
+  <view class="exit-btn" bindtap="bindExitTap">安全退出</view>
+
+  <view style="height: 40rpx;"></view>
+</view>

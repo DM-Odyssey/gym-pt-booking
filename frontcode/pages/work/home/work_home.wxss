@@ -1,0 +1,147 @@
+.main-work {
+  width: 100%;
+  padding: 24rpx 24rpx 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 头部卡片 */
+.header-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+
+.header-bar {
+  width: 100%;
+  height: 8rpx;
+  background: linear-gradient(90deg, #4ADE80, #22C55E);
+}
+
+.header-body {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+}
+
+.header-avatar {
+  width: 88rpx; height: 88rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #F5F7FA;
+  flex-shrink: 0;
+}
+
+.header-avatar image {
+  width: 100%; height: 100%;
+}
+
+.header-info {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-bottom: 6rpx;
+}
+
+.header-meta {
+  font-size: 24rpx;
+  color: #8C939D;
+}
+
+.header-exit {
+  font-size: 40rpx;
+  color: #D1D5DB;
+  padding: 12rpx;
+}
+
+/* 功能菜单 */
+.menu-list {
+  width: 100%;
+  margin-top: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #F5F7FA;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:active {
+  background: #F0FDF4;
+}
+
+.menu-icon {
+  width: 72rpx; height: 72rpx;
+  border-radius: 16rpx;
+  background: #F0FDF4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.menu-icon text {
+  font-size: 36rpx;
+  color: #4ADE80;
+}
+
+.menu-body {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-bottom: 4rpx;
+}
+
+.menu-desc {
+  font-size: 24rpx;
+  color: #8C939D;
+}
+
+.menu-arrow {
+  font-size: 32rpx;
+  color: #D1D5DB;
+  margin-left: 12rpx;
+}
+
+/* 退出按钮 */
+.exit-btn {
+  width: 100%;
+  margin-top: 32rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #EF4444;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+
+.exit-btn:active {
+  background: #FEF2F2;
+}

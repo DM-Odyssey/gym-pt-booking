@@ -1,0 +1,10 @@
+<view class="scan-page">
+  <view class="scan-title" wx:if="{{title}}">{{title}}</view>
+
+  <view class="scan-body" bindtap="bindScanTap">
+    <view class="scan-icon"><text class="icon-scan"></text></view>
+    <text class="scan-label">扫码签到</text>
+    <text class="scan-desc">扫描学员签到码完成签到</text>
+    <view class="scan-btn">立即签到</view>
+  </view>
+</view>

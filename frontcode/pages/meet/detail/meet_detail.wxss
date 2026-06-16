@@ -1,0 +1,139 @@
+@import "/style/public/detail.wxss";
+
+page { background: #F2F2F7; }
+
+.main { padding: 0 0 24rpx; }
+
+/* 封面 */
+.meet-cover {
+  width: 100%; position: fixed; top: 0; left: 0; z-index: 0;
+}
+.meet-cover image {
+  width: 100%; display: block;
+}
+.cover-gradient {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 300rpx; z-index: 1;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+.cover-title {
+  position: absolute; bottom: 30vh; left: 24rpx; right: 24rpx;
+  color: #fff; font-size: 36rpx; font-weight: bold; z-index: 2;
+  text-shadow: 0 2rpx 12rpx rgba(0,0,0,0.6);
+}
+.cover-title .title-inner {
+  display: inline-block;
+  background: rgba(0,0,0,0.45);
+  padding: 8rpx 24rpx; border-radius: 8rpx;
+}
+.cover-spacer { }
+/* 简介 */
+.intro-section {
+  width: 100%; padding: 24rpx 0 0;
+  background: #fff;
+  position: relative; z-index: 1;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.intro-text {
+  font-size: 28rpx; color: #4B5563; line-height: 1.8;
+  padding: 0 24rpx;
+}
+
+/* 时段区域 */
+.time-section {
+  width: 100%; padding: 24rpx 0 0;
+  background: #fff;
+  position: relative; z-index: 1;
+}
+.section-header {
+  font-size: 30rpx; font-weight: 600; color: #1A1A2E;
+  padding: 0 24rpx 16rpx;
+  display: flex; align-items: center;
+}
+.cost-tag {
+  margin-left: 16rpx; font-size: 22rpx; font-weight: 500;
+  padding: 4rpx 16rpx; border-radius: 20rpx;
+  background: #FEF3C7; color: #D97706;
+}
+.cost-tag.cost-free {
+  background: #F0FDF4; color: #22C55E;
+}
+
+/* 日期条 */
+.date {
+  white-space: nowrap; padding: 0 24rpx 16rpx;
+}
+.date-inner {
+  display: inline-block; margin-right: 12rpx;
+}
+.date-inner .item {
+  width: 120rpx; padding: 14rpx 0; text-align: center;
+  border-radius: 12rpx; background: #F5F7FA;
+}
+.date-inner .item.cur {
+  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  color: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(34,197,94,0.25);
+}
+.date-inner .item .status { font-size: 20rpx; display: block; }
+.date-inner .item .week { display: block; font-size: 22rpx; margin-top: 2rpx; }
+.date-inner .item .day { display: block; font-size: 28rpx; font-weight: bold; }
+
+/* 时段卡片 */
+.time-cards {
+  display: flex; flex-wrap: wrap; padding: 0 24rpx;
+}
+.time-card {
+  width: 47%; margin: 0 1.5% 16rpx 1.5%;
+  padding: 24rpx 16rpx; background: #F5F7FA;
+  border-radius: 16rpx; text-align: center;
+  position: relative; box-sizing: border-box;
+}
+.time-card.cur {
+  background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+  border: 2rpx solid #22C55E;
+  box-shadow: 0 2rpx 12rpx rgba(34,197,94,0.1);
+}
+.time-card.disabled { background: #F3F4F6; opacity: 0.5; }
+.time-range { font-size: 30rpx; font-weight: 600; color: #1A1A2E; margin-bottom: 10rpx; }
+.time-card.cur .time-range { color: #166534; }
+.time-quota { font-size: 24rpx; color: #8C939D; }
+.time-card.cur .time-quota { color: #16A34A; }
+.time-quota.error-text { color: #EF4444; }
+.time-check { position: absolute; top: 12rpx; right: 16rpx; font-size: 24rpx; color: #22C55E; }
+.no-time { text-align: center; padding: 60rpx 0; color: #8C939D; font-size: 28rpx; }
+
+/* 详情介绍 */
+.detail-section {
+  width: 100%; padding: 8rpx 0 0;
+  background: #fff;
+  position: relative; z-index: 1;
+}
+.detail-content { padding: 0 24rpx; }
+.content-text {
+  font-size: 28rpx; color: #1A1A2E; line-height: 1.8;
+  margin-bottom: 20rpx;
+}
+.content-img image {
+  width: 100%; border-radius: 12rpx; margin-bottom: 20rpx;
+}
+
+/* 底部栏 */
+.bottom {
+  position: fixed; bottom: 0; left: 0; width: 100%;
+  background: #fff; box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.08);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 10;
+}
+.bottom .inner { padding: 16rpx 24rpx; }
+.bottom .line2 { display: flex; justify-content: space-between; align-items: center; }
+.bottom .left { font-size: 26rpx; color: #4B5563; }
+.bottom .right {
+  background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  color: #fff;
+  padding: 16rpx 56rpx; border-radius: 40rpx;
+  font-size: 28rpx; font-weight: 600;
+  box-shadow: 0 4rpx 16rpx rgba(34,197,94,0.3);
+}
+.bottom .right:active { opacity: 0.85; }

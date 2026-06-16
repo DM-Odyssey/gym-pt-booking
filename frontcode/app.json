@@ -1,0 +1,102 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/news/list/news_list",
+    "pages/news/detail/news_detail",
+    "pages/meet/calendar/meet_calendar",
+    "pages/meet/list/meet_list",
+    "pages/meet/detail/meet_detail",
+    "pages/meet/join/meet_join",
+    "pages/meet/my-joins/meet_my_joins",
+    "pages/meet/my-join-detail/meet_my_join_detail",
+    "pages/my/index/my_index",
+    "pages/my/register/my_register",
+    "pages/my/edit/my_edit",
+    "pages/about/list/about_list",
+    "pages/about/detail/about_detail",
+    "pages/search/search",
+    "pages/admin/login/admin_login",
+    "pages/admin/home/admin_home",
+    "pages/admin/manager/list/admin_manager_list",
+    "pages/admin/manager/add/admin_manager_add",
+    "pages/admin/manager/edit/admin_manager_edit",
+    "pages/admin/manager/password/admin_manager_password",
+    "pages/admin/manager/log/admin_log_list",
+    "pages/admin/user/list/admin_user_list",
+    "pages/admin/user/detail/admin_user_detail",
+    "pages/admin/user/export/admin_user_export",
+    "pages/admin/news/list/admin_news_list",
+    "pages/admin/news/add/admin_news_add",
+    "pages/admin/news/edit/admin_news_edit",
+    "pages/admin/meet/list/admin_meet_list",
+    "pages/admin/meet/add/admin_meet_add",
+    "pages/admin/meet/edit/admin_meet_edit",
+    "pages/admin/meet/join/admin_meet_join",
+    "pages/admin/meet/scan/admin_meet_scan",
+    "pages/admin/meet/time/admin_meet_time",
+    "pages/admin/meet/temp/admin_meet_temp",
+    "pages/admin/meet/export/admin_join_export",
+    "pages/admin/setup/about/admin_setup_about",
+    "pages/admin/setup/qrcode/admin_setup_qrcode",
+    "pages/work/login/work_login",
+    "pages/work/home/work_home",
+    "pages/work/password/work_password",
+    "pages/work/edit/work_meet_edit",
+    "pages/work/join/work_meet_join",
+    "pages/work/scan/work_meet_scan",
+    "pages/work/time/work_meet_time",
+    "pages/work/temp/work_meet_temp",
+    "components/public/form/form_show/content/form_show_content",
+    "components/public/form/form_set/field/form_set_field"
+  ],
+  "window": {
+    "backgroundColor": "#F5F7FA",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#F0FDF4",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "backgroundColor": "#FFFFFF",
+    "color": "#8C939D",
+    "selectedColor": "#4ADE80",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/tabbar/home.png",
+        "selectedIconPath": "/images/tabbar/home_cur.png"
+      },
+      {
+        "pagePath": "pages/news/list/news_list",
+        "text": "公告",
+        "iconPath": "/images/tabbar/news.png",
+        "selectedIconPath": "/images/tabbar/news_cur.png"
+      },
+      {
+        "pagePath": "pages/meet/calendar/meet_calendar",
+        "text": "预约日历",
+        "iconPath": "/images/tabbar/day.png",
+        "selectedIconPath": "/images/tabbar/day_cur.png"
+      },
+      {
+        "pagePath": "pages/my/index/my_index",
+        "text": "我的",
+        "iconPath": "/images/tabbar/my.png",
+        "selectedIconPath": "/images/tabbar/my_cur.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取你当前位置信息用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {
+    "cmpt-comm-list": "/components/public/list/comm_list_cmpt",
+    "cmpt-picker": "/components/public/picker/picker_cmpt",
+    "cmpt-modal": "/components/public/modal/modal_cmpt"
+  },
+  "sitemapLocation": "sitemap.json"
+}

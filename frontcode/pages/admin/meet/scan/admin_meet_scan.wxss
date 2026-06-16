@@ -1,0 +1,76 @@
+.scan-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 24rpx;
+  background: #F5F7FA;
+  box-sizing: border-box;
+}
+
+.scan-title {
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  text-align: center;
+  padding: 20rpx 0 60rpx;
+}
+
+.scan-body {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 80rpx 40rpx;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+
+.scan-icon {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: #F0FDF4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.scan-icon text {
+  font-size: 80rpx;
+  color: #4ADE80;
+}
+
+.scan-label {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-bottom: 16rpx;
+}
+
+.scan-desc {
+  font-size: 26rpx;
+  color: #8C939D;
+  margin-bottom: 60rpx;
+}
+
+.scan-btn {
+  width: 80%;
+  text-align: center;
+  padding: 24rpx 0;
+  background: linear-gradient(135deg, #4ADE80, #22C55E);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+}
+
+.scan-btn:active {
+  opacity: 0.85;
+}

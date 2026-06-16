@@ -1,0 +1,91 @@
+page {
+  background: #1A1A2E;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrapper {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 52rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 80rpx;
+  letter-spacing: 4rpx;
+}
+
+.input-group {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50rpx;
+  margin-bottom: 24rpx;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 36rpx;
+  box-sizing: border-box;
+}
+
+.custom-input {
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+  color: #fff;
+  background: transparent;
+}
+
+.ph {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 28rpx;
+}
+
+.login-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #2563EB;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-top: 12rpx;
+  border: none;
+  letter-spacing: 8rpx;
+}
+
+.login-btn::after {
+  border: none;
+}
+
+.login-btn:active {
+  opacity: 0.8;
+}
+
+.bottom-links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28rpx;
+  padding: 0 10rpx;
+}
+
+.link-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.link-back {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.65);
+}

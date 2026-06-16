@@ -1,0 +1,2 @@
+@import "/style/public/admin.wxss";
+page { background-color: #F5F7FA; }

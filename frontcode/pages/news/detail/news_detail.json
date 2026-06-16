@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cmpt-detail": "/components/business/detail/detail_cmpt"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "公告详情"
+}

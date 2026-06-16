@@ -1,0 +1,79 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+  <view class="main">
+    <!-- 1. 封面 -->
+    <view class="meet-cover">
+      <image mode="widthFix" src="{{meet.MEET_OBJ.cover[0]}}" bindload="bindCoverLoad" wx:if="{{meet.MEET_OBJ.cover && meet.MEET_OBJ.cover.length}}" />
+      <view class="cover-gradient"></view>
+      <view class="cover-title"><text class="title-inner">{{meet.MEET_TITLE}}</text></view>
+    </view>
+
+    <!-- 占位 — 把内容推到照片下方 -->
+    <view class="cover-spacer" style="height: {{coverSpacer}}px;"></view>
+
+    <!-- 2. 简介 -->
+    <view class="intro-section" wx:if="{{meet.MEET_OBJ.desc}}">
+      <view class="section-header">{{isCoach?'教练简介':'课程简介'}}</view>
+      <view class="intro-text">{{meet.MEET_OBJ.desc}}</view>
+    </view>
+
+    <!-- 3. 预约时段 -->
+    <view class="time-section">
+      <view class="section-header">
+        <text>{{isCoach?'教练预约':'预约时段'}}</text>
+        <text wx:if="{{costMode==1}}" class="cost-tag">消耗1次{{costCardName}}</text>
+        <text wx:else class="cost-tag cost-free">免费</text>
+      </view>
+      <scroll-view scroll-x class="date" enable-flex="{{true}}">
+        <view bindtap="bindDayTap" data-idx="{{index}}" class="date-inner" wx:for="{{days}}" wx:key="key" wx:for-index="index">
+          <view class="item {{dayIdx==index?'cur':''}}">
+            <text class="status {{item.status=='今天'?'bg-red':''}}">{{item.status||'可约'}}</text>
+            <text class="week">{{item.week}}</text>
+            <text class="day">{{item.date}}</text>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view class="time-cards" wx:if="{{days.length>0 && days[dayIdx]}}">
+        <view bindtap="bindTimeTap" data-timeidx="{{idx}}" wx:for="{{days[dayIdx].times}}" wx:key="k1" wx:for-item="itm" wx:for-index="idx" class="time-card {{(timeIdx==idx)?'cur':''}} {{itm.error?'disabled':''}}">
+          <view class="time-range">{{itm.start}} ~ {{itm.end}}</view>
+          <text wx:if="{{!itm.error&&!itm.isLimit}}" class="time-quota">不限人数</text>
+          <text wx:elif="{{!itm.error&&itm.isLimit}}" class="time-quota">剩余 {{itm.limit-itm.stat.succCnt}} 人</text>
+          <text wx:else class="time-quota error-text">{{itm.error}}</text>
+          <text wx:if="{{timeIdx==idx}}" class="time-check"><text class="icon-check"></text></text>
+        </view>
+      </view>
+      <view wx:elif="{{days.length==0}}" class="no-time">暂无可用时段</view>
+    </view>
+
+    <!-- 4. 详情 -->
+    <view class="detail-section" wx:if="{{meet.MEET_OBJ.content && meet.MEET_OBJ.content.length>0}}">
+      <view class="section-header">{{isCoach?'教练详情':'课程详情'}}</view>
+      <view class="detail-content">
+        <block wx:for="{{meet.MEET_OBJ.content}}" wx:key="key">
+          <view class="content-text" wx:if="{{item.type=='text'}}">
+            <text user-select="{{true}}">{{item.val}}</text>
+          </view>
+          <view class="content-img" wx:if="{{item.type=='img'}}">
+            <image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" mode="widthFix" src="{{item.val}}"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view style="height: 200rpx;"></view>
+  </view>
+
+  <!-- 5. 底部预约栏 -->
+  <view wx:if="{{days.length>0}}" class="bottom safe-bottom">
+    <view class="inner">
+      <view class="line2">
+        <view wx:if="{{timeIdx>-1 && days[dayIdx] && days[dayIdx].times[timeIdx]}}" class="left">{{days[dayIdx].day+' '+ days[dayIdx].times[timeIdx].start+'~'+days[dayIdx].times[timeIdx].end}}</view>
+        <view wx:else class="left">请选择时段</view>
+        <view bindtap="bindJoinTap" class="right">立即预约</view>
+      </view>
+    </view>
+  </view>
+</block>

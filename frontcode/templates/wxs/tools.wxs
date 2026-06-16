@@ -1,0 +1,24 @@
+function indexOf(data, key) {
+  if (!data) return -1;
+  return data.indexOf(key);
+}
+
+function includes(data, key) {
+  if (!data) return false;
+  return data.indexOf(key) > -1 ? true : false;
+}
+
+function split(str, chr) {
+  if (!str) return [];
+  if (typeof str !== 'string') return str;
+  var arr = str.split(chr);
+  if (arr.length == 0) return [];
+  return arr;
+}
+
+module.exports = {
+  split: split,
+  indexOf: indexOf,
+  includes: includes
+};
+module.exports.msg = "hello tools";

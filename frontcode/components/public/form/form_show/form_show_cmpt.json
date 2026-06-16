@@ -1,0 +1,8 @@
+{
+	"component": true,
+	"usingComponents": {
+		"cmpt-checkbox": "/components/public/checkbox/checkbox_cmpt",
+		"cmpt-radio": "/components/public/radio/radio_cmpt",
+		"cmpt-img-upload": "/components/public/image/img_upload_cmpt"
+	}
+}

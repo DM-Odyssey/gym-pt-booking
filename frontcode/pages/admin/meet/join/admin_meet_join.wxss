@@ -1,0 +1,121 @@
+@import "/style/public/admin.wxss";
+
+.join-list {
+  width: 100%;
+  padding: 0 24rpx 24rpx;
+}
+
+.join-list .item {
+  width: 100%;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+
+.join-list .item .header {
+  width: 100%;
+  font-size: 26rpx;
+  padding: 20rpx 24rpx 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+}
+
+.join-list .item .header .left {
+  color: #1A1A2E;
+  font-weight: 600;
+}
+
+.join-list .item .header .right {
+  font-size: 24rpx;
+  color: #8C939D;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+  background: #F5F7FA;
+}
+
+.join-list .item .info {
+  width: 100%;
+  padding: 0 24rpx 20rpx;
+  position: relative;
+}
+
+.join-list .item .info .info-item {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  font-size: 26rpx;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+}
+
+.join-list .item .info .info-item .title {
+  width: 140rpx;
+  color: #8C939D;
+  flex-shrink: 0;
+}
+
+.join-list .item .info .info-item .mao {
+  color: #8C939D;
+  margin-right: 8rpx;
+}
+
+.join-list .item .info .info-item .content {
+  flex: 1;
+  color: #1A1A2E;
+}
+
+.join-list .item .info .info-item.add-time {
+  font-size: 24rpx !important;
+  border-top: 1rpx solid #F5F7FA;
+  padding-top: 12rpx;
+  margin-top: 8rpx;
+}
+
+.join-list .item .info .fold {
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #8C939D;
+  padding: 4rpx 0 12rpx;
+}
+
+/* 操作按钮 */
+.join-list .item .info .oprt {
+  width: 100%;
+  display: flex;
+  gap: 12rpx;
+  padding-top: 12rpx;
+  border-top: 1rpx solid #F5F7FA;
+}
+
+.join-list .item .info .oprt .btn {
+  flex: 1;
+  text-align: center;
+  padding: 14rpx 0;
+  font-size: 26rpx;
+  border-radius: 16rpx !important;
+  height: auto !important;
+  line-height: 1.4;
+}
+
+/* 序号角标隐藏 */
+.join-list .item .no {
+  display: none;
+}
+
+/* 时间线 */
+.time-line {
+  width: 100%;
+  text-align: right;
+  font-size: 24rpx;
+  color: #8C939D;
+  padding: 8rpx 0;
+}
+
+.cancel-area {
+  border: 1rpx solid #E5E7EB;
+}

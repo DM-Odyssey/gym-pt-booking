@@ -1,0 +1,23 @@
+<view class="container">
+  <image class="bg-image" src="/images/login/coach_login.jpg" mode="aspectFill"></image>
+  <view class="overlay"></view>
+
+  <view class="content-wrapper">
+    <text class="title">教练登录</text>
+
+    <view class="input-group">
+      <input class="custom-input" type="number" maxlength="11" placeholder="请输入手机号码" placeholder-class="ph" model:value="{{phone}}" />
+    </view>
+
+    <view class="input-group">
+      <input class="custom-input" password maxlength="30" placeholder="请输入登录密码" placeholder-class="ph" model:value="{{pwd}}" />
+    </view>
+
+    <button class="login-btn" bindtap="bindLoginTap">登 录</button>
+
+    <view class="bottom-links">
+      <text class="link-text">仅限教练登录</text>
+      <text class="link-back" bindtap="url" data-type="switch" data-url="/pages/my/index/my_index">返回用户端</text>
+    </view>
+  </view>
+</view>

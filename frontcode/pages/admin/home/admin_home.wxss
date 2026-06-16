@@ -1,0 +1,148 @@
+.main-admin {
+  width: 100%;
+  padding: 24rpx 24rpx 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* 头部卡片 */
+.header-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+
+.header-bar {
+  width: 100%;
+  height: 8rpx;
+  background: linear-gradient(90deg, #2563EB, #1D4ED8);
+}
+
+.header-body {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+}
+
+.header-avatar {
+  width: 88rpx; height: 88rpx;
+  border-radius: 50%;
+  background: #EFF6FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-avatar text {
+  font-size: 48rpx;
+  color: #2563EB;
+}
+
+.header-info {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-name {
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin-bottom: 6rpx;
+}
+
+.header-meta {
+  font-size: 24rpx;
+  color: #8C939D;
+}
+
+.header-exit {
+  font-size: 40rpx;
+  color: #D1D5DB;
+  padding: 12rpx;
+}
+
+.badge {
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 12rpx;
+  margin-left: 12rpx;
+  font-weight: 400;
+}
+.badge-super { background: #FEF3C7; color: #D97706; }
+.badge-normal { background: #EFF6FF; color: #2563EB; }
+
+/* 菜单分区 */
+.menu-section {
+  width: 100%;
+  margin-top: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+
+.section-title {
+  font-size: 24rpx;
+  color: #8C939D;
+  padding: 20rpx 24rpx 8rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #F5F7FA;
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item:active { background: #F5F7FA; }
+
+.menu-icon {
+  width: 72rpx; height: 72rpx;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+.menu-icon text { font-size: 36rpx; }
+.icon-green { background: #F0FDF4; }
+.icon-green text { color: #22C55E; }
+.icon-teal { background: #F0FDFA; }
+.icon-teal text { color: #14B8A6; }
+.icon-blue { background: #EFF6FF; }
+.icon-blue text { color: #2563EB; }
+.icon-purple { background: #F5F3FF; }
+.icon-purple text { color: #7C3AED; }
+.icon-red { background: #FEF2F2; }
+.icon-red text { color: #EF4444; }
+.icon-orange { background: #FFF7ED; }
+.icon-orange text { color: #F97316; }
+.icon-brown { background: #FEFCE8; }
+.icon-brown text { color: #A16207; }
+
+.menu-body { flex: 1; margin-left: 20rpx; display: flex; flex-direction: column; }
+.menu-title { font-size: 28rpx; font-weight: 600; color: #1A1A2E; margin-bottom: 4rpx; }
+.menu-desc { font-size: 24rpx; color: #8C939D; }
+.menu-arrow { font-size: 32rpx; color: #D1D5DB; }
+
+/* 退出 */
+.exit-btn {
+  width: 100%;
+  margin-top: 32rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #EF4444;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx 0;
+  box-shadow: 0 4px 12px rgba(26,26,46,0.04);
+}
+.exit-btn:active { background: #FEF2F2; }

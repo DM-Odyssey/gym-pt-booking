@@ -1,0 +1,5 @@
+@import "/style/public/detail.wxss";
+
+.main {
+  padding: 0 20rpx 200rpx;
+}

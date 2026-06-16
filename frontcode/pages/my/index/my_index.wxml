@@ -1,0 +1,71 @@
+<view class="main">
+  <view class="top">
+    <view class="inner" bindtap="url" data-url="{{user?'/pages/my/edit/my_edit':'/pages/my/register/my_register'}}">
+      <view class="avatar">
+        <image src="/images/tabbar/my_cur.png" mode="aspectFill"></image>
+      </view>
+      <view class="right">
+        <view class="line1">
+          <view class="name">{{user?user.USER_NAME:'注册 / 登录'}}</view>
+          <view wx:if="{{user&&user.USER_STATUS==9}}" class="type type-bad">已禁用</view>
+          <view wx:elif="{{user&&user.USER_STATUS==0}}" class="type type-warn">待审核</view>
+          <view wx:elif="{{user&&user.USER_STATUS==8}}" class="type type-warn">审核未过</view>
+          <block wx:if="{{user && user.USER_STATUS==1 && cardLoaded}}" wx:for="{{cards}}" wx:key="id">
+            <view wx:if="{{item.remain > 0}}" class="type card-tag-{{item.type}}">{{item.typeName}} {{item.remain}}</view>
+          </block>
+        </view>
+        <view class="line2">{{user?'欢迎回来 👋':'加入我们，开启健身之旅'}}</view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="meet-menu">
+    <view class="inner">
+      <view class="item" bindtap="url" data-url="/pages/meet/my-joins/meet_my_joins?status=use">
+        <view class="img"><image src="/images/my/use.png" /></view>
+        <text>已预约</text>
+      </view>
+      <view class="item" bindtap="url" data-url="/pages/meet/my-joins/meet_my_joins?status=check">
+        <view class="img"><image src="/images/my/check.png" /></view>
+        <text>已签到</text>
+      </view>
+      <view class="item" bindtap="url" data-url="/pages/meet/my-joins/meet_my_joins?status=timeout">
+        <view class="img"><image src="/images/my/out.png" /></view>
+        <text>已过期</text>
+      </view>
+      <view class="item" bindtap="url" data-url="/pages/meet/my-joins/meet_my_joins?status=cancel">
+        <view class="img"><image src="/images/my/cancel.png" /></view>
+        <text>已取消</text>
+      </view>
+      <view class="item" bindtap="url" data-url="/pages/meet/my-joins/meet_my_joins">
+        <view class="img"><image src="/images/my/all.png" /></view>
+        <text>全部预约</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="list-menu">
+    <view class="item" bindtap="url" data-url="/pages/work/login/work_login">
+      <view class="title">
+        <text class="icon-friend title-ico text-blue"></text>
+        <text class="text-project">教练入口</text>
+      </view>
+    </view>
+
+    <view class="item" bindtap="url" data-url="/pages/about/detail/about_detail?key=SETUP_CONTENT_ABOUT">
+      <view class="title">
+        <text class="icon-service title-ico"></text>
+        <text>关于我们</text>
+      </view>
+    </view>
+
+    <view class="item" bindtap="bindSetTap">
+      <view class="title">
+        <text class="icon-settings title-ico"></text>
+        <text>设置</text>
+      </view>
+    </view>
+  </view>
+  <view style="height:150rpx"></view>
+</view>

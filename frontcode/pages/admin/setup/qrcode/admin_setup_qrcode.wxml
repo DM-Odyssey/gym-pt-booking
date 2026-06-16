@@ -1,0 +1,8 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-admin"></view>
+<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
+  <view class="form-box card-project shadow-project margin-top">
+    <view class="form-group"><view class="title">小程序二维码</view></view>
+    <view wx:if="{{qr}}" class="form-group"><image src="{{qr}}" mode="widthFix" style="width:100%"></image></view>
+  </view>
+  <button bindtap="bindGenTap" class="btn-admin margin-top">生成二维码</button>
+</view>

@@ -1,0 +1,97 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l text-grey"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l text-grey"></view>
+
+<view wx:if="{{isLoad && isAdmin}}" class="main-detail">
+  <!-- 头部卡片 -->
+  <view class="header-card">
+    <view class="header-avatar"><text class="icon-profilefill"></text></view>
+    <view class="header-info">
+      <view class="header-name">{{user.USER_NAME}}</view>
+      <view class="header-meta">
+        <text wx:if="{{user.USER_STATUS==1}}" class="tag tag-ok">正常</text>
+        <text wx:elif="{{user.USER_STATUS==0}}" class="tag tag-warn">待审核</text>
+        <text wx:elif="{{user.USER_STATUS==8}}" class="tag tag-warn">审核未过</text>
+        <text wx:elif="{{user.USER_STATUS==9}}" class="tag tag-bad">已禁用</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="info-card">
+    <view class="card-title">基本信息</view>
+    <view class="card-row" bindtap="url" data-type="phone" data-url="{{user.USER_MOBILE}}">
+      <text class="row-label">手机号码</text>
+      <text class="row-value">{{user.USER_MOBILE}}</text>
+      <text class="row-icon icon-phone"></text>
+    </view>
+    <view class="card-row">
+      <text class="row-label">注册时间</text>
+      <text class="row-value">{{user.USER_ADD_TIME}}</text>
+    </view>
+  </view>
+
+  <!-- 注册表单 -->
+  <view wx:if="{{user.USER_FORMS && user.USER_FORMS.length>0}}" class="info-card">
+    <view class="card-title">注册信息</view>
+    <view class="card-row" wx:for="{{user.USER_FORMS}}" wx:key="key">
+      <text class="row-label">{{item.title}}</text>
+      <block wx:if="{{item.type=='image'}}">
+        <image wx:for="{{item.val}}" wx:for-item="img" wx:key="k" bindtap="url" data-type="image" data-url="{{img}}" src="{{img}}" mode="aspectFill" class="form-img" />
+      </block>
+      <text wx:elif="{{item.type=='switch'}}" class="row-value">{{item.val===true?'是':'否'}}</text>
+      <text wx:else class="row-value">{{item.val}}</text>
+    </view>
+  </view>
+
+  <!-- 健身卡管理 -->
+  <view class="info-card">
+    <view class="card-title">健身卡管理</view>
+    <view wx:if="{{cards.length>0}}" wx:for="{{cards}}" wx:key="_id" class="card-item">
+      <view class="card-item-info">
+        <view class="card-item-type">
+          <text class="card-type-tag {{item.CARD_TYPE==1?'ct-coach':(item.CARD_TYPE==2?'ct-course':'ct-general')}}">{{item.CARD_TYPE_NAME||item.CARD_TYPE}}</text>
+          <text class="card-item-status {{item.CARD_STATUS==1?'cs-ok':(item.CARD_STATUS==99?'cs-bad':'cs-gray')}}">{{item.CARD_STATUS_NAME||item.CARD_STATUS}}</text>
+        </view>
+        <view class="card-item-count">剩余 <text class="cc-num">{{item.CARD_TOTAL - item.CARD_USED}}</text> / {{item.CARD_TOTAL}} 次</view>
+        <view wx:if="{{item.CARD_EXPIRE}}" class="card-item-expire">有效期至 {{item.CARD_EXPIRE}}</view>
+        <view wx:if="{{item.CARD_MEMO}}" class="card-item-memo">备注: {{item.CARD_MEMO}}</view>
+      </view>
+      <view class="card-item-action" bindtap="bindCardAction" data-cardid="{{item._id}}">
+        <text class="icon-edit"></text>
+      </view>
+    </view>
+    <view wx:if="{{cards.length==0}}" class="card-empty">该学员暂无健身卡</view>
+    <view wx:if="{{!showCardForm}}" class="card-add-btn" bindtap="bindShowCardForm">
+      <text class="icon-add"></text> 发卡
+    </view>
+  </view>
+
+  <!-- 发卡表单 -->
+  <view wx:if="{{showCardForm}}" class="info-card card-form">
+    <view class="card-title">发卡</view>
+    <view class="card-form-types">
+      <view wx:for="{{['私教卡','课程卡','健身卡']}}" wx:key="*this" wx:for-index="idx"
+        class="form-type-item {{cardFormType==idx+1?'cur':''}}" bindtap="bindCardTypeSelect" data-idx="{{idx}}">
+        {{item}}
+      </view>
+    </view>
+    <view class="form-group">
+      <text class="form-label">次数</text>
+      <input class="form-input" type="number" placeholder="输入次数" value="{{cardFormTotal}}" bindinput="bindCardFormInput" data-field="cardFormTotal" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">有效期</text>
+      <input class="form-input" placeholder="如: 2026-12-31（留空=永久）" value="{{cardFormExpire}}" bindinput="bindCardFormInput" data-field="cardFormExpire" />
+    </view>
+    <view class="form-group">
+      <text class="form-label">备注</text>
+      <input class="form-input" placeholder="发卡备注（可选）" value="{{cardFormMemo}}" bindinput="bindCardFormInput" data-field="cardFormMemo" />
+    </view>
+    <view class="form-btns">
+      <view class="form-btn-cancel" bindtap="bindHideCardForm">取消</view>
+      <view class="form-btn-ok" bindtap="bindAddCard">确认发卡</view>
+    </view>
+  </view>
+
+  <view style="height: 40rpx;"></view>
+</view>

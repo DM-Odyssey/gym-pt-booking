@@ -1,0 +1,6 @@
+@import "/style/public/admin.wxss";
+page { background-color: #F5F7FA; }
+.admin-comm-list .item .info .oprt .btn-card {
+  color: #059669;
+  border-color: #059669;
+}
