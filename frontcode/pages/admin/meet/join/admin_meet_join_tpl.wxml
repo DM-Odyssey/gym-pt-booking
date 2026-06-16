@@ -58,11 +58,6 @@
 
 				<view bindtap="bindFoldTap" data-idx="{{index}}" wx:if="{{!item.fold && item.JOIN_FORMS.length>3}}" class="fold"><text class="icon-fold margin-right-xs"></text>收起</view>
 
-				<view class="info-item add-time">
-					<view class="title text-grey">提交</view>
-					<view class="mao text-grey">：</view>
-					<view class="content text-grey">{{item.JOIN_ADD_TIME}}</view>
-				</view>
 				<view class="info-item" wx:if="{{item.JOIN_IS_CHECKIN==1}}">
 					<view class="title text-grey" style="font-weight: normal;">签到</view>
 					<view class="mao text-grey" style="font-weight: normal;">：</view>

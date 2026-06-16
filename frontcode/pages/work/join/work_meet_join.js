@@ -20,7 +20,7 @@ Component({
           _params: { meetId: options.meetId, mark: options.mark || '' } });
         this._getSearchMenu();
       }
-      if (options && options.title) { wx.setNavigationBarTitle({ title: '预约名单 - ' + decodeURIComponent(options.title) }); }
+      if (options && options.title) { wx.setNavigationBarTitle({ title: '预约记录 - ' + decodeURIComponent(options.title) }); }
     },
     url(e) { router.url(e, this); },
     bindCommListCmpt(e) { if (e.detail.search) { this.setData({ search: '', sortType: '' }); return; } var dl = e.detail.dataList; if (dl) { for (var k = 0; k < dl.list.length; k++) dl.list[k].fold = this.data.isAllFold; } this.setData({ dataList: dl }); },

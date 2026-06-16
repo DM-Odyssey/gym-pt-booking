@@ -170,6 +170,13 @@ async function joinList(work, params) {
         fields: 'JOIN_IS_CHECKIN,JOIN_CHECKIN_TIME,JOIN_CODE,JOIN_REASON,JOIN_USER_ID,JOIN_MEET_TITLE,JOIN_MEET_DAY,JOIN_MEET_TIME_START,JOIN_MEET_TIME_END,JOIN_MEET_TIME_MARK,JOIN_FORMS,JOIN_STATUS,JOIN_ADD_TIME',
         orderBy: { JOIN_ADD_TIME: 'desc' }, page, size
     })
+    if (result.list) {
+        result.list = result.list.map(item => ({
+            ...item,
+            JOIN_ADD_TIME: item.JOIN_ADD_TIME ? timestamp2Time(item.JOIN_ADD_TIME) : '',
+            JOIN_CHECKIN_TIME: item.JOIN_CHECKIN_TIME ? timestamp2Time(item.JOIN_CHECKIN_TIME) : ''
+        }))
+    }
     return success(result)
 }
 
