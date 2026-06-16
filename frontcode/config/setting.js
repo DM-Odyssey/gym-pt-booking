@@ -6,7 +6,7 @@
 
 module.exports = {
   // 云环境
-  CLOUD_ID: 'cloud1-d1gno90vi9c90a8db',
+  CLOUD_ID: 'your-cloud-env-id',
 
   // 运行模式
   IS_DEMO: false,
