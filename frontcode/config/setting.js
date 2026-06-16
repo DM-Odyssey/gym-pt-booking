@@ -18,8 +18,8 @@ module.exports = {
   CACHE_IS_LIST: true,
   CACHE_LIST_TIME: 1800, // 秒
 
-  // 微信手机号快速获取
-  MOBILE_CHECK: true,
+  // 微信手机号快速获取（需小程序通过认证，否则关闭）
+  MOBILE_CHECK: false,
 
   // 项目标识（单项目模式下为空字符串，保留兼容性）
   PID: '',
