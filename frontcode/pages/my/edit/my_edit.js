@@ -41,10 +41,6 @@ Component({
       });
     },
 
-    bindGetPhoneNumber(e) {
-      auth.getPhone(e, this);
-    },
-
     async bindSubmitTap() {
       try {
         let data = this.data;
