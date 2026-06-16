@@ -1,5 +1,9 @@
 # 健身房私教预约小程序
 
+> A WeChat Mini Program for gym personal trainer booking.
+> Three roles: User, Coach (Work), Admin.
+> Built with WeChat Cloud Base — zero server cost.
+
 基于微信云开发的健身房私教预约管理系统，支持用户端、教练端、管理后台三端一体化管理。用户可在线浏览教练课程、选择时段完成预约，教练端可管理排期与核销，管理后台提供完整的预约数据管理与导出能力。
 
 ## 功能特性
@@ -23,6 +27,14 @@
 - **预约管理**：预约列表查看、状态管理、核销、导出 Excel
 - **公告管理**：发布/编辑/排序平台公告
 - **系统设置**：小程序码生成、关于页配置
+
+## 界面预览
+
+| 用户端 | 教练端 | 管理后台 |
+|--------|--------|----------|
+| ![用户端](demo/用户-home-1.png) | ![教练端](demo/教练-工作台.png) | ![管理后台](demo/后台-管理后台.png) |
+
+> 更多截图见 [界面截图](docs/SCREENSHOTS.md)
 
 ## 技术栈
 
@@ -264,3 +276,10 @@ await cloud.dataList(that, 'listName', 'meet/list', params);
 ## 许可证
 
 [MIT](LICENSE)
+
+## 文档
+
+- [系统架构](docs/ARCHITECTURE.md)
+- [API 接口文档](docs/API.md)
+- [开发指南](docs/DEVELOPMENT.md)
+- [界面截图](docs/SCREENSHOTS.md)
