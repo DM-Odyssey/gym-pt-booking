@@ -1,6 +1,6 @@
 /**
  * admin 模块 — 路由分发（映射表 + 鉴权）
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const { checkAdmin } = require('../common/auth')

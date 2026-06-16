@@ -1,6 +1,6 @@
 /**
  * 操作日志查询与清除
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const db = require('../common/db')

@@ -1,6 +1,6 @@
 /**
  * 数据库操作封装 — CRUD + 自动时间戳/IP + 查询辅助
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 

@@ -1,6 +1,6 @@
 /**
  * 用户端公告 — 列表 + 详情
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const db = require('../common/db')

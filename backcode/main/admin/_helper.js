@@ -1,6 +1,6 @@
 /**
  * admin 公共辅助 — 操作日志写入
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const db = require('../common/db')

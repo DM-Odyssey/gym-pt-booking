@@ -1,6 +1,6 @@
 /**
  * 教练端模块 — 路由映射
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const { checkWork } = require('../common/auth')

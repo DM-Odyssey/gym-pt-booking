@@ -1,6 +1,6 @@
 /**
  * 资讯公告管理（CRUD + 推荐 + 排序 + 富文本/图片更新）
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const db = require('../common/db')

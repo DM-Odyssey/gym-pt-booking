@@ -1,6 +1,6 @@
 /**
  * 参数校验工具 — 声明式规则校验
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  *
  * 规则格式：fieldName: 'fieldName|required|type|min:5|max:30|desc:描述'

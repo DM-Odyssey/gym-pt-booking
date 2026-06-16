@@ -1,6 +1,6 @@
 /**
  * utils 桶文件 — 汇聚所有工具模块（替代旧 page_helper 单体）
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-11
  */
 

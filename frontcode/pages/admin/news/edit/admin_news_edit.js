@@ -1,6 +1,6 @@
 /**
  * 资讯编辑
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-11
  */
 const router = require('../../../../utils/router.js');

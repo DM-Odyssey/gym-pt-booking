@@ -1,6 +1,6 @@
 /**
  * 管理员登录 + 仪表盘 + 管理员 CRUD
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const bcrypt = require('bcryptjs')

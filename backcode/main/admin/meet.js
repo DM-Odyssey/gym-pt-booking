@@ -1,6 +1,6 @@
 /**
  * 课程预约管理 — 课程CRUD + 排期 + 预约管理 + 核销 + 时段模板 + Excel导出
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const bcrypt = require('bcryptjs')

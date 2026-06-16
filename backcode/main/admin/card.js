@@ -1,6 +1,6 @@
 /**
  * 健身卡管理 — 发卡/编辑/删除/日志
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-13
  */
 const db = require('../common/db')

@@ -1,6 +1,6 @@
 /**
  * 通行证 — 微信登录/注册/手机号/用户资料
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const cloud = require('wx-server-sdk')

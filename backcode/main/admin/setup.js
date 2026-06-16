@@ -1,6 +1,6 @@
 /**
  * 系统设置管理 + 小程序码生成
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const cloud = require('wx-server-sdk')

@@ -1,6 +1,6 @@
 /**
  * 教练端 — 登录/资料/排期/核销
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const bcrypt = require('bcryptjs')

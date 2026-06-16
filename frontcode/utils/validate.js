@@ -1,6 +1,6 @@
 /**
  * 前端参数校验模块
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-11
  *
  * 规则格式：'formFieldName|must|string|min:1|max:50|name=昵称'

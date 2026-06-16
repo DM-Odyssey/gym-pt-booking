@@ -1,6 +1,6 @@
 /**
  * 工具函数 — 时间/ID/bcrypt 密码
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 

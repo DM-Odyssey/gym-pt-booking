@@ -1,6 +1,6 @@
 /**
  * DOM 与滚动操作工具
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-11
  */
 

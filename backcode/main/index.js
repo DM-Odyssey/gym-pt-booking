@@ -1,6 +1,6 @@
 /**
  * main 云函数主入口 — 模块注册 + 路由分发
- * Author: bjzm-mrzdp
+ * Author: DM-Odyssey
  * Date: 2026-06-10
  */
 const cloud = require('wx-server-sdk')
