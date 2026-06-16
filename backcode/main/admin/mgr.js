@@ -111,6 +111,13 @@ async function getMgrList(admin, params) {
         orderBy: { ADMIN_ADD_TIME: 'desc' },
         page, size
     })
+    if (result.list) {
+        result.list = result.list.map(item => ({
+            ...item,
+            ADMIN_LOGIN_TIME: item.ADMIN_LOGIN_TIME ? timestamp2Time(item.ADMIN_LOGIN_TIME) : '',
+            ADMIN_EDIT_TIME: item.ADMIN_EDIT_TIME ? timestamp2Time(item.ADMIN_EDIT_TIME) : ''
+        }))
+    }
     return success(result)
 }
 
