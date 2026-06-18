@@ -23,15 +23,22 @@ exports.main = async (event, context) => {
 
     db.init(env)
 
-    // 自动创建全部集合
+    // 自动创建全部集合（轻量，每次运行）
     const allColls = ['admin', 'user', 'news', 'meet', 'join', 'day', 'temp', 'setup', 'card', 'card_log']
     for (const c of allColls) {
         try { await db.ensureColl(c); } catch (_) {}
     }
 
-    // 首次部署：初始化默认管理员和种子数据
-    try { await db.ensureAdmin(); } catch (_) {}
-    try { await db.seedData(); } catch (_) {}
+    // 首次部署初始化（仅执行一次，用 setup 标记）
+    try {
+        const initFlag = await db.getOne('setup', { SETUP_KEY: 'INIT_DONE' }, 'SETUP_VALUE')
+        if (!initFlag) {
+            await db.ensureAdmin()
+            await db.seedData()
+            await db.insert('setup', { SETUP_KEY: 'INIT_DONE', SETUP_TYPE: 'system' })
+            console.log('[init] 首次部署初始化完成')
+        }
+    } catch (_) {}
 
     try {
         const openId = cloud.getWXContext().OPENID
