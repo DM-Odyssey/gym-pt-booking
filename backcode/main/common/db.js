@@ -150,8 +150,100 @@ async function ensureColl(name) {
     }
 }
 
+// 自动创建默认管理员（admin / 123456）
+async function ensureAdmin() {
+    const cnt = await coll('admin').count()
+    if (cnt > 0) return
+    const bcrypt = require('bcryptjs')
+    const pwd = await bcrypt.hash('123456', 10)
+    await coll('admin').add({ data: {
+        ADMIN_NAME: 'admin',
+        ADMIN_PWD: pwd,
+        ADMIN_TYPE: 1,
+        ADMIN_STATUS: 1,
+        ADMIN_DESC: '默认超级管理员'
+    }})
+    console.log('[db] 默认管理员已创建: admin / 123456')
+}
+
+// 首次部署种子数据
+async function seedData() {
+    const cmd = db.command
+    const bcrypt = require('bcryptjs')
+
+    // 公告
+    try {
+        const cnt = await coll('news').count()
+        if (cnt === 0) {
+            await coll('news').add({ data: {
+                NEWS_TITLE: '欢迎使用健身房私教预约系统',
+                NEWS_DESC: '本系统支持用户在线预约教练课程，教练可管理排期与核销，管理后台提供完整的预约数据管理能力。',
+                NEWS_CATE_ID: '0',
+                NEWS_CATE_NAME: '平台公告',
+                NEWS_STATUS: 1,
+                NEWS_VOUCH: 1,
+                NEWS_ORDER: 0,
+                NEWS_CONTENT: [{ type: 'text', val: '欢迎使用健身房私教预约小程序！系统支持用户端、教练端、管理后台三端一体化管理。' }]
+            }})
+            console.log('[db] 种子公告已创建')
+        }
+    } catch (e) { console.warn('[db] 种子公告失败:', e.message) }
+
+    // 教练
+    try {
+        const cnt = await coll('meet').count()
+        if (cnt === 0) {
+            const pwd = await bcrypt.hash('123456', 10)
+            await coll('meet').add({ data: {
+                MEET_TITLE: '示例教练 - 李教练',
+                MEET_CATE_ID: '1',
+                MEET_CATE_NAME: '私教',
+                MEET_STATUS: 1,
+                MEET_PASSWORD: pwd,
+                MEET_ORDER: 1,
+                MEET_VOUCH: 1,
+                MEET_COST_MODE: 1,
+                MEET_CANCEL_SET: 1,
+                MEET_OBJ: { desc: '资深健身教练，拥有多年私教经验，擅长增肌减脂、体能训练。欢迎预约体验！' },
+                MEET_DAYS: [],
+                MEET_JOIN_FORMS: [
+                    { mark: 'name', type: 'text', title: '姓名', must: true, min: 2, max: 30 },
+                    { mark: 'phone', type: 'text', title: '手机号', len: 11, must: true }
+                ],
+                MEET_FORMS: []
+            }})
+            console.log('[db] 种子教练已创建')
+        }
+    } catch (e) { console.warn('[db] 种子教练失败:', e.message) }
+
+    // 课程
+    try {
+        const cnt = await coll('meet').where({ MEET_CATE_ID: cmd.neq('1') }).count()
+        if (cnt === 0) {
+            await coll('meet').add({ data: {
+                MEET_TITLE: '示例课程 - 动感单车',
+                MEET_CATE_ID: '2',
+                MEET_CATE_NAME: '团课',
+                MEET_STATUS: 1,
+                MEET_ORDER: 2,
+                MEET_VOUCH: 1,
+                MEET_COST_MODE: 0,
+                MEET_CANCEL_SET: 1,
+                MEET_OBJ: { desc: '燃脂动感单车课程，跟随节奏燃烧卡路里，适合各水平健身爱好者。' },
+                MEET_DAYS: [],
+                MEET_JOIN_FORMS: [
+                    { mark: 'name', type: 'text', title: '姓名', must: true, min: 2, max: 30 },
+                    { mark: 'phone', type: 'text', title: '手机号', len: 11, must: true }
+                ],
+                MEET_FORMS: []
+            }})
+            console.log('[db] 种子课程已创建')
+        }
+    } catch (e) { console.warn('[db] 种子课程失败:', e.message) }
+}
+
 module.exports = {
     init, coll, cmd,
     getOne, getAll, getList, insert, edit, del, count, inc,
-    withPID, regexp, neq, ensureColl
+    withPID, regexp, neq, ensureColl, ensureAdmin, seedData
 }

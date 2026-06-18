@@ -23,9 +23,15 @@ exports.main = async (event, context) => {
 
     db.init(env)
 
-    // 自动创建业务所需集合
-    try { await db.ensureColl('card'); } catch (_) {}
-    try { await db.ensureColl('card_log'); } catch (_) {}
+    // 自动创建全部集合
+    const allColls = ['admin', 'user', 'news', 'meet', 'join', 'day', 'temp', 'setup', 'card', 'card_log']
+    for (const c of allColls) {
+        try { await db.ensureColl(c); } catch (_) {}
+    }
+
+    // 首次部署：初始化默认管理员和种子数据
+    try { await db.ensureAdmin(); } catch (_) {}
+    try { await db.seedData(); } catch (_) {}
 
     try {
         const openId = cloud.getWXContext().OPENID
