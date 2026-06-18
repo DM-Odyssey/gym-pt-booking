@@ -29,16 +29,6 @@ cd backcode/main && npm install
 #    打开 frontcode/config/setting.js，修改 CLOUD_ID 为你的云环境 ID
 ```
 
-## 分支策略
-
-```
-master  — 发布分支（脱敏配置），推送到 GitHub
-dev     — 开发分支（真实配置），内部使用
-legacy  — 旧版 CCMiniCloud 框架代码（存档）
-```
-
-日常开发在 `dev` 分支，修复后 `cherry-pick` 到 `master`。
-
 ## 项目结构
 
 ```
