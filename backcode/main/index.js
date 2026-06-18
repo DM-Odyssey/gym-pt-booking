@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
     db.init(env)
 
     // 自动创建全部集合（轻量，每次运行）
-    const allColls = ['admin', 'user', 'news', 'meet', 'join', 'day', 'temp', 'setup', 'card', 'card_log']
+    const allColls = ['admin', 'user', 'news', 'meet', 'join', 'day', 'temp', 'setup', 'log', 'card', 'card_log']
     for (const c of allColls) {
         try { await db.ensureColl(c); } catch (_) {}
     }
