@@ -168,7 +168,6 @@ async function ensureAdmin() {
 
 // 首次部署种子数据
 async function seedData() {
-    const cmd = db.command
     const bcrypt = require('bcryptjs')
 
     // 公告
@@ -189,7 +188,7 @@ async function seedData() {
         }
     } catch (e) { console.warn('[db] 种子公告失败:', e.message) }
 
-    // 教练
+    // 教练 — 不设密码，仅示例展示
     try {
         const cnt = await coll('meet').count()
         if (cnt === 0) {
@@ -216,9 +215,9 @@ async function seedData() {
         }
     } catch (e) { console.warn('[db] 种子教练失败:', e.message) }
 
-    // 课程
+    // 课程 — 在教练已插入后再判断
     try {
-        const cnt = await coll('meet').where({ MEET_CATE_ID: cmd.neq('1') }).count()
+        const cnt = await coll('meet').where({ MEET_CATE_ID: cmd().neq('1') }).count()
         if (cnt === 0) {
             await coll('meet').add({ data: {
                 MEET_TITLE: '示例课程 - 动感单车',
