@@ -158,7 +158,7 @@ async function ensureAdmin() {
     const pwd = await bcrypt.hash('123456', 10)
     await coll('admin').add({ data: {
         ADMIN_NAME: 'admin',
-        ADMIN_PWD: pwd,
+        ADMIN_PASSWORD: pwd,
         ADMIN_TYPE: 1,
         ADMIN_STATUS: 1,
         ADMIN_DESC: '默认超级管理员'
