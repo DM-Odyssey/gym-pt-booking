@@ -238,4 +238,28 @@ async function pwdMgr(admin, params) {
     return success()
 }
 
-module.exports = { adminLogin, adminHome, clearVouch, getMgrList, insertMgr, delMgr, getMgrDetail, editMgr, statusMgr, pwdMgr }
+// ===== 系统初始化（首次部署） =====
+
+async function adminInit(params) {
+    const results = []
+    try {
+        await db.ensureAdmin()
+        results.push('管理员初始化完成')
+    } catch (e) {
+        results.push('管理员初始化失败: ' + e.message)
+    }
+    try {
+        await db.seedData()
+        results.push('种子数据初始化完成')
+    } catch (e) {
+        results.push('种子数据初始化失败: ' + e.message)
+    }
+    return success({ msg: results.join('；') })
+}
+
+async function checkInit(params) {
+    const cnt = await db.count('admin', {})
+    return success({ initialized: cnt > 0 })
+}
+
+module.exports = { adminLogin, adminInit, checkInit, adminHome, clearVouch, getMgrList, insertMgr, delMgr, getMgrDetail, editMgr, statusMgr, pwdMgr }

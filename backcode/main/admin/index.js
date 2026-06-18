@@ -17,6 +17,10 @@ const ROUTES = {
     // 登录
     'admin/login':          [mgr.adminLogin, false],
 
+    // 系统初始化（首次部署，无需鉴权）
+    'admin/init':           [mgr.adminInit, false],
+    'admin/check_init':     [mgr.checkInit, false],
+
     // 仪表盘
     'admin/home':           [mgr.adminHome],
     'admin/clear_vouch':    [mgr.clearVouch],

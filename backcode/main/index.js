@@ -29,17 +29,6 @@ exports.main = async (event, context) => {
         try { await db.ensureColl(c); } catch (_) {}
     }
 
-    // 首次部署初始化（仅执行一次，用 setup 标记）
-    try {
-        const initFlag = await db.getOne('setup', { SETUP_KEY: 'INIT_DONE' }, 'SETUP_VALUE')
-        if (!initFlag) {
-            await db.ensureAdmin()
-            await db.seedData()
-            await db.insert('setup', { SETUP_KEY: 'INIT_DONE', SETUP_TYPE: 'system' })
-            console.log('[init] 首次部署初始化完成')
-        }
-    } catch (_) {}
-
     try {
         const openId = cloud.getWXContext().OPENID
 

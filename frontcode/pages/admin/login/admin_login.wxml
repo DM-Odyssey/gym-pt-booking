@@ -14,6 +14,7 @@
 
     <view class="bottom-links">
       <text class="link-text">仅限管理员登录</text>
+      <text wx:if="{{showInit}}" class="link-init" bindtap="bindInitTap">首次部署？初始化系统</text>
       <text class="link-back" bindtap="bindBackTap">返回用户端</text>
     </view>
   </view>

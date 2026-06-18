@@ -152,7 +152,7 @@ async function ensureColl(name) {
 
 // 自动创建默认管理员（admin / 123456）
 async function ensureAdmin() {
-    const cnt = await coll('admin').count()
+    const { total: cnt } = await coll('admin').count()
     if (cnt > 0) return
     const bcrypt = require('bcryptjs')
     const pwd = await bcrypt.hash('123456', 10)
@@ -172,7 +172,7 @@ async function seedData() {
 
     // 公告
     try {
-        const cnt = await coll('news').count()
+        const { total: cnt } = await coll('news').count()
         if (cnt === 0) {
             await coll('news').add({ data: {
                 NEWS_TITLE: '欢迎使用健身房私教预约系统',
@@ -190,7 +190,7 @@ async function seedData() {
 
     // 教练 — 不设密码，仅示例展示
     try {
-        const cnt = await coll('meet').count()
+        const { total: cnt } = await coll('meet').count()
         if (cnt === 0) {
             const pwd = await bcrypt.hash('123456', 10)
             await coll('meet').add({ data: {
@@ -217,7 +217,7 @@ async function seedData() {
 
     // 课程 — 在教练已插入后再判断
     try {
-        const cnt = await coll('meet').where({ MEET_CATE_ID: cmd().neq('1') }).count()
+        const { total: cnt } = await coll('meet').where({ MEET_CATE_ID: cmd().neq('1') }).count()
         if (cnt === 0) {
             await coll('meet').add({ data: {
                 MEET_TITLE: '示例课程 - 动感单车',

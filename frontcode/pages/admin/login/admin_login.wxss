@@ -85,6 +85,11 @@ page {
   color: rgba(255, 255, 255, 0.3);
 }
 
+.link-init {
+  font-size: 24rpx;
+  color: #60a5fa;
+}
+
 .link-back {
   font-size: 24rpx;
   color: rgba(255, 255, 255, 0.65);
